@@ -131,6 +131,9 @@ class Color extends Enum
         $this->blue = $blue;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function toCData()
     {
         // TODO: Implement toCData() method.

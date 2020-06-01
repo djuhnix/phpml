@@ -145,5 +145,10 @@ MSG
         return $ret;
     }
 
+    /**
+     * Convertie l'instance actuelle en donnée C utilisable avec la bibliothèque.
+     *
+     * @return FFI\CData
+     */
     abstract public function toCData() : FFI\CData;
 }

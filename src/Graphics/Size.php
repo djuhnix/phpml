@@ -73,6 +73,9 @@ class Size
         $this->height = $height;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function toCData() : CData
     {
         $this->cdata = $this->lib->new(CSFMLType::VIDEO_MODE);
