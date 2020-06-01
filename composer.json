@@ -1,0 +1,34 @@
+{
+    "name": "djuhnix/phpml-pre",
+    "description": "A PHP binding of csfml for php",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Germain OLEA-OYOUGOU",
+            "email": "djuhngleen@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-ffi": "*",
+        "myclabs/php-enum": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPML\\": "src",
+            "PHPML\\Exception\\": "src/Exception",
+            "PHPML\\Enum\\": "src/Enum",
+            "PHPML\\Graphics\\": "src/Graphics"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PHPML\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "minimum-stability": "stable"
+}
