@@ -25,6 +25,7 @@ class Size
     {
         $this->checkLibAndLoad();
 
+        $this->ctype = $this->lib->type(CSFMLType::VIDEO_MODE);
         $this->width = $width;
         $this->height = $height;
     }
@@ -78,7 +79,7 @@ class Size
      */
     public function toCData() : CData
     {
-        $this->cdata = $this->lib->new(CSFMLType::VIDEO_MODE);
+        $this->cdata ??= $this->lib->new($this->ctype, false);
         $this->cdata->width = $this->width;
         $this->cdata->height = $this->height;
         $this->cdata->bitsPerPixel = 32;

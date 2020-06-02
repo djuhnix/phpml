@@ -12,7 +12,8 @@
     "require": {
         "php": ">=7.4",
         "ext-ffi": "*",
-        "myclabs/php-enum": "^1.7"
+        "myclabs/php-enum": "^1.7",
+        "ext-zend-opcache": "*"
     },
     "autoload": {
         "psr-4": {

@@ -6,6 +6,7 @@ namespace PHPML\Enum;
 use InvalidArgumentException;
 use MyCLabs\Enum\Enum;
 use PHPML\AbstractFFI;
+use PHPML\Exception\FFILoadingException;
 
 class Color extends Enum
 {
@@ -49,7 +50,9 @@ class Color extends Enum
         if (!$this->isColorArray([$red, $green, $blue])) {
             throw new InvalidArgumentException("Le tableau de couleur entré n'est pas correct.");
         }
-        parent::__construct(self::DYNAMIC);
+        if ($this->value != static::DYNAMIC) {
+            throw new InvalidArgumentException("La couleur n'est pas dynamique pour pouvoir modifier sa valeur rouge.");
+        }
         $this->red = $red;
         $this->green = $green;
         $this->blue = $blue;
@@ -136,6 +139,9 @@ class Color extends Enum
      */
     public function toCData()
     {
+        if (!$this->isLibLoad()) {
+            throw new FFILoadingException("Impossible de convertir la couleur dynamique en donnée C.");
+        }
         // TODO: Implement toCData() method.
     }
 }

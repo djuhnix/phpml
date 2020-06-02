@@ -1,5 +1,5 @@
-#define FFI_LIB "/usr/lib/x86_64-linux-gnu/libcsfml-graphics.so"
 #define FFI_SCOPE "GRAPHICS"
+#define FFI_LIB "/usr/lib/x86_64-linux-gnu/libcsfml-graphics.so"
 
 typedef unsigned int sfUint32;
 typedef int sfBool;

@@ -28,7 +28,7 @@ trait AbstractFFI
      *                              et la deuxième le fichier de la bibliothèque à charger.
      *                          - preload : charge dans l'objet FFI une bibliothèque déjà préchargé par PHP.
      *                              Dans ce cas le nom du 'scope' doit être passer en au second paramètre.
-     *                          - file : instancie l'objet FFI selon les déclarations C contenu dans un fichier header (.h)
+     *                          - file : instancie l'objet FFI selon les déclarations C contenu dans un fichier preloading (.h)
      *                              Le chemin vers le fichier doit être passer au second paramètre.
      *
      * @param string $attr dépend du premier paramètre.
@@ -77,7 +77,7 @@ MSG
      */
     public function isLibLoad(): bool
     {
-        return $this->lib == null;
+        return $this->lib != null;
     }
 
     /**
@@ -87,7 +87,7 @@ MSG
      */
     public function isCDataLoad() : bool
     {
-        return$this->cdata == null;
+        return$this->cdata != null;
     }
 
     /**
@@ -116,7 +116,7 @@ MSG
     }
 
     /**
-     * Accesseur au chemin du fichier header chargé quand la méthode est file.
+     * Accesseur au chemin du fichier preloading chargé quand la méthode est file.
      * Accessible seulement si la bibliothèque est déjà chargé.
      *
      * @return string|null ?string
