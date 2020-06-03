@@ -3,12 +3,12 @@
 
 namespace PHPML\Enum;
 
-
 use FFI;
-use PHPML\Graphics\GraphicsLibLoader as Lib;
 use PHPML\AbstractFFI\MyCData;
+use PHPML\Enum\CDataEnum as Enum;
+use PHPML\Graphics\GraphicsLibLoader as Lib;
 
-class Event extends \MyCLabs\Enum\Enum
+class Event extends Enum
 {
     use MyCData;
     /**

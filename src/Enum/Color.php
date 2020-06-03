@@ -4,7 +4,7 @@
 namespace PHPML\Enum;
 
 use InvalidArgumentException;
-use MyCLabs\Enum\Enum;
+use PHPML\Enum\CDataEnum as Enum;
 use PHPML\AbstractFFI\MyCData;
 use PHPML\Exception\FFILoadingException;
 use PHPML\Graphics\GraphicsLibLoader as Lib;

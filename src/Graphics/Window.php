@@ -58,24 +58,24 @@ class Window
 
         $event = $this->event->toCData();
         //Début de la boucle
-        while (Lib::getGraphicsLib()->sfRenderWindow_isOpen($this->cdata)) {
+        while ($this->isOpen()) {
             // Gestion des événements
-             while (Lib::getGraphicsLib()->sfRenderWindow_pollEvent($this->cdata, \FFI::addr($event))) {
+            while ($this->pollEvent(\FFI::addr($event))) {
 
                 // Ferme la fenêtre si l'événement 'close' est enregistrer
-                if ($event->type == Lib::getGraphicsLib()->{Event::CLOSED}) {
-                    Lib::getGraphicsLib()->sfRenderWindow_close($this->cdata);
+                if ($event->type == Event::toCDataValue(Event::CLOSED)) {
+                    $this->close();
                 }
             }
 
             // Nettoyage de l'écran de la fenêtre et affichage
-            Lib::getGraphicsLib()->sfRenderWindow_clear($this->cdata, Lib::getGraphicsLib()->{$this->backgroundColor->getValue()});
+            $this->clear($this->backgroundColor);
 
             // lancement des dessins s'il y en a
             if ($drawing != null) {
                 $drawing();
             }
-            Lib::getGraphicsLib()->sfRenderWindow_display($this->cdata);
+            $this->display();
         }
     }
 
@@ -117,6 +117,24 @@ class Window
     public function getSize(): Size
     {
         return $this->size;
+    }
+
+    /**
+     * @param Size $size
+     */
+    public function setSize(Size $size): void
+    {
+        $this->size = $size;
+    }
+
+    /**
+     * Accesseur aux événement de la fenêtre
+     *
+     * @return Event
+     */
+    public function getEvent(): Event
+    {
+        return $this->event;
     }
 
     /**
@@ -176,7 +194,7 @@ class Window
      */
     public function toCData() : CData
     {
-        if(!$this->isCDataLoad()) {
+        if (!$this->isCDataLoad()) {
             $this->cdata = Lib::getGraphicsLib()->new($this->ctype, false);
             $this->cdata = Lib::getGraphicsLib()->sfRenderWindow_create(
                 $this->size->toCData(),
@@ -190,5 +208,54 @@ class Window
         }
 
         return $this->cdata;
+    }
+
+    /*------------------
+     * Fonction CSFML
+     *------------------
+     */
+
+    /**
+     * Vérifie si la fenêtre est ouverte.
+     *
+     * @return bool si la fenêtre est ouverte ou pas
+     */
+    public function isOpen() : bool
+    {
+        return Lib::getGraphicsLib()->sfRenderWindow_isOpen($this->cdata);
+    }
+
+    public function pollEvent(CData $eventPointer) : bool
+    {
+        return Lib::getGraphicsLib()->sfRenderWindow_pollEvent($this->cdata, $eventPointer);
+    }
+
+    /**
+     * Ferme la fenêtre.
+     * Veiller à ouvrir la fenêtre ou à vérifier si elle est ouverte avant d'appeler cette méthode.
+     */
+    public function close() : void
+    {
+        Lib::getGraphicsLib()->sfRenderWindow_close($this->cdata);
+    }
+
+    /**
+     * Néttoie / Vide l'écran avec la couleur passée en paramètre
+     *
+     * @param Color $color
+     */
+    public function clear(Color $color)
+    {
+        Lib::getGraphicsLib()->sfRenderWindow_clear($this->cdata, $color->toCDataValue($color->getValue()));
+    }
+
+    /**
+     * Affiche sur l'écran de la fenêtre ce qui a été dessiné | rendue à l'écran.
+     * Cette méthode est théoriquement appelé après une action de dessin ou équivalente.
+     * Veiller à ce que la fenêtre soit active avant d'appeler cette méthode.
+     */
+    public function display() : void
+    {
+        Lib::getGraphicsLib()->sfRenderWindow_display($this->cdata);
     }
 }
