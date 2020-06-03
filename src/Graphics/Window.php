@@ -11,10 +11,11 @@ use PHPML\Enum\CSFMLType;
 use PHPML\Enum\Event;
 use PHPML\Enum\WindowStyle;
 use PHPML\Exception\RenderWindowException;
+use PHPML\Graphics\GraphicsLibLoader as Lib;
 
 class Window
 {
-    use GraphicsLibLoader;
+    use AbstractFFI\MyCData;
 
     /**
      * @var Event événement de la fenêtre - gérer par la bibliothèque.
@@ -34,16 +35,15 @@ class Window
      */
     public function __construct(Size $size, string $title = "PHPML Basic Window", array $options = null)
     {
-        $this->checkLibAndLoad();
         if (is_array($options) && !$this->isCorrectOptions($options)) {
             throw new InvalidArgumentException('Les options données ne sont pas correctes');
         }
 
-        $this->ctype = $this->lib->type(CSFMLType::RENDER_WINDOW);
+        $this->ctype = Lib::getGraphicsLib()->type(CSFMLType::RENDER_WINDOW);
         $this->size = $size;
         $this->title = $title;
-        $this->options ??= [WindowStyle::DEFAULT()];
-        $this->event = (new Event(Event::LIB_MANAGED))->getLibManagedEvent();
+        $this->options ??= [new WindowStyle(WindowStyle::DEFAULT)];
+        $this->event = (new Event(Event::LIB_MANAGED));
         $this->backgroundColor = new Color(Color::WHITE);
     }
 
@@ -57,25 +57,25 @@ class Window
         $this->cdata ??= $this->toCData();
 
         $event = $this->event->toCData();
-        /*Début de la boucle */
-        while ($this->lib->sfRenderWindow_isOpen($this->cdata)) {
-            /* Gestion des événements */
-            while ($this->lib->sfRenderWindow_pollEvent($this->cdata, \FFI::addr($event))) {
+        //Début de la boucle
+        while (Lib::getGraphicsLib()->sfRenderWindow_isOpen($this->cdata)) {
+            // Gestion des événements
+             while (Lib::getGraphicsLib()->sfRenderWindow_pollEvent($this->cdata, \FFI::addr($event))) {
 
-                /* Ferme la fenêtre si l'événement 'close' est enregistrer */
-                if ($event->type == $this->lib->{Event::CLOSED}) {
-                    $this->lib->sfRenderWindow_close($this->cdata);
-                }
-
-                // lancement des dessins s'il y en a
-                if ($drawing != null) {
-                    $drawing();
+                // Ferme la fenêtre si l'événement 'close' est enregistrer
+                if ($event->type == Lib::getGraphicsLib()->{Event::CLOSED}) {
+                    Lib::getGraphicsLib()->sfRenderWindow_close($this->cdata);
                 }
             }
 
-            /* Nettoyage de l'écran de la fenêtre et affichage */
-            $this->lib->sfRenderWindow_clear($this->cdata, $this->lib->{$this->backgroundColor->getValue()});
-            $this->lib->sfRenderWindow_display($this->cdata);
+            // Nettoyage de l'écran de la fenêtre et affichage
+            Lib::getGraphicsLib()->sfRenderWindow_clear($this->cdata, Lib::getGraphicsLib()->{$this->backgroundColor->getValue()});
+
+            // lancement des dessins s'il y en a
+            if ($drawing != null) {
+                $drawing();
+            }
+            Lib::getGraphicsLib()->sfRenderWindow_display($this->cdata);
         }
     }
 
@@ -166,7 +166,7 @@ class Window
         $result = 0;
         foreach ($this->options as $option) {
             /** @var  $option WindowStyle */
-            $result = $result | $this->lib->{$option->getValue()};
+            $result = $result | Lib::getGraphicsLib()->{$option->getValue()};
         }
         return $result;
     }
@@ -177,8 +177,8 @@ class Window
     public function toCData() : CData
     {
         if(!$this->isCDataLoad()) {
-            $this->cdata = $this->lib->new($this->ctype, false);
-            $this->cdata = $this->lib->sfRenderWindow_create(
+            $this->cdata = Lib::getGraphicsLib()->new($this->ctype, false);
+            $this->cdata = Lib::getGraphicsLib()->sfRenderWindow_create(
                 $this->size->toCData(),
                 $this->title,
                 $this->convertOptions(),

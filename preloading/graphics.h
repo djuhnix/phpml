@@ -74,7 +74,6 @@ typedef enum
 typedef union
 {
     sfEventType             type;             ///< Type of the event
-    /*
     sfSizeEvent             size;             ///< Size event parameters
     sfKeyEvent              key;              ///< Key event parameters
     sfTextEvent             text;             ///< Text event parameters
@@ -87,7 +86,6 @@ typedef union
     sfJoystickConnectEvent  joystickConnect;  ///< Joystick (dis)connect event parameters
     sfTouchEvent            touch;            ///< Touch events parameters
     sfSensorEvent           sensor;           ///< Sensor event parameters
-    */
 } sfEvent;
 
 typedef struct
@@ -112,6 +110,7 @@ extern sfBool sfRenderWindow_isOpen(const sfRenderWindow* renderWindow);
 extern sfRenderWindow* sfRenderWindow_create(sfVideoMode mode, const char* title, sfUint32 style, const sfContextSettings* settings);
 
 extern void sfRenderWindow_clear(sfRenderWindow* renderWindow, sfColor color);
+
 
 extern void sfRenderWindow_display(sfRenderWindow* renderWindow);
 

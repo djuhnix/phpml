@@ -5,12 +5,13 @@ namespace PHPML\Enum;
 
 use InvalidArgumentException;
 use MyCLabs\Enum\Enum;
-use PHPML\AbstractFFI;
+use PHPML\AbstractFFI\MyCData;
 use PHPML\Exception\FFILoadingException;
+use PHPML\Graphics\GraphicsLibLoader as Lib;
 
 class Color extends Enum
 {
-    use AbstractFFI;
+    use MyCData;
 
     const BLACK     = 'sfBlack';
     const WHITE     = 'sfWhite';
@@ -23,6 +24,7 @@ class Color extends Enum
     private int $red;
     private int $green;
     private int $blue;
+    private int $alpha;
 
     private function isColorArray(array $colors) : bool
     {
@@ -135,11 +137,34 @@ class Color extends Enum
     }
 
     /**
+     * Accesseur au canal alpha de la couleur
+     * @return int
+     */
+    public function getAlpha(): int
+    {
+        return $this->alpha;
+    }
+
+    /**
+     * Modificateur du canal alpha de la couleur.
+     * Valide uniquement si la couleur est dynamique.
+     *
+     * @param int $alpha
+     */
+    public function setAlpha(int $alpha): void
+    {
+        if ($this->value != static::DYNAMIC) {
+            throw new InvalidArgumentException("La couleur n'est pas dynamique pour pouvoir modifier son canal alpha.");
+        }
+        $this->alpha = $alpha;
+    }
+
+    /**
      * @inheritDoc
      */
     public function toCData()
     {
-        if (!$this->isLibLoad()) {
+        if (!Lib::isLibLoad()) {
             throw new FFILoadingException("Impossible de convertir la couleur dynamique en donnée C.");
         }
         // TODO: Implement toCData() method.

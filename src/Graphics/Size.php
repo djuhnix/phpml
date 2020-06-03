@@ -4,13 +4,13 @@
 namespace PHPML\Graphics;
 
 use FFI\CData;
-use PHPML\AbstractFFI;
+use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\CSFMLType;
-use PHPML\Exception\FFILoadingException;
+use PHPML\Graphics\GraphicsLibLoader as Lib;
 
 class Size
 {
-    use GraphicsLibLoader;
+    use MyCData;
 
     private int $width;
     private int $height;
@@ -23,9 +23,7 @@ class Size
      */
     public function __construct(int $width, int $height)
     {
-        $this->checkLibAndLoad();
-
-        $this->ctype = $this->lib->type(CSFMLType::VIDEO_MODE);
+        $this->ctype = Lib::getGraphicsLib()->type(CSFMLType::VIDEO_MODE);
         $this->width = $width;
         $this->height = $height;
     }
@@ -79,7 +77,7 @@ class Size
      */
     public function toCData() : CData
     {
-        $this->cdata ??= $this->lib->new($this->ctype, false);
+        $this->cdata ??= Lib::getGraphicsLib()->new($this->ctype, false);
         $this->cdata->width = $this->width;
         $this->cdata->height = $this->height;
         $this->cdata->bitsPerPixel = 32;

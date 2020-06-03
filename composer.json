@@ -18,6 +18,7 @@
     "autoload": {
         "psr-4": {
             "PHPML\\": "src",
+            "PHPML\\AbstractFFI\\": "src/AbstractFFI",
             "PHPML\\Exception\\": "src/Exception",
             "PHPML\\Enum\\": "src/Enum",
             "PHPML\\Graphics\\": "src/Graphics"

@@ -4,12 +4,10 @@
 namespace PHPML\Graphics;
 
 use FFI\Exception;
-use PHPML\AbstractFFI;
+use PHPML\AbstractFFI\AbstractFFI;
 use PHPML\Exception\FFILoadingException;
 
-trait GraphicsLibLoader
-{
-    use AbstractFFI;
+abstract class GraphicsLibLoader extends AbstractFFI {
 
     /**
      * Vérifie si une bibliothèque est chargé, si ce n'est pas le cas la méthode initie le chargement de la bibliothèque
@@ -17,14 +15,15 @@ trait GraphicsLibLoader
      *
      * @throws FFILoadingException si la bibliothèque n'a pas pu être chargé.
      */
-    protected function checkLibAndLoad() : void
+    public static function getGraphicsLib() : ?\FFI
     {
-        try {
-            if (!$this->isLibLoad()) {
-                $this->initLib('preload', 'GRAPHICS');
+        if (!static::isLibLoad()) {
+            try {
+                static::initLib('preload', 'GRAPHICS');
+            } catch (Exception $exception) {
+                throw new FFILoadingException($exception->getMessage());
             }
-        } catch (Exception $exception) {
-            throw new FFILoadingException($exception->getMessage());
         }
+        return static::$lib;
     }
 }
