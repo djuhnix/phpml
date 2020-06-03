@@ -47,26 +47,27 @@ class Window
         $this->backgroundColor = new Color(Color::WHITE);
     }
 
+    public function __destruct()
+    {
+        // TODO: Implement __destruct() method.
+        $eventCData = $this->event->toCData();
+        Lib::getGraphicsLib()->free($eventCData);
+    }
+
     /**
      * Lance la boucle principale de la fenêtre et l'ouvre dans le même temps.
      *
+     * @param callable $eventProcessing fonction de gestion d'événement
      * @param callable $drawing fonction de dessins
      */
-    public function run(callable $drawing = null)
+    public function run(callable $eventProcessing = null, callable $drawing = null)
     {
         $this->cdata ??= $this->toCData();
 
-        $event = $this->event->toCData();
         //Début de la boucle
         while ($this->isOpen()) {
             // Gestion des événements
-            while ($this->pollEvent(\FFI::addr($event))) {
-
-                // Ferme la fenêtre si l'événement 'close' est enregistrer
-                if ($event->type == Event::toCDataValue(Event::CLOSED)) {
-                    $this->close();
-                }
-            }
+            $this->handleEvent($eventProcessing);
 
             // Nettoyage de l'écran de la fenêtre et affichage
             $this->clear($this->backgroundColor);
@@ -128,7 +129,7 @@ class Window
     }
 
     /**
-     * Accesseur aux événement de la fenêtre
+     * Accesseur aux événements de la fenêtre
      *
      * @return Event
      */
@@ -190,6 +191,28 @@ class Window
     }
 
     /**
+     * Gestion des événements
+     *
+     * @param callable $eventProcessing un fonction qui gère les événement dans des blocs conditionnels
+     */
+    public function handleEvent(callable $eventProcessing = null) : void
+    {
+        $eventCData = $this->event->toCData();
+        while ($this->pollEvent($eventCData)) {
+
+            // Ferme la fenêtre si l'événement 'close' est enregistrer
+            if ($eventCData->type == Event::toCDataValue(Event::CLOSED)) {
+                $this->close();
+            }
+
+            //Appelle la fonction de gestion d'événement
+            if ($eventProcessing != null) {
+                $eventProcessing();
+            }
+        }
+    }
+
+    /**
      * @inheritDoc
      */
     public function toCData() : CData
@@ -211,7 +234,7 @@ class Window
     }
 
     /*------------------
-     * Fonction CSFML
+     * Méthodes CSFML
      *------------------
      */
 
@@ -225,9 +248,10 @@ class Window
         return Lib::getGraphicsLib()->sfRenderWindow_isOpen($this->cdata);
     }
 
-    public function pollEvent(CData $eventPointer) : bool
+    public function pollEvent(CData $eventPointer = null) : bool
     {
-        return Lib::getGraphicsLib()->sfRenderWindow_pollEvent($this->cdata, $eventPointer);
+        $eventPointer ??= $this->event->toCData();
+        return Lib::getGraphicsLib()->sfRenderWindow_pollEvent($this->cdata, \FFI::addr($eventPointer));
     }
 
     /**
@@ -244,7 +268,7 @@ class Window
      *
      * @param Color $color
      */
-    public function clear(Color $color)
+    public function clear(Color $color) : void
     {
         Lib::getGraphicsLib()->sfRenderWindow_clear($this->cdata, $color->toCDataValue($color->getValue()));
     }

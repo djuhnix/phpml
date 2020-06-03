@@ -10,4 +10,5 @@ $window = new Window(
 );
 
 $window->run();
-var_dump($window->getSize()->getCData());
+
+var_dump($window);

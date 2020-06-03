@@ -31,6 +31,9 @@ class Event extends Enum
     const LIB_MANAGED = 'Gérer par la bibliothèque C';
 
     /**
+     * Convertit l'événement en donnée C.
+     * Si l'événement a déjà été convertit précédemment il est retourné.
+     *
      * @throws \InvalidArgumentException si l'événement n'a pas pour valeur LIB_MANAGED
      */
     public function toCData(): FFI\CData
