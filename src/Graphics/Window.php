@@ -248,7 +248,13 @@ class Window
         return Lib::getGraphicsLib()->sfRenderWindow_isOpen($this->cdata);
     }
 
-    public function pollEvent(CData $eventPointer = null) : bool
+    /**
+     * Vérifie s'il y'a des événement dans la file d'attente.
+     *
+     * @param CData|null $eventPointer
+     * @return bool
+     */
+    public function pollEvent(CData &$eventPointer = null) : bool
     {
         $eventPointer ??= $this->event->toCData();
         return Lib::getGraphicsLib()->sfRenderWindow_pollEvent($this->cdata, \FFI::addr($eventPointer));

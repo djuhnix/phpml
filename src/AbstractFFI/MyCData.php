@@ -6,11 +6,20 @@ namespace PHPML\AbstractFFI;
 use FFI;
 use FFI\CData;
 use FFI\CType;
+use PHPML\Graphics\GraphicsLibLoader as Lib;
 
 trait MyCData
 {
     protected ?CData $cdata = null;
     protected ?CType $ctype = null;
+
+    public function __destruct()
+    {
+        if ($this->isCDataLoad()) {
+            Lib::getGraphicsLib()->free($this->cdata);
+            unset($this->cdata);
+        }
+    }
 
     /**
      * Vérifie si la donnée C a déjà été chargée.
