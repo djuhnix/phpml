@@ -22,6 +22,7 @@ class Window
     private string $title;
     private Color $backgroundColor;
     private VideoMode $mode;
+    /** @var WindowStyle[] $options */
     private array $options;
 
     /**
@@ -57,6 +58,7 @@ class Window
     /**
      * Lance la boucle principale de la fenêtre et l'ouvre dans le même temps.
      *
+     * @param Event $event l'instance d'événement
      * @param callable $eventProcessing fonction de gestion d'événement
      * @param callable $drawing fonction de dessins
      */
@@ -119,16 +121,6 @@ class Window
     }
 
     /**
-     * Accesseur aux événements de la fenêtre
-     *
-     * @return Event
-     */
-    public function getEvent(): Event
-    {
-        return $this->event;
-    }
-
-    /**
      * Vérifie que les options passées sont correctes, c'est à dire des instances de WindowStyle
      *
      * @param array $options les options à vérifier
@@ -174,7 +166,6 @@ class Window
     {
         $result = 0;
         foreach ($this->options as $option) {
-            /** @var  $option WindowStyle */
             $result = $result | Lib::getGraphicsLib()->{$option->getValue()};
         }
         return $result;

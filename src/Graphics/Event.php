@@ -7,12 +7,15 @@ use FFI;
 use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\CSFMLType;
 use PHPML\Enum\EventType;
+use PHPML\Event\ITriggerable;
 use PHPML\Exception\CDataException;
 use PHPML\Graphics\GraphicsLibLoader as Lib;
 
 class Event
 {
     use MyCData;
+
+    private ITriggerable $actualEvent;
 
     /**
      * Accesseur au type de l'événement contenu dans la donnée C.
@@ -21,12 +24,37 @@ class Event
      */
     public function getType(): EventType
     {
-        if ($this->isCDataLoad()) {
-            $type = new EventType($this->cdata->type);
-        } else {
+        if (!$this->isCDataLoad()) {
             throw new CDataException("La donnée C de l'événement n'est pas chargé pour pouvoir avoir le type d'événement.");
         }
-        return $type;
+
+        return  new EventType($this->cdata->type);
+    }
+
+    /**
+     * L'événement actuellement déclenché sur la fenêtre.
+     *
+     */
+    public function getActualEvent(): ?FFI\CData
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("La donnée C de l'événement n'est pas chargé pour pouvoir obtenir l'événement actuelle.");
+        }
+        $actualEvent = null;
+
+        foreach (EventType::TRIGGERABLE as $key => $item) {
+            if (!FFI::isNull($this->cdata->{$key})
+                && (
+                    FFI::typeof($this->cdata->{$key})
+                    === Lib::getGraphicsLib()->type($item)
+                )
+            ) {
+                $actualEvent = $this->cdata->{$key};
+                break; // probablement à changer
+            }
+        }
+
+        return $actualEvent;
     }
 
     /**
