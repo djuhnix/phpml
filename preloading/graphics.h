@@ -4,7 +4,8 @@
 typedef unsigned int sfUint32;
 typedef int sfBool;
 
-typedef struct {
+typedef struct
+{
     int placebo_sfView;
 } sfView;
 
@@ -17,7 +18,8 @@ typedef struct
     //const sfShader*  shader;    ///< Shader
 } sfRenderStates;
 
-typedef struct {
+typedef struct
+{
     int placebo_sfShape;
 } sfShape;
 
@@ -26,7 +28,8 @@ typedef struct {
 } sfCircleShape;
 
 
-typedef struct {
+typedef struct
+{
     int placebo_sfRenderWindow;
 } sfRenderWindow;
 
@@ -39,6 +42,9 @@ typedef struct
     unsigned int bitsPerPixel; ///< Video mode pixel depth, in bits per pixels
 } sfVideoMode;
 
+/////////////////////
+// Color
+////////////////////
 typedef struct
 {
     sfUint8 r;
@@ -67,6 +73,24 @@ typedef enum
     sfDefaultStyle = sfTitlebar | sfResize | sfClose ///< Default window style
 } sfWindowStyle;
 
+//////////////////////
+// Mouse Enum
+//////////////////////
+
+typedef enum
+{
+    sfMouseLeft,       ///< The left mouse button
+    sfMouseRight,      ///< The right mouse button
+    sfMouseMiddle,     ///< The middle (wheel) mouse button
+    sfMouseXButton1,   ///< The first extra mouse button
+    sfMouseXButton2,   ///< The second extra mouse button
+
+    sfMouseButtonCount ///< Keep last -- the total number of mouse buttons
+} sfMouseButton;
+
+//////////////////////
+// Event
+//////////////////////
 typedef enum
 {
     sfEvtClosed,                 ///< The window requested to be closed (no data)
@@ -94,6 +118,30 @@ typedef enum
     sfEvtSensorChanged,          ///< A sensor value changed (data in event.sensor)
     sfEvtCount,                  ///< Keep last -- the total number of event types
 } sfEventType;
+
+typedef struct
+{
+    sfEventType   type;
+    sfMouseButton button;
+    int           x;
+    int           y;
+} sfMouseButtonEvent;
+
+typedef struct
+{
+    sfEventType type;
+    int         x;
+    int         y;
+} sfMouseMoveEvent;
+
+typedef struct
+{
+    sfEventType  type;
+    sfMouseWheel wheel;
+    float        delta;
+    int          x;
+    int          y;
+} sfMouseWheelScrollEvent;
 
 typedef union
 {
@@ -141,9 +189,9 @@ extern void sfRenderWindow_display(sfRenderWindow* renderWindow);
 extern void sfRenderWindow_drawShape(sfRenderWindow* renderWindow, const sfShape* object, const sfRenderStates* states);
 extern void sfRenderWindow_drawCircleShape(sfRenderWindow* renderWindow, const sfCircleShape* object, const sfRenderStates* states);
 
-//////////////////////////
-/// FUNCTIONS Shape
-//////////////////////////
+///////////////////////////
+/// FUNCTIONS Circle Shape
+///////////////////////////
 
 extern sfCircleShape* sfCircleShape_create(void);
 

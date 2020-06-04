@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use PHPML\AbstractFFI;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
-use PHPML\Enum\Event;
+use PHPML\Enum\EventType;
 use PHPML\Enum\WindowStyle;
 use PHPML\Exception\CDataException;
 use PHPML\Exception\RenderWindowException;
@@ -19,33 +19,28 @@ class Window
 {
     use AbstractFFI\MyCData;
 
-    /**
-     * @var Event événement de la fenêtre - gérer par la bibliothèque.
-     */
-    private Event $event;
     private string $title;
     private Color $backgroundColor;
-    private Size $size;
+    private VideoMode $mode;
     private array $options;
 
     /**
      * Window constructor.
      *
-     * @param Size $size
+     * @param VideoMode $size
      * @param string $title
      * @param array|null $options
      */
-    public function __construct(Size $size, string $title = "PHPML Basic Window", array $options = null)
+    public function __construct(VideoMode $size, string $title = "PHPML Basic Window", array $options = null)
     {
         if (is_array($options) && !$this->isCorrectOptions($options)) {
             throw new InvalidArgumentException('Les options données ne sont pas correctes');
         }
 
         $this->ctype = Lib::getGraphicsLib()->type(CSFMLType::RENDER_WINDOW);
-        $this->size = $size;
+        $this->mode = $size;
         $this->title = $title;
         $this->options ??= [new WindowStyle(WindowStyle::DEFAULT)];
-        $this->event = (new Event(Event::LIB_MANAGED));
         $this->backgroundColor = new Color(Color::WHITE);
     }
 
@@ -65,14 +60,14 @@ class Window
      * @param callable $eventProcessing fonction de gestion d'événement
      * @param callable $drawing fonction de dessins
      */
-    public function run(callable $eventProcessing = null, callable $drawing = null)
+    public function run(Event $event, callable $eventProcessing = null, callable $drawing = null)
     {
         $this->cdata ??= $this->toCData();
 
         //Début de la boucle
         while ($this->isOpen()) {
             // Gestion des événements
-            $this->handleEvent($eventProcessing);
+            $this->handleEvent($event, $eventProcessing);
 
             // Nettoyage de l'écran de la fenêtre et affichage
             $this->clear($this->backgroundColor);
@@ -96,16 +91,6 @@ class Window
     }
 
     /**
-     * Accesseur à la valeur de la couleur d'arrière plan.
-     *
-     * @return string
-     */
-    public function getBackgroundColorValue(): string
-    {
-        return $this->backgroundColor->getValue();
-    }
-
-    /**
      * Modificateur de la couleur d'arriere plan.
      *
      * @param Color $backgroundColor nouvelle couleur
@@ -118,19 +103,19 @@ class Window
     /**
      * Accesseur à l'attribut size de la fenêtre.
      *
-     * @return Size
+     * @return VideoMode
      */
-    public function getSize(): Size
+    public function getMode(): VideoMode
     {
-        return $this->size;
+        return $this->mode;
     }
 
     /**
-     * @param Size $size
+     * @param VideoMode $mode
      */
-    public function setSize(Size $size): void
+    public function setMode(VideoMode $mode): void
     {
-        $this->size = $size;
+        $this->mode = $mode;
     }
 
     /**
@@ -198,13 +183,14 @@ class Window
     /**
      * Gestion des événements
      *
+     * @param Event $event
      * @param callable $eventProcessing un fonction qui gère les événement dans des blocs conditionnels
      */
-    public function handleEvent(callable $eventProcessing = null) : void
+    public function handleEvent(Event $event, callable $eventProcessing = null) : void
     {
-        while ($this->pollEvent()) {
+        while ($this->pollEvent($event->toCData())) {
             // Ferme la fenêtre si l'événement 'close' est enregistrer
-            if ($this->event->getCData()->type == Event::toCDataValue(Event::CLOSED)) {
+            if ($event->getType()->getValue() == EventType::CLOSED) {
                 $this->close();
             }
 
@@ -221,9 +207,8 @@ class Window
     public function toCData() : CData
     {
         if (!$this->isCDataLoad()) {
-            $this->cdata = Lib::getGraphicsLib()->new($this->ctype);
             $this->cdata = Lib::getGraphicsLib()->sfRenderWindow_create(
-                $this->size->toCData(),
+                $this->mode->toCData(),
                 $this->title,
                 $this->convertOptions(),
                 null // ContextSettings normalement, mais pas pris encore charge
@@ -257,9 +242,8 @@ class Window
      * @param CData|null $eventPointer
      * @return bool
      */
-    public function pollEvent(CData $eventPointer = null) : bool
+    public function pollEvent(CData $eventPointer) : bool
     {
-        $eventPointer ??= $this->event->toCData();
         return Lib::getGraphicsLib()->sfRenderWindow_pollEvent($this->cdata, \FFI::addr($eventPointer));
     }
 
