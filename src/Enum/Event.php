@@ -43,7 +43,7 @@ class Event extends Enum
         }
 
         $this->ctype = Lib::getGraphicsLib()->type(CSFMLType::EVENT);
-        $this->cdata ??= Lib::getGraphicsLib()->new($this->ctype, false);
+        $this->cdata ??= Lib::getGraphicsLib()->new($this->ctype);
         return $this->cdata;
     }
 }

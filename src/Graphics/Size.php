@@ -77,7 +77,7 @@ class Size
      */
     public function toCData() : CData
     {
-        $this->cdata ??= Lib::getGraphicsLib()->new($this->ctype, false);
+        $this->cdata ??= Lib::getGraphicsLib()->new($this->ctype);
         $this->cdata->width = $this->width;
         $this->cdata->height = $this->height;
         $this->cdata->bitsPerPixel = 32;

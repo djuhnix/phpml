@@ -10,8 +10,10 @@ use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
 use PHPML\Enum\Event;
 use PHPML\Enum\WindowStyle;
+use PHPML\Exception\CDataException;
 use PHPML\Exception\RenderWindowException;
 use PHPML\Graphics\GraphicsLibLoader as Lib;
+use PHPML\Graphics\Shape\Shape;
 
 class Window
 {
@@ -50,8 +52,11 @@ class Window
     public function __destruct()
     {
         // TODO: Implement __destruct() method.
-        $eventCData = $this->event->toCData();
-        Lib::getGraphicsLib()->free($eventCData);
+        //$eventCData = $this->event->toCData();
+        //Lib::getGraphicsLib()->free($eventCData);
+        if ($this->isCDataLoad()) {
+            Lib::getGraphicsLib()->sfRenderWindow_destroy($this->cdata);
+        }
     }
 
     /**
@@ -197,11 +202,9 @@ class Window
      */
     public function handleEvent(callable $eventProcessing = null) : void
     {
-        $eventCData = $this->event->toCData();
-        while ($this->pollEvent($eventCData)) {
-
+        while ($this->pollEvent()) {
             // Ferme la fenêtre si l'événement 'close' est enregistrer
-            if ($eventCData->type == Event::toCDataValue(Event::CLOSED)) {
+            if ($this->event->getCData()->type == Event::toCDataValue(Event::CLOSED)) {
                 $this->close();
             }
 
@@ -218,7 +221,7 @@ class Window
     public function toCData() : CData
     {
         if (!$this->isCDataLoad()) {
-            $this->cdata = Lib::getGraphicsLib()->new($this->ctype, false);
+            $this->cdata = Lib::getGraphicsLib()->new($this->ctype);
             $this->cdata = Lib::getGraphicsLib()->sfRenderWindow_create(
                 $this->size->toCData(),
                 $this->title,
@@ -254,7 +257,7 @@ class Window
      * @param CData|null $eventPointer
      * @return bool
      */
-    public function pollEvent(CData &$eventPointer = null) : bool
+    public function pollEvent(CData $eventPointer = null) : bool
     {
         $eventPointer ??= $this->event->toCData();
         return Lib::getGraphicsLib()->sfRenderWindow_pollEvent($this->cdata, \FFI::addr($eventPointer));
@@ -287,5 +290,17 @@ class Window
     public function display() : void
     {
         Lib::getGraphicsLib()->sfRenderWindow_display($this->cdata);
+    }
+
+
+    /**
+     * @param Shape $shape
+     */
+    public function draw(Shape $shape) : void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("La donnée C de la de la fenêtre doit être prête(chargé) pour pourvoir y dessiner.");
+        }
+        $shape->draw($this);
     }
 }

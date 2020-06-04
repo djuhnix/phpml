@@ -7,7 +7,8 @@ use FFI\Exception;
 use PHPML\AbstractFFI\AbstractFFI;
 use PHPML\Exception\FFILoadingException;
 
-abstract class GraphicsLibLoader extends AbstractFFI {
+abstract class GraphicsLibLoader extends AbstractFFI
+{
 
     /**
      * Vérifie si une bibliothèque est chargé, si ce n'est pas le cas la méthode initie le chargement de la bibliothèque

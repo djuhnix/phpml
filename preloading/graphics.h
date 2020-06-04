@@ -5,12 +5,29 @@ typedef unsigned int sfUint32;
 typedef int sfBool;
 
 typedef struct {
-    int placebo;
+    int placebo_sfView;
 } sfView;
 
 typedef struct
 {
-    int placebo
+    int placebo_sfRenderStates;
+    //sfBlendMode      blendMode; ///< Blending mode
+    //sfTransform      transform; ///< Transform
+    //const sfTexture* texture;   ///< Texture
+    //const sfShader*  shader;    ///< Shader
+} sfRenderStates;
+
+typedef struct {
+    int placebo_sfShape;
+} sfShape;
+
+typedef struct {
+    int placebo_sfCircleShape;
+} sfCircleShape;
+
+
+typedef struct {
+    int placebo_sfRenderWindow;
 } sfRenderWindow;
 
 typedef unsigned char sfUint8;
@@ -31,7 +48,14 @@ typedef struct
 } sfColor;
 
 sfColor sfBlack;       ///< Black predefined color
-sfColor sfWhite;       ///< Black predefined color
+sfColor sfWhite;       ///< White predefined color
+sfColor sfRed;         ///< Red predefined color
+sfColor sfGreen;       ///< Green predefined color
+sfColor sfBlue;        ///< Blue predefined color
+sfColor sfYellow;      ///< Yellow predefined color
+sfColor sfMagenta;     ///< Magenta predefined color
+sfColor sfCyan;        ///< Cyan predefined color
+sfColor sfTransparent; ///< Transparent (black) predefined color
 
 typedef enum
 {
@@ -99,19 +123,32 @@ typedef struct
     sfBool       sRgbCapable;       ///< Whether the context framebuffer is sRGB capable
 } sfContextSettings;
 
-///////////////////////
-/// FUNCTIONS
-//////////////////////
+//////////////////////////
+/// FUNCTIONS RenderWindow
+//////////////////////////
 
 extern void sfRenderWindow_close(sfRenderWindow* renderWindow);
 
-extern sfBool sfRenderWindow_isOpen(const sfRenderWindow* renderWindow);
-
 extern sfRenderWindow* sfRenderWindow_create(sfVideoMode mode, const char* title, sfUint32 style, const sfContextSettings* settings);
 
-extern void sfRenderWindow_clear(sfRenderWindow* renderWindow, sfColor color);
-
-
-extern void sfRenderWindow_display(sfRenderWindow* renderWindow);
-
+extern sfBool sfRenderWindow_isOpen(const sfRenderWindow* renderWindow);
+extern sfBool sfRenderWindow_hasFocus(const sfRenderWindow* renderWindow);
 extern sfBool sfRenderWindow_pollEvent(sfRenderWindow* renderWindow, sfEvent* event);
+
+extern void sfRenderWindow_clear(sfRenderWindow* renderWindow, sfColor color);
+extern void sfRenderWindow_destroy(sfRenderWindow* renderWindow);
+extern void sfRenderWindow_display(sfRenderWindow* renderWindow);
+extern void sfRenderWindow_drawShape(sfRenderWindow* renderWindow, const sfShape* object, const sfRenderStates* states);
+extern void sfRenderWindow_drawCircleShape(sfRenderWindow* renderWindow, const sfCircleShape* object, const sfRenderStates* states);
+
+//////////////////////////
+/// FUNCTIONS Shape
+//////////////////////////
+
+extern sfCircleShape* sfCircleShape_create(void);
+
+extern void sfCircleShape_setRadius(sfCircleShape* shape, float radius);
+extern void sfCircleShape_setFillColor(sfCircleShape* shape, sfColor color);
+extern void sfCircleShape_setOutlineColor(sfCircleShape* shape, sfColor color);
+extern void sfCircleShape_setOutlineThickness(sfCircleShape* shape, float thickness);
+extern void sfCircleShape_destroy(sfCircleShape* shape);
