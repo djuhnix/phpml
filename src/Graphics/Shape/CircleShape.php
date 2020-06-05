@@ -1,6 +1,5 @@
 <?php
 
-
 namespace PHPML\Graphics\Shape;
 
 use FFI\CData;

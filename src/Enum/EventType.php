@@ -1,11 +1,8 @@
 <?php
 
-
 namespace PHPML\Enum;
 
-use PHPML\Enum\CDataEnum as Enum;
-
-class EventType extends Enum
+class EventType extends CDataEnum
 {
     const SF_CLOSED        = 'sfEvtClosed';
     const SF_RESIZED       = 'sfEvtResized';

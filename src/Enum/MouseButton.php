@@ -1,0 +1,22 @@
+<?php
+
+namespace PHPML\Enum;
+
+class MouseButton extends CDataEnum
+{
+    const SF_MOUSE_LEFT            = 'sfMouseLeft';        ///< The left mouse button
+    const SF_MOUSE_RIGHT           = 'sfMouseRight';       ///< The right mouse button
+    const SF_MOUSE_MIDDLE          = 'sfMouseMiddle';      ///< The middle (wheel) mouse button
+    const SF_MOUSE_XBUTTON1        = 'sfMouseXButton1';    ///< The first extra mouse button
+    const SF_MOUSE_XBUTTON2        = 'sfMouseXButton2';    ///< The second extra mouse button
+
+    const SF_MOUSE_BUTTON_COUNT    = 'sfMouseButtonCount'; ///< Keep last -- the total number of mouse buttons
+
+    const MOUSE_LEFT            = 0; ///< The left mouse button
+    const MOUSE_RIGHT           = 1; ///< The right mouse button
+    const MOUSE_MIDDLE          = 2; ///< The middle (wheel) mouse button
+    const MOUSE_XBUTTON1        = 3; ///< The first extra mouse button
+    const MOUSE_XBUTTON2        = 4; ///< The second extra mouse button
+
+    const MOUSE_BUTTON_COUNT    = 5; ///< Keep last -- the total number of mouse buttons
+}

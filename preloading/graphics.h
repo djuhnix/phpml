@@ -200,3 +200,9 @@ extern void sfCircleShape_setFillColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineThickness(sfCircleShape* shape, float thickness);
 extern void sfCircleShape_destroy(sfCircleShape* shape);
+
+//////////////////////
+// FUNCTION Mouse
+//////////////////////
+
+extern sfBool sfMouse_isButtonPressed(sfMouseButton button);

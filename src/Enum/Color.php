@@ -1,6 +1,5 @@
 <?php
 
-
 namespace PHPML\Enum;
 
 use InvalidArgumentException;
