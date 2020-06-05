@@ -44,7 +44,7 @@ class Event
                 $actualEvent = new MouseButtonEvent($this);
                 break;
             default:
-                $actualEvent = null;
+                $actualEvent = null; // événement non pris en charge
         }
 
         return $actualEvent;

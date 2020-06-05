@@ -14,7 +14,7 @@ $window->run(
     $event,
     function () use ($event, $window) {
         if ($event->getType()->getValue() == \PHPML\Enum\EventType::MOUSE_BUTTON_PRESSED) {
-            var_dump($event->getActualEvent() == null ? "" :  $event->getActualEvent());
+            var_dump($event->getActualEvent() == null ? "null event" :  $event->getActualEvent()->getEventType());
         }
     },
     function () use ($window) {
