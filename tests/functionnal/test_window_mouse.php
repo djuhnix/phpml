@@ -13,8 +13,8 @@ $event = new Event();
 $window->run(
     $event,
     function () use ($event, $window) {
-        if ($event->getType()->getValue() == \PHPML\Enum\EventType::MOUSE_MOVED) {
-            var_dump($event->getActualEvent());
+        if ($event->getType()->getValue() == \PHPML\Enum\EventType::MOUSE_BUTTON_PRESSED) {
+            var_dump($event->getActualEvent() == null ? "" :  $event->getActualEvent());
         }
     },
     function () use ($window) {

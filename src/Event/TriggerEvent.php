@@ -12,7 +12,6 @@ abstract class TriggerEvent
     use MyCData;
 
     protected Event $event;
-    private EventType $type;
 
     public function __construct(Event $event)
     {
@@ -31,4 +30,9 @@ abstract class TriggerEvent
         }
         return new EventType($this->cdata->type);
     }
+
+    /**
+     * Retourne le nom de la variable du type d'événément en C.
+     */
+    abstract protected function getTypeName() : string;
 }

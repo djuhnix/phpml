@@ -6,6 +6,7 @@ use FFI;
 use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\CSFMLType;
 use PHPML\Enum\EventType;
+use PHPML\Event\MouseButtonEvent;
 use PHPML\Event\TriggerEvent;
 use PHPML\Exception\CDataException;
 use PHPML\Graphics\GraphicsLibLoader as Lib;
@@ -13,8 +14,6 @@ use PHPML\Graphics\GraphicsLibLoader as Lib;
 class Event
 {
     use MyCData;
-
-    private ?TriggerEvent $actualEvent = null;
 
     /**
      * Accesseur au type de l'événement contenu dans la donnée C.
@@ -40,26 +39,15 @@ class Event
             throw new CDataException("La donnée C de l'événement n'est pas chargé pour pouvoir obtenir l'événement actuelle.");
         }
 
-        $count = 0;
-        foreach (EventType::TRIGGERABLE as $key => $item) {
-            $typeIsDefined = null;
-            try {
-                $typeIsDefined = !FFI::isNull($this->cdata->{$key});
-
-            } catch (FFI\Exception $exception) {
-                $count += 1;
-                $typeIsDefined = false;
-            }
-            //$res = $typeIsDefined ? 'true' : 'false';
-            //echo 'type is defined n°' . $count .' '. $res  . "\n";
-            if ($typeIsDefined) {
-                $class = 'PHPML\\Event\\' . substr($item, 2);
-                //echo 'Classe : ' . $class;
-                $this->actualEvent = new $class($this);
-            }
+        switch ($this->getType()->getValue()) {
+            case EventType::MOUSE_BUTTON_PRESSED:
+                $actualEvent = new MouseButtonEvent($this);
+                break;
+            default:
+                $actualEvent = null;
         }
 
-        return $this->actualEvent;
+        return $actualEvent;
     }
 
     /**

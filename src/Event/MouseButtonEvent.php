@@ -74,8 +74,16 @@ class MouseButtonEvent extends TriggerEvent
         $this->cdata ??= Lib::getGraphicsLib()->new(
             Lib::getGraphicsLib()->type(CSFMLType::MOUSE_BUTTON_EVENT)
         );
-        $this->cdata = $this->event->getCData()->{EventType::TRIGGERABLE['mouseButton']};
+        $this->cdata = $this->event->getCData()->{$this->getTypeName()};
         return $this->cdata;
+    }
+
+    /**
+     * Retourne le nom de la variable du type d'événément en C.
+     */
+    protected function getTypeName() : string
+    {
+        return 'mouseButton';
     }
 
 }
