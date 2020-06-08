@@ -1,12 +1,13 @@
 {
-    "name": "djuhnix/phpml-pre",
+    "name": "djuhnix/phpml",
     "description": "A PHP binding of csfml for php",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Germain Jr. OLEA-OYOUGOU",
-            "email": "djuhngleen@gmail.com"
+            "email": "djuhngleen@gmail.com",
+            "homepage": "https://germain.tech"
         }
     ],
     "require": {
