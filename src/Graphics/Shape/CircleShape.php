@@ -8,7 +8,7 @@ use PHPML\Enum\CDataEnum;
 use PHPML\Enum\Color;
 use PHPML\Exception\CDataException;
 use PHPML\Graphics\Window;
-use PHPML\Library\GraphicsLibLoader as Lib;
+use PHPML\Library\LibLoader as Lib;
 
 class CircleShape extends Shape
 {

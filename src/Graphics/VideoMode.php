@@ -5,7 +5,7 @@ namespace PHPML\Graphics;
 use FFI\CData;
 use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\CSFMLType;
-use PHPML\Library\GraphicsLibLoader as Lib;
+use PHPML\Library\LibLoader as Lib;
 
 class VideoMode
 {

@@ -88,6 +88,12 @@ typedef enum
     sfMouseButtonCount ///< Keep last -- the total number of mouse buttons
 } sfMouseButton;
 
+typedef enum
+{
+    sfMouseVerticalWheel,  ///< The vertical mouse wheel
+    sfMouseHorizontalWheel ///< The horizontal mouse wheel
+} sfMouseWheel;
+
 //////////////////////
 // Event
 //////////////////////
@@ -146,18 +152,18 @@ typedef struct
 typedef union
 {
     sfEventType             type;             ///< Type of the event
-    sfSizeEvent             size;             ///< Size event parameters
-    sfKeyEvent              key;              ///< Key event parameters
-    sfTextEvent             text;             ///< Text event parameters
+    //sfSizeEvent             size;             ///< Size event parameters
+    //sfKeyEvent              key;              ///< Key event parameters
+    //sfTextEvent             text;             ///< Text event parameters
     sfMouseMoveEvent        mouseMove;        ///< Mouse move event parameters
     sfMouseButtonEvent      mouseButton;      ///< Mouse button event parameters
-    sfMouseWheelEvent       mouseWheel;       ///< Mouse wheel event parameters (deprecated)
+    //sfMouseWheelEvent       mouseWheel;       ///< Mouse wheel event parameters (deprecated)
     sfMouseWheelScrollEvent mouseWheelScroll; ///< Mouse wheel event parameters
-    sfJoystickMoveEvent     joystickMove;     ///< Joystick move event parameters
-    sfJoystickButtonEvent   joystickButton;   ///< Joystick button event parameters
-    sfJoystickConnectEvent  joystickConnect;  ///< Joystick (dis)connect event parameters
-    sfTouchEvent            touch;            ///< Touch events parameters
-    sfSensorEvent           sensor;           ///< Sensor event parameters
+    //sfJoystickMoveEvent     joystickMove;     ///< Joystick move event parameters
+    //sfJoystickButtonEvent   joystickButton;   ///< Joystick button event parameters
+    //sfJoystickConnectEvent  joystickConnect;  ///< Joystick (dis)connect event parameters
+    //sfTouchEvent            touch;            ///< Touch events parameters
+    //sfSensorEvent           sensor;           ///< Sensor event parameters
 } sfEvent;
 
 typedef struct
@@ -200,9 +206,3 @@ extern void sfCircleShape_setFillColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineThickness(sfCircleShape* shape, float thickness);
 extern void sfCircleShape_destroy(sfCircleShape* shape);
-
-//////////////////////
-// FUNCTION Mouse
-//////////////////////
-
-extern sfBool sfMouse_isButtonPressed(sfMouseButton button);

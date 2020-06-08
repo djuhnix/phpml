@@ -6,7 +6,7 @@ namespace PHPML\Graphics\Input;
 use FFI\CData;
 use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\MouseButton;
-use PHPML\Graphics\GraphicsLibLoader as Lib;
+use PHPML\Library\LibLoader as Lib;
 
 class Mouse
 {
@@ -22,7 +22,7 @@ class Mouse
             || is_string($button->getValue())) {
             throw new \InvalidArgumentException("La valeur du bouton ne doit pas être de type SF_* ni MOUSE_BUTTON_COUNT");
         }
-        return Lib::getGraphicsLib()->sfMouse_isButtonPressed(
+        return Lib::getWindowLib()->sfMouse_isButtonPressed(
             $button->getValue()
         );
     }
