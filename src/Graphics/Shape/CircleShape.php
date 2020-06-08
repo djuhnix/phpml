@@ -3,12 +3,10 @@
 namespace PHPML\Graphics\Shape;
 
 use FFI\CData;
-use MyCLabs\Enum\Enum;
-use PHPML\Enum\CDataEnum;
 use PHPML\Enum\Color;
 use PHPML\Exception\CDataException;
 use PHPML\Graphics\Window;
-use PHPML\Library\LibLoader as Lib;
+use PHPML\Library\GraphicsLibLoader as Lib;
 
 class CircleShape extends Shape
 {

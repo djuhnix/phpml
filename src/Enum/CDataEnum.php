@@ -4,7 +4,7 @@ namespace PHPML\Enum;
 
 use InvalidArgumentException;
 use MyCLabs\Enum\Enum;
-use PHPML\Library\LibLoader as Lib;
+use PHPML\Library\GraphicsLibLoader as Lib;
 
 class CDataEnum extends Enum
 {

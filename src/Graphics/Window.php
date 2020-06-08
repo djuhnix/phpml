@@ -11,7 +11,7 @@ use PHPML\Enum\EventType;
 use PHPML\Enum\WindowStyle;
 use PHPML\Exception\CDataException;
 use PHPML\Exception\RenderWindowException;
-use PHPML\Library\LibLoader as Lib;
+use PHPML\Library\GraphicsLibLoader as Lib;
 use PHPML\Graphics\Shape\Shape;
 
 class Window

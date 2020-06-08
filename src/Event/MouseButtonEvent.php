@@ -8,7 +8,7 @@ use PHPML\Enum\EventType;
 use PHPML\Enum\MouseButton;
 use PHPML\Exception\CDataException;
 use PHPML\Graphics\Event;
-use PHPML\Library\LibLoader as Lib;
+use PHPML\Library\GraphicsLibLoader as Lib;
 
 /**
  * Class MouseButtonEvent

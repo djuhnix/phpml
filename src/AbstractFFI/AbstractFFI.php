@@ -5,13 +5,19 @@ namespace PHPML\AbstractFFI;
 
 use FFI;
 use InvalidArgumentException;
+use PHPML\Exception\FFILoadingException;
 
 abstract class AbstractFFI
 {
-    protected static ?FFI $lib = null;
+    /**
+     * Tableau de bibliothèque FFI
+     *
+     * @var FFI[]|null
+     */
+    protected ?array $lib = null;
 
     /**
-     * Instancie un objet FFI contenant une bibliothèque C selon la méthode de chargement.
+     * Instancie un objet FFI contenant une bibliothèque C selon la méthode de chargement, et l'ajoute à la liste de bibliothèque.
      * Si la bibliothèque est correctement chargé elle est accessible via l'attribut de classe $lib
      *
      * @param string $method la méthode de chargement de la bibliothèque C.
@@ -30,23 +36,32 @@ abstract class AbstractFFI
      *                     Un tableau de taille 2 peut également être passé si la méthode est 'inline'.
      *                     Si un type non attendu, un mauvais chemin ou une valeur contraire à la méthode définie est passé, un comportement non attendu pourrait survenir et la bibliothèque ne serait pas chargé.
      *
-     * @return FFI
-     * @throws InvalidArgumentException quand la une méthode non reconnu a été donné en paramètre.
+     * @param string $key clé d'accès à la bibliothèque ajouté.
+     * @return void
      */
-    protected static function initLib(string $method, string $attr) : FFI
+    protected function addLib(string $method, string $attr, string $key) : void
     {
+        $this->lib = [];
         switch ($method) {
             case 'inline':
                 if (is_array($attr)) {
-                    static::$lib ??= FFI::cdef($attr[0], $attr[1]);
+                    $this->lib = [
+                        $key => FFI::cdef($attr[0], $attr[1])
+                    ];
                 }
-                static::$lib ??= FFI::cdef(is_string($attr) ? $attr : '');
+                $this->lib = [
+                    $key => FFI::cdef(is_string($attr) ? $attr : '')
+                ];
                 break;
             case 'preload':
-                static::$lib ??= FFI::scope(is_string($attr) ? $attr : '');
+                $this->lib = [
+                    $key => FFI::scope(is_string($attr) ? $attr : '')
+                ];
                 break;
             case 'file':
-                static::$lib ??= FFI::load(is_string($attr) ? $attr : '');
+                $this->lib = [
+                    $key => FFI::load(is_string($attr) ? $attr : '')
+                ];
                 break;
             default:
                 throw new InvalidArgumentException(
@@ -58,7 +73,6 @@ MSG
                 );
                 break;
         }
-        return static::$lib;
     }
 
     /**
@@ -66,8 +80,42 @@ MSG
      *
      * @return bool selon que la bibliothèque est chargé ou non
      */
-    public static function isLibLoad(): bool
+    public function isLibTableInit(): bool
     {
-        return static::$lib != null;
+        return $this->lib != null;
+    }
+
+    public function isLibLoad(string $key): bool
+    {
+        $ret = false;
+        if ($this->isLibTableInit() && array_key_exists($key, $this->lib)) {
+            $ret = true;
+        }
+        return $ret;
+    }
+
+
+    /**
+     * Accesseur à une librairie chargé.
+     *
+     * @param string $key clé de la bibliothèque à retourné
+     * @return FFI|null
+     */
+    public function getLib(string $key): ?FFI
+    {
+        if (!$this->isLibLoad($key)) {
+            throw new FFILoadingException("La bibliothèque identifiée par $key n'a pas été chargé");
+        }
+        return $this->lib[$key];
+    }
+
+    /**
+     * Retourne le tableau de bibliothèque.
+     *
+     * @return array|FFI[]|null
+     */
+    public function getAllLib() : ?array
+    {
+        return $this->lib;
     }
 }
