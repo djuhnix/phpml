@@ -1,7 +1,7 @@
 <?php
 
 
-namespace PHPML\Graphics;
+namespace PHPML\Library;
 
 use FFI\Exception;
 use PHPML\AbstractFFI\AbstractFFI;

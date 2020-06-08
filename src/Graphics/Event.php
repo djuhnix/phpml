@@ -9,7 +9,7 @@ use PHPML\Enum\EventType;
 use PHPML\Event\MouseButtonEvent;
 use PHPML\Event\TriggerEvent;
 use PHPML\Exception\CDataException;
-use PHPML\Graphics\GraphicsLibLoader as Lib;
+use PHPML\Library\GraphicsLibLoader as Lib;
 
 class Event
 {

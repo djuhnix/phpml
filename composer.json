@@ -5,7 +5,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Germain OLEA-OYOUGOU",
+            "name": "Germain Jr. OLEA-OYOUGOU",
             "email": "djuhngleen@gmail.com"
         }
     ],
@@ -21,7 +21,9 @@
             "PHPML\\AbstractFFI\\": "src/AbstractFFI",
             "PHPML\\Exception\\": "src/Exception",
             "PHPML\\Enum\\": "src/Enum",
-            "PHPML\\Graphics\\": "src/Graphics"
+            "PHPML\\Event\\": "src/Event",
+            "PHPML\\Graphics\\": "src/Graphics",
+            "PHPML\\Library\\": "src/Library"
         }
     },
     "autoload-dev": {
