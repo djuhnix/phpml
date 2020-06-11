@@ -10,7 +10,6 @@ use PHPML\Library\GraphicsLibLoader as Lib;
 
 class CircleShape extends Shape
 {
-
     /**
      * @var float Rayon du cercle
      */
@@ -33,6 +32,7 @@ class CircleShape extends Shape
     {
         if ($this->isCDataLoad()) {
             Lib::getGraphicsLib()->sfCircleShape_destroy($this->cdata);
+            unset($this->cdata);
         }
     }
 
@@ -59,9 +59,7 @@ class CircleShape extends Shape
         if ($this->isCDataLoad()) {
             Lib::getGraphicsLib()->sfCircleShape_setOutlineColor(
                 $this->cdata,
-                $outlineColor->toCDataValue(
-                    $outlineColor->getValue()
-                )
+                $outlineColor->getCDataColor()
             );
         }
     }
@@ -78,6 +76,17 @@ class CircleShape extends Shape
     }
 
     /**
+     * @return float
+     */
+    public function getRadius(): float
+    {
+        if ($this->isCDataLoad()) {
+            $this->radius = Lib::getGraphicsLib()->sfCircleShape_getRadius($this->cdata);
+        }
+        return $this->radius;
+    }
+
+    /**
      * @param float $radius
      */
     public function setRadius(float $radius): void
@@ -86,6 +95,33 @@ class CircleShape extends Shape
         if ($this->isCDataLoad()) {
             Lib::getGraphicsLib()->sfCircleShape_setRadius($this->cdata, $this->radius);
         }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getPosition(): Position
+    {
+        if ($this->isCDataLoad()) {
+            $positionCData = Lib::getGraphicsLib()->sfCircleShape_getPosition($this->cdata);
+            $this->position->setXPos($positionCData->x);
+            $this->position->setYPos($positionCData->y);
+        }
+        return $this->position;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setPosition(Position $position): void
+    {
+        if ($this->isCDataLoad()) {
+            Lib::getGraphicsLib()->sfCircleShape_setPosition(
+                $this->cdata,
+                $position->toCData()
+            );
+        }
+        $this->position = $position;
     }
 
     /**
@@ -102,11 +138,12 @@ class CircleShape extends Shape
         $this->setFillColor($this->fillColor);
         $this->setOutlineColor($this->outlineColor);
         $this->setOutlineThickness($this->outlineThickness);
+        $this->setPosition($this->position);
 
         return $this->cdata;
     }
 
-    public function draw(Window $target) : void
+    public function draw(Window $target): void
     {
         if (!$target->isCDataLoad()) {
             throw new CDataException("Les données C de la fenêtre n'ont pas été chargé pour pouvoir y dessiner un cercle.");

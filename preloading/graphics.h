@@ -7,6 +7,12 @@ typedef int sfBool;
 
 typedef struct
 {
+    float x;
+    float y;
+ } sfVector2f;
+
+typedef struct
+{
     int placebo_sfView;
 } sfView;
 
@@ -207,7 +213,11 @@ extern void sfRenderWindow_drawCircleShape(sfRenderWindow* renderWindow, const s
 
 extern sfCircleShape* sfCircleShape_create(void);
 
+extern float sfCircleShape_getRadius(sfCircleShape* shape, float radius);
+extern sfVector2f sfCircleShape_getPosition(sfCircleShape* shape, sfVector2f position);
+
 extern void sfCircleShape_setRadius(sfCircleShape* shape, float radius);
+extern void sfCircleShape_setPosition(sfCircleShape* shape, sfVector2f position);
 extern void sfCircleShape_setFillColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineThickness(sfCircleShape* shape, float thickness);

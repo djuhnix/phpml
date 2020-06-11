@@ -11,6 +11,7 @@ abstract class Shape
 {
     use MyCData;
 
+    protected Position $position;
     protected Color $fillColor;
     protected Color $outlineColor;
     protected float $outlineThickness;
@@ -22,6 +23,9 @@ abstract class Shape
      */
     public function getFillColor(): Color
     {
+        if ($this->isCDataLoad()) {
+
+        }
         return $this->fillColor;
     }
 
@@ -75,5 +79,24 @@ abstract class Shape
         $this->outlineThickness = $outlineThickness;
     }
 
+    /**
+     * Accesseur à la position.
+     *
+     * @return Position
+     */
+    abstract public function getPosition(): Position;
+
+    /**
+     * Modificateur de la position.
+     *
+     * @param Position $position la nouvelle position
+     */
+    abstract public function setPosition(Position $position): void;
+
+    /**
+     * Dessine cette forme sur la fenêtre.
+     *
+     * @param Window $target
+     */
     abstract public function draw(Window $target) : void;
 }

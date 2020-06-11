@@ -27,18 +27,18 @@ class Window
     /**
      * Window constructor.
      *
-     * @param VideoMode $size
+     * @param VideoMode $mode
      * @param string $title
      * @param array|null $options
      */
-    public function __construct(VideoMode $size, string $title = "PHPML Basic Window", array $options = null)
+    public function __construct(VideoMode $mode, string $title = "PHPML Basic Window", array $options = null)
     {
         if (is_array($options) && !$this->isCorrectOptions($options)) {
             throw new InvalidArgumentException('Les options données ne sont pas correctes');
         }
 
         $this->ctype = Lib::getGraphicsLib()->type(CSFMLType::RENDER_WINDOW);
-        $this->mode = $size;
+        $this->mode = $mode;
         $this->title = $title;
         $this->options ??= [new WindowStyle(WindowStyle::DEFAULT)];
         $this->backgroundColor = new Color(Color::WHITE);
