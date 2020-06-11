@@ -52,7 +52,6 @@ class LibLoader extends AbstractFFI
         if (static::$instance == null) {
             static::$instance = new static('preload', $scope, $scope);
         } else {
-            var_dump(self::$instance->lib);
             if (!static::$instance->isLibLoad($scope)) {
                 static::$instance->addLib('preload', $scope, $scope);
             }
