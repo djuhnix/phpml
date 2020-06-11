@@ -45,9 +45,7 @@ class CircleShape extends Shape
         if ($this->isCDataLoad()) {
             Lib::getGraphicsLib()->sfCircleShape_setFillColor(
                 $this->cdata,
-                $fillColor->toCDataValue(
-                    $fillColor->getValue()
-                )
+                $fillColor->getCDataColor()
             );
         }
     }

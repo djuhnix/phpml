@@ -253,7 +253,7 @@ class Window
      */
     public function clear(Color $color) : void
     {
-        Lib::getGraphicsLib()->sfRenderWindow_clear($this->cdata, $color->toCDataValue($color->getValue()));
+        Lib::getGraphicsLib()->sfRenderWindow_clear($this->cdata, $color->getCDataColor());
     }
 
     /**

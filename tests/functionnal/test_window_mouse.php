@@ -17,7 +17,7 @@ $window->run(
     $event,
     function () use ($event, $window) {
         if ($event->getType()->getValue() == \PHPML\Enum\EventType::MOUSE_BUTTON_PRESSED) {
-            var_dump($event->getActualEvent() == null ? "null event" :  $event->getActualEvent()->getEventType());
+            echo $event->getActualEvent() == null ? "null event" :  "CLICK";
         }
     },
     function () use ($event, $window) {
@@ -27,7 +27,8 @@ $window->run(
         if (Mouse::isButtonPressed(MouseButton::MOUSE_LEFT())) {
             $circle = new CircleShape(50);
             $circle->setFillColor(
-                (new Color(Color::BLUE))
+                (new Color(Color::DYNAMIC))
+                    ->fromRGB(150, 100, 200)
             );
             $window->draw(
                 $circle

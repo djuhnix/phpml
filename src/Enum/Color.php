@@ -2,13 +2,12 @@
 
 namespace PHPML\Enum;
 
+use FFI\CData;
 use InvalidArgumentException;
-use PHPML\Enum\CDataEnum as Enum;
 use PHPML\AbstractFFI\MyCData;
-use PHPML\Exception\FFILoadingException;
-use PHPML\Graphics\GraphicsLibLoader as Lib;
+use PHPML\Library\GraphicsLibLoader as Lib;
 
-class Color extends Enum
+class Color extends CDataEnum
 {
     use MyCData;
 
@@ -24,6 +23,7 @@ class Color extends Enum
     private int $green;
     private int $blue;
     private int $alpha;
+    private bool $withAlpha = false;
 
     private function isColorArray(array $colors) : bool
     {
@@ -49,7 +49,7 @@ class Color extends Enum
     public function fromRGB(int $red, int $green, int $blue) : ?self
     {
         if (!$this->isColorArray([$red, $green, $blue])) {
-            throw new InvalidArgumentException("Le tableau de couleur entré n'est pas correct.");
+            throw new InvalidArgumentException("L'une des couleur entrées n'est pas correcte (comprise entre 0 et 255 inclue).");
         }
         if ($this->value != static::DYNAMIC) {
             throw new InvalidArgumentException("La couleur n'est pas dynamique pour pouvoir modifier sa valeur rouge.");
@@ -58,6 +58,25 @@ class Color extends Enum
         $this->green = $green;
         $this->blue = $blue;
         return $this;
+    }
+
+    /**
+     * Instancie les valeur d'une couleur dynamique.
+     *
+     * @param int $red la valeur rouge de la couleur
+     * @param int $green la valeur verte de la couleur
+     * @param int $blue la valeur bleue de la couleur
+     * @param int $alpha le canal alpha de la couleur
+     * @return $this|null l'instance de la couleur dynamique avec ses valeurs
+     */
+    public function fromRGBA(int $red, int $green, int $blue, int $alpha) : ?self
+    {
+        if (!$this->isColorArray([$alpha])) {
+            throw new InvalidArgumentException("La valeur du canal alpha n'est pas correcte (comprise entre 0 et 255 inclue).");
+        }
+        $this->alpha = $alpha;
+        $this->withAlpha = true;
+        return $this->fromRGB($red, $green, $blue);
     }
 
     /**
@@ -158,14 +177,55 @@ class Color extends Enum
         $this->alpha = $alpha;
     }
 
+    public static function toCDataValue(string $value)
+    {
+        if ($value == static::DYNAMIC) {
+            throw new InvalidArgumentException("Une couleur dynamique ne peut pas être convertit en valeur C, utiliser 'toCData' à la place ou une autre valeur de l'énumération.");
+        }
+        return parent::toCDataValue($value);
+    }
+
     /**
      * @inheritDoc
      */
-    public function toCData()
+    public function toCData() : CData
     {
-        if (!Lib::isLibLoad()) {
-            throw new FFILoadingException("Impossible de convertir la couleur dynamique en donnée C.");
+        if ($this->value != self::DYNAMIC) {
+            throw new InvalidArgumentException("La couleur n'est pas dynamique pour pouvoir la convertir en donnée C, utiliser une autre valeur de l'énumération ou la méthode 'toCDataValue' à la place.");
         }
-        // TODO: Implement toCData() method.
+        $this->cdata ??= Lib::getGraphicsLib()->new(
+            Lib::getGraphicsLib()->type(CSFMLType::COLOR)
+        );
+
+        if ($this->withAlpha) {
+            $this->cdata = Lib::getGraphicsLib()->sfColor_fromRGBA(
+                $this->red,
+                $this->green,
+                $this->blue,
+                $this->alpha
+            );
+        } else {
+            $this->cdata = Lib::getGraphicsLib()->sfColor_fromRGB(
+                $this->red,
+                $this->green,
+                $this->blue
+            );
+        }
+        return $this->cdata;
+    }
+
+    /**
+     * Retourne l'instance actuelle utilisable en tant que donnée C, selon que c'est une couleur dynamique ou prédéfinie.
+     *
+     * @return CData
+     */
+    public function getCDataColor(): CData
+    {
+        if ($this->getValue() == Color::DYNAMIC) {
+            $color = $this->toCData();
+        } else {
+            $color = $this->toCDataValue($this->getValue());
+        }
+        return $color;
     }
 }

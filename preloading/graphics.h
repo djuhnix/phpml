@@ -1,6 +1,7 @@
 #define FFI_SCOPE "GRAPHICS"
 #define FFI_LIB "/usr/lib/x86_64-linux-gnu/libcsfml-graphics.so"
 
+typedef unsigned char sfUint8;
 typedef unsigned int sfUint32;
 typedef int sfBool;
 
@@ -32,8 +33,6 @@ typedef struct
 {
     int placebo_sfRenderWindow;
 } sfRenderWindow;
-
-typedef unsigned char sfUint8;
 
 typedef struct
 {
@@ -176,6 +175,13 @@ typedef struct
     sfUint32     attributeFlags;    ///< The attribute flags to create the context with
     sfBool       sRgbCapable;       ///< Whether the context framebuffer is sRGB capable
 } sfContextSettings;
+
+//////////////////////////
+/// FUNCTIONS Color
+//////////////////////////
+
+extern sfColor sfColor_fromRGB(sfUint8 red, sfUint8 green, sfUint8 blue);
+extern sfColor sfColor_fromRGBA(sfUint8 red, sfUint8 green, sfUint8 blue, sfUint8 alpha);
 
 //////////////////////////
 /// FUNCTIONS RenderWindow
