@@ -3,7 +3,6 @@
 
 namespace PHPML\Library;
 
-use FFI;
 use FFI\Exception;
 use InvalidArgumentException;
 use PHPML\AbstractFFI\AbstractFFI;
