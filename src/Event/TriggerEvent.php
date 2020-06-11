@@ -16,6 +16,7 @@ abstract class TriggerEvent
     public function __construct(Event $event)
     {
         $this->event = $event;
+        $this->cdata = $this->toCData();
     }
 
     /**
@@ -34,5 +35,5 @@ abstract class TriggerEvent
     /**
      * Retourne le nom de la variable du type d'événément en C.
      */
-    abstract protected function getTypeName() : string;
+    abstract protected function getEventTypeVarName() : string;
 }

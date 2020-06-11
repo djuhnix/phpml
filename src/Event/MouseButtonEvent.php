@@ -18,16 +18,6 @@ use PHPML\Library\GraphicsLibLoader as Lib;
  */
 class MouseButtonEvent extends TriggerEvent
 {
-    /**
-     * MouseButtonEvent constructor.
-     *
-     * @param Event $event
-     */
-    public function __construct(Event $event)
-    {
-        parent::__construct($event);
-        $this->cdata = $this->toCData();
-    }
 
     /**
      * @return MouseButton|null
@@ -74,14 +64,14 @@ class MouseButtonEvent extends TriggerEvent
         $this->cdata ??= Lib::getGraphicsLib()->new(
             Lib::getGraphicsLib()->type(CSFMLType::MOUSE_BUTTON_EVENT)
         );
-        $this->cdata = $this->event->getCData()->{$this->getTypeName()};
+        $this->cdata = $this->event->getCData()->{$this->getEventTypeVarName()};
         return $this->cdata;
     }
 
     /**
      * Retourne le nom de la variable du type d'événément en C.
      */
-    protected function getTypeName() : string
+    protected function getEventTypeVarName() : string
     {
         return 'mouseButton';
     }
