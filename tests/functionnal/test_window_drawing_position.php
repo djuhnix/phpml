@@ -3,7 +3,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PHPML\Graphics\Event;
 use PHPML\Graphics\Shape\CircleShape;
-use PHPML\Graphics\FloatPosition;
 use PHPML\Graphics\VideoMode;
 use PHPML\Graphics\Window;
 
@@ -16,9 +15,7 @@ $window->run(
     null,
     function () use ($window) {
         $circle = new CircleShape(50);
-        $circle->setPosition(
-            new FloatPosition(400, 300)
-        );
+        $circle->setPosition([400, 300]);
         $window->draw(
             $circle
         );

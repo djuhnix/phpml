@@ -4,7 +4,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use PHPML\Enum\Color;
 use PHPML\Enum\KeyCode;
 use PHPML\Graphics\Event;
-use PHPML\Graphics\FloatPosition;
 use PHPML\Graphics\Input\Keyboard;
 use PHPML\Graphics\Shape\CircleShape;
 use PHPML\Graphics\VideoMode;
@@ -34,12 +33,7 @@ $window->run(
             $window->draw($circle);
         }
         if (Keyboard::isKeyPressed(KeyCode::KEY_RIGHT())) {
-            $circle->setPosition(
-                new FloatPosition(
-                    $circle->getPosition()->getXPos() + 100,
-                    $circle->getPosition()->getYPos()
-                )
-            );
+            $circle->setPosition([200, 200]);
             $window->draw($circle);
         }
     }
