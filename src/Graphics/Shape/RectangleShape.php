@@ -6,9 +6,6 @@ use FFI\CData;
 use PHPML\Component\Vector;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
-use PHPML\Exception\CDataException;
-use PHPML\Graphics\FloatPosition as Position;
-use PHPML\Graphics\Window;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
 class RectangleShape extends Shape

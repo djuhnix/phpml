@@ -3,9 +3,10 @@
 namespace PHPML\Event;
 
 use FFI\CData;
+use PHPML\Component\Vector;
+use PHPML\Enum\CSFMLType;
 use PHPML\Enum\MouseButton;
 use PHPML\Exception\CDataException;
-use PHPML\Graphics\IntPosition as Position;
 
 /**
  * Class MouseButtonEvent
@@ -15,7 +16,7 @@ use PHPML\Graphics\IntPosition as Position;
  */
 class MouseButtonEvent extends TriggerEvent
 {
-    private Position $position;
+    private Vector $position;
     private MouseButton $mouseButton;
 
     /**
@@ -30,12 +31,12 @@ class MouseButtonEvent extends TriggerEvent
     /**
      * Accesseur à la position de la souris.
      *
-     * @return Position
+     * @return array
      */
-    public function getPosition(): Position
+    public function getPosition(): array
     {
         $this->updateFromCData();
-        return $this->position;
+        return $this->position->getTable();
     }
 
     /**
@@ -52,8 +53,8 @@ class MouseButtonEvent extends TriggerEvent
             throw new CDataException("La donnée C de MouseButton doit être chargé pour mettre à jour et pouvoir accéder aux donnée de la classe MouseButton.");
         }
         $this->mouseButton = new MouseButton($this->cdata->button);
-        $this->position->setXPos($this->cdata->x);
-        $this->position->setYPos($this->cdata->y);
+        $this->position->set(0, $this->cdata->x);
+        $this->position->set(1, $this->cdata->y);
     }
 
     /**
@@ -62,9 +63,9 @@ class MouseButtonEvent extends TriggerEvent
     public function toCData(): CData
     {
         parent::toCData();
-        $this->position = new Position(
-            $this->cdata->x,
-            $this->cdata->y
+        $this->position = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2I),
+            [$this->cdata->x, $this->cdata->y]
         );
         return $this->cdata;
     }
