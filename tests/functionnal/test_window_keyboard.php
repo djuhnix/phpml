@@ -33,7 +33,7 @@ $window->run(
             $window->draw($circle);
         }
         if (Keyboard::isKeyPressed(KeyCode::KEY_RIGHT())) {
-            $circle->setPosition([200, 200]);
+            $circle->move([200, 200]);
             $window->draw($circle);
         }
     }

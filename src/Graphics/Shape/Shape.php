@@ -49,6 +49,28 @@ abstract class Shape
     }
 
     /**
+     * Déplace une forme.
+     * Cette fonction repositionne la forme à la position actuelle additionnée à celle passée en paramètre.
+     *
+     * @param array $offset les valeurs seront additionnées à la position actuelles
+     */
+    public function move(array $offset): void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new \InvalidArgumentException("Les données C de la classe " . static::class . " n'ont pas été cgargé pour pouvoir déplacer la forme.");
+        }
+        $offsetVector = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2F),
+            $offset
+        );
+        Lib::getGraphicsLib()->{$this->getTypeName().'_move'}(
+            $this->cdata,
+            $offsetVector->toCData()
+        );
+        $this->updateFromCData();
+    }
+
+    /**
      * Accesseur à la couleur de remplissage
      *
      * @return Color
