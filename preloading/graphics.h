@@ -361,10 +361,10 @@ extern void sfRenderWindow_drawCircleShape(sfRenderWindow* renderWindow, const s
 
 extern sfCircleShape* sfCircleShape_create(void);
 
-extern float sfCircleShape_getRadius(sfCircleShape* shape, float radius);
+extern float sfCircleShape_getRadius(sfCircleShape* shape);
 extern float sfCircleShape_getOutlineThickness(const sfCircleShape* shape);
 
-extern sfVector2f sfCircleShape_getPosition(sfCircleShape* shape, sfVector2f position);
+extern sfVector2f sfCircleShape_getPosition(sfCircleShape* shape);
 
 extern sfColor sfCircleShape_getFillColor(const sfCircleShape* shape);
 extern sfColor sfCircleShape_getOutlineColor(const sfCircleShape* shape);
