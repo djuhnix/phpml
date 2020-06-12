@@ -5,6 +5,7 @@ namespace PHPML\Graphics;
 use FFI\CData;
 use InvalidArgumentException;
 use PHPML\AbstractFFI;
+use PHPML\Component\Vector;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
 use PHPML\Enum\EventType;
@@ -13,7 +14,6 @@ use PHPML\Exception\CDataException;
 use PHPML\Exception\RenderWindowException;
 use PHPML\Library\GraphicsLibLoader as Lib;
 use PHPML\Graphics\Shape\Shape;
-use PHPML\Graphics\IntPosition as Position;
 
 class Window
 {
@@ -24,7 +24,7 @@ class Window
     private VideoMode $mode;
     /** @var WindowStyle[] $options */
     private array $options;
-    private Position $position;
+    private Vector $position;
 
     /**
      * Window constructor.
@@ -142,19 +142,25 @@ class Window
     /**
      * Accesseur à la position de la fenêtre;
      *
-     * @return Position
+     * @return Vector
      */
-    public function getPosition(): Position
+    public function getPosition(): Vector
     {
         $this->updateFromCData();
         return $this->position;
     }
 
     /**
-     * @param Position $position
+     * Modification de la position actuelle de la fenêtre
+     *
+     * @param array $position un couple de coordonnées
      */
-    public function setPosition(Position $position): void
+    public function setPosition(array $position): void
     {
+        $position = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2I),
+            $position
+        );
         Lib::getGraphicsLib()->sfRenderWindow_setPosition(
             $this->cdata,
             $position->toCData()
@@ -247,8 +253,8 @@ class Window
             throw new CDataException("Les données C de Window doivent être chargées pour mettre à jour les données de la classe.");
         }
         $positionCData = Lib::getGraphicsLib()->sfRenderWindow_getPosition($this->cdata);
-        $this->position->setXPos($positionCData->x);
-        $this->position->setYPos($positionCData->y);
+        $this->position->set(0, $positionCData->x);
+        $this->position->set(1, $positionCData->y);
     }
 
     /*------------------
