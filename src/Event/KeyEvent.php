@@ -4,12 +4,13 @@
 namespace PHPML\Event;
 
 use FFI\CData;
+use PHPML\Enum\CSFMLType;
 use PHPML\Enum\KeyCode;
-use PHPML\Graphics\Event;
+use PHPML\Exception\CDataException;
+use PHPML\Library\GraphicsLibLoader as Lib;
 
 class KeyEvent extends TriggerEvent
 {
-
     private KeyCode $code;
     private bool $alt;
     private bool $control;
@@ -17,10 +18,20 @@ class KeyEvent extends TriggerEvent
     private bool $system;
 
     /**
+     * @return KeyCode
+     */
+    public function getCode(): KeyCode
+    {
+        $this->updateFromCData();
+        return $this->code;
+    }
+
+    /**
      * @return bool
      */
     public function isAlt(): bool
     {
+        $this->updateFromCData();
         return $this->alt;
     }
 
@@ -29,6 +40,7 @@ class KeyEvent extends TriggerEvent
      */
     public function isControl(): bool
     {
+        $this->updateFromCData();
         return $this->control;
     }
 
@@ -37,6 +49,7 @@ class KeyEvent extends TriggerEvent
      */
     public function isShift(): bool
     {
+        $this->updateFromCData();
         return $this->shift;
     }
 
@@ -45,15 +58,20 @@ class KeyEvent extends TriggerEvent
      */
     public function isSystem(): bool
     {
+        $this->updateFromCData();
         return $this->system;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function toCData(): CData
+    protected function updateFromCData() :void
     {
-        // TODO: Implement toCData() method.
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("La donnée C de KeyEvent doit être chargé pour mettre à jour t pouvoir accéder aux donnée de la classe KeyEvent.");
+        }
+        $this->alt = $this->cdata->alt;
+        $this->control = $this->cdata->control;
+        $this->shift = $this->cdata->shift;
+        $this->system = $this->cdata->system;
+        $this->code = new KeyCode($this->cdata->code);
     }
 
     /**

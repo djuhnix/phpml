@@ -5,6 +5,7 @@ namespace PHPML\Graphics\Shape;
 use FFI\CData;
 use PHPML\Enum\Color;
 use PHPML\Exception\CDataException;
+use PHPML\Graphics\FloatPosition as Position;
 use PHPML\Graphics\Window;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
@@ -18,11 +19,13 @@ class CircleShape extends Shape
     /**
      * CircleShape constructor.
      * @param float $radius
+     * @param Position $position
      * @param Color|null $fillColor
      */
-    public function __construct(float $radius, Color $fillColor = null)
+    public function __construct(float $radius, Position $position = null, Color $fillColor = null)
     {
         $this->radius = $radius;
+        $this->position = $position ?? new Position();
         $this->fillColor = $fillColor ?? new Color(Color::RED);
         $this->outlineThickness = 0;
         $this->outlineColor = $this->fillColor;
@@ -41,13 +44,13 @@ class CircleShape extends Shape
      */
     public function setFillColor(Color $fillColor): void
     {
-        $this->fillColor = $fillColor;
         if ($this->isCDataLoad()) {
             Lib::getGraphicsLib()->sfCircleShape_setFillColor(
                 $this->cdata,
                 $fillColor->getCDataColor()
             );
         }
+        $this->fillColor = $fillColor;
     }
 
     /**
@@ -55,13 +58,13 @@ class CircleShape extends Shape
      */
     public function setOutlineColor(Color $outlineColor): void
     {
-        $this->outlineColor = $outlineColor;
         if ($this->isCDataLoad()) {
             Lib::getGraphicsLib()->sfCircleShape_setOutlineColor(
                 $this->cdata,
                 $outlineColor->getCDataColor()
             );
         }
+        $this->outlineColor = $outlineColor;
     }
 
     /**
@@ -69,20 +72,20 @@ class CircleShape extends Shape
      */
     public function setOutlineThickness(float $outlineThickness): void
     {
-        $this->outlineThickness = $outlineThickness;
         if ($this->isCDataLoad()) {
             Lib::getGraphicsLib()->sfCircleShape_setOutlineThickness($this->cdata, $this->outlineThickness);
         }
+        $this->outlineThickness = $outlineThickness;
     }
 
     /**
-     * @return float
+     * Accesseur au rayon du cercle.
+     *
+     * @return float le rayon
      */
     public function getRadius(): float
     {
-        if ($this->isCDataLoad()) {
-            $this->radius = Lib::getGraphicsLib()->sfCircleShape_getRadius($this->cdata);
-        }
+        $this->updateFromCData();
         return $this->radius;
     }
 
@@ -95,19 +98,6 @@ class CircleShape extends Shape
         if ($this->isCDataLoad()) {
             Lib::getGraphicsLib()->sfCircleShape_setRadius($this->cdata, $this->radius);
         }
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getPosition(): Position
-    {
-        if ($this->isCDataLoad()) {
-            $positionCData = Lib::getGraphicsLib()->sfCircleShape_getPosition($this->cdata);
-            $this->position->setXPos($positionCData->x);
-            $this->position->setYPos($positionCData->y);
-        }
-        return $this->position;
     }
 
     /**
@@ -129,7 +119,6 @@ class CircleShape extends Shape
      */
     public function toCData(): CData
     {
-        // TODO: Implement toCData() method.
         $this->cdata ??= Lib::getGraphicsLib()->sfCircleShape_create();
         if (\FFI::isNull($this->cdata)) {
             throw new CDataException("Erreur de chargement lors de la création du cercle.");
@@ -141,6 +130,31 @@ class CircleShape extends Shape
         $this->setPosition($this->position);
 
         return $this->cdata;
+    }
+
+    protected function updateFromCData(): void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("La donnée C de CircleShape doit être chargée pour mettre à jour t pouvoir accéder aux donnée de la classe.");
+        }
+        $this->radius = Lib::getGraphicsLib()->sfCircleShape_getRadius($this->cdata);
+        $this->outlineThickness = Lib::getGraphicsLib()->sfCircleShape_getOutlineThickness($this->cdata);
+
+        $positionCData = Lib::getGraphicsLib()->sfCircleShape_getPosition($this->cdata);
+        $this->position->setXPos($positionCData->x);
+        $this->position->setYPos($positionCData->y);
+
+        $fillColorCData = Lib::getGraphicsLib()->sfCircleShape_getFillColor($this->cdata);
+        $this->setFillColor(
+            (new Color(Color::DYNAMIC))
+                ->fromRGBA($fillColorCData->r, $fillColorCData->g, $fillColorCData->b, $fillColorCData->a)
+        );
+
+        $outlineColorCData = Lib::getGraphicsLib()->sfCircleShape_getOutlineColor($this->cdata);
+        $this->setOutlineColor(
+            (new Color(Color::DYNAMIC))
+                ->fromRGBA($outlineColorCData->r, $outlineColorCData->g, $outlineColorCData->b, $outlineColorCData->a)
+        );
     }
 
     public function draw(Window $target): void

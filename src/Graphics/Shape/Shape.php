@@ -3,8 +3,9 @@
 
 namespace PHPML\Graphics\Shape;
 
-use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\Color;
+use PHPML\AbstractFFI\MyCData;
+use PHPML\Graphics\FloatPosition as Position;
 use PHPML\Graphics\Window;
 
 abstract class Shape
@@ -23,20 +24,8 @@ abstract class Shape
      */
     public function getFillColor(): Color
     {
-        if ($this->isCDataLoad()) {
-
-        }
+        $this->updateFromCData();
         return $this->fillColor;
-    }
-
-    /**
-     * Modificateur de la couleur de remplissage.
-     *
-     * @param Color $fillColor nouvelle couleur
-     */
-    public function setFillColor(Color $fillColor): void
-    {
-        $this->fillColor = $fillColor;
     }
 
     /**
@@ -46,17 +35,8 @@ abstract class Shape
      */
     public function getOutlineColor(): Color
     {
+        $this->updateFromCData();
         return $this->outlineColor;
-    }
-
-    /**
-     * Modificateur de la couleur des bords
-     *
-     * @param Color $outlineColor la nouvelle couleur
-     */
-    public function setOutlineColor(Color $outlineColor): void
-    {
-        $this->outlineColor = $outlineColor;
     }
 
     /**
@@ -66,17 +46,8 @@ abstract class Shape
      */
     public function getOutlineThickness(): float
     {
+        $this->updateFromCData();
         return $this->outlineThickness;
-    }
-
-    /**
-     * Modificateur de l'épaisseur
-     *
-     * @param float $outlineThickness
-     */
-    public function setOutlineThickness(float $outlineThickness): void
-    {
-        $this->outlineThickness = $outlineThickness;
     }
 
     /**
@@ -84,7 +55,32 @@ abstract class Shape
      *
      * @return Position
      */
-    abstract public function getPosition(): Position;
+    public function getPosition(): Position
+    {
+        $this->updateFromCData();
+        return $this->position;
+    }
+
+    /**
+     * Modificateur de la couleur de remplissage.
+     *
+     * @param Color $fillColor nouvelle couleur
+     */
+    abstract public function setFillColor(Color $fillColor): void;
+
+    /**
+     * Modificateur de la couleur des bords
+     *
+     * @param Color $outlineColor la nouvelle couleur
+     */
+    abstract public function setOutlineColor(Color $outlineColor): void;
+
+    /**
+     * Modificateur de l'épaisseur
+     *
+     * @param float $outlineThickness
+     */
+    abstract public function setOutlineThickness(float $outlineThickness): void;
 
     /**
      * Modificateur de la position.

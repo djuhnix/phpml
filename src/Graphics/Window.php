@@ -13,6 +13,7 @@ use PHPML\Exception\CDataException;
 use PHPML\Exception\RenderWindowException;
 use PHPML\Library\GraphicsLibLoader as Lib;
 use PHPML\Graphics\Shape\Shape;
+use PHPML\Graphics\IntPosition as Position;
 
 class Window
 {
@@ -23,6 +24,7 @@ class Window
     private VideoMode $mode;
     /** @var WindowStyle[] $options */
     private array $options;
+    private Position $position;
 
     /**
      * Window constructor.
@@ -30,27 +32,28 @@ class Window
      * @param VideoMode $mode
      * @param string $title
      * @param array|null $options
+     * @param Color $backgroundColor
      */
-    public function __construct(VideoMode $mode, string $title = "PHPML Basic Window", array $options = null)
-    {
+    public function __construct(
+        VideoMode $mode,
+        string $title = "PHPML Basic Window",
+        array $options = null,
+        Color $backgroundColor = null
+    ) {
         if (is_array($options) && !$this->isCorrectOptions($options)) {
             throw new InvalidArgumentException('Les options données ne sont pas correctes');
         }
-
-        $this->ctype = Lib::getGraphicsLib()->type(CSFMLType::RENDER_WINDOW);
         $this->mode = $mode;
         $this->title = $title;
         $this->options ??= [new WindowStyle(WindowStyle::DEFAULT)];
-        $this->backgroundColor = new Color(Color::WHITE);
+        $this->backgroundColor = $backgroundColor ?? new Color(Color::WHITE);
     }
 
     public function __destruct()
     {
-        // TODO: Implement __destruct() method.
-        //$eventCData = $this->event->toCData();
-        //Lib::getGraphicsLib()->free($eventCData);
         if ($this->isCDataLoad()) {
             Lib::getGraphicsLib()->sfRenderWindow_destroy($this->cdata);
+            unset($this->cdata);
         }
     }
 
@@ -137,6 +140,29 @@ class Window
     }
 
     /**
+     * Accesseur à la position de la fenêtre;
+     *
+     * @return Position
+     */
+    public function getPosition(): Position
+    {
+        $this->updateFromCData();
+        return $this->position;
+    }
+
+    /**
+     * @param Position $position
+     */
+    public function setPosition(Position $position): void
+    {
+        Lib::getGraphicsLib()->sfRenderWindow_setPosition(
+            $this->cdata,
+            $position->toCData()
+        );
+        $this->position = $position;
+    }
+
+    /**
      * @return array|null
      */
     public function getOptions(): ?array
@@ -196,19 +222,33 @@ class Window
      */
     public function toCData() : CData
     {
-        if (!$this->isCDataLoad()) {
-            $this->cdata = Lib::getGraphicsLib()->sfRenderWindow_create(
-                $this->mode->toCData(),
-                $this->title,
-                $this->convertOptions(),
-                null // ContextSettings normalement, mais pas pris encore charge
-            );
-            if (\FFI::isNull($this->cdata)) {
-                throw new RenderWindowException();
-            }
+        $this->cdata ??= Lib::getGraphicsLib()->new(
+            Lib::getGraphicsLib()->type(CSFMLType::RENDER_WINDOW)
+        );
+        $this->cdata = Lib::getGraphicsLib()->sfRenderWindow_create(
+            $this->mode->toCData(),
+            $this->title,
+            $this->convertOptions(),
+            null // ContextSettings normalement, mais pas encore pris en charge
+        );
+        if (\FFI::isNull($this->cdata)) {
+            throw new RenderWindowException();
         }
 
         return $this->cdata;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function updateFromCData(): void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("Les données C de Window doivent être chargées pour mettre à jour les données de la classe.");
+        }
+        $positionCData = Lib::getGraphicsLib()->sfRenderWindow_getPosition($this->cdata);
+        $this->position->setXPos($positionCData->x);
+        $this->position->setYPos($positionCData->y);
     }
 
     /*------------------
@@ -243,11 +283,14 @@ class Window
      */
     public function close() : void
     {
+        if (!$this->isOpen()) {
+            throw new RenderWindowException("Impossible de fermer la fenêtre si elle n'est pas ouverte.");
+        }
         Lib::getGraphicsLib()->sfRenderWindow_close($this->cdata);
     }
 
     /**
-     * Néttoie / Vide l'écran avec la couleur passée en paramètre
+     * Nettoie / Vide l'écran avec la couleur passée en paramètre
      *
      * @param Color $color
      */

@@ -13,6 +13,18 @@ typedef struct
 
 typedef struct
 {
+    int x;
+    int y;
+ } sfVector2i;
+
+typedef struct
+{
+    unsigned int x;
+    unsigned int y;
+} sfVector2u;
+
+typedef struct
+{
     int placebo_sfView;
 } sfView;
 
@@ -331,6 +343,12 @@ extern sfBool sfRenderWindow_isOpen(const sfRenderWindow* renderWindow);
 extern sfBool sfRenderWindow_hasFocus(const sfRenderWindow* renderWindow);
 extern sfBool sfRenderWindow_pollEvent(sfRenderWindow* renderWindow, sfEvent* event);
 
+extern sfVector2u sfRenderWindow_getSize(const sfRenderWindow* renderWindow);
+extern sfVector2i sfRenderWindow_getPosition(const sfRenderWindow* renderWindow);
+
+extern void sfRenderWindow_setSize(sfRenderWindow* renderWindow, sfVector2u size);
+extern void sfRenderWindow_setPosition(sfRenderWindow* renderWindow, sfVector2i position);
+
 extern void sfRenderWindow_clear(sfRenderWindow* renderWindow, sfColor color);
 extern void sfRenderWindow_destroy(sfRenderWindow* renderWindow);
 extern void sfRenderWindow_display(sfRenderWindow* renderWindow);
@@ -344,11 +362,17 @@ extern void sfRenderWindow_drawCircleShape(sfRenderWindow* renderWindow, const s
 extern sfCircleShape* sfCircleShape_create(void);
 
 extern float sfCircleShape_getRadius(sfCircleShape* shape, float radius);
+extern float sfCircleShape_getOutlineThickness(const sfCircleShape* shape);
+
 extern sfVector2f sfCircleShape_getPosition(sfCircleShape* shape, sfVector2f position);
 
-extern void sfCircleShape_setRadius(sfCircleShape* shape, float radius);
-extern void sfCircleShape_setPosition(sfCircleShape* shape, sfVector2f position);
+extern sfColor sfCircleShape_getFillColor(const sfCircleShape* shape);
+extern sfColor sfCircleShape_getOutlineColor(const sfCircleShape* shape);
+
 extern void sfCircleShape_setFillColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineThickness(sfCircleShape* shape, float thickness);
+extern void sfCircleShape_setPosition(sfCircleShape* shape, sfVector2f position);
+extern void sfCircleShape_setRadius(sfCircleShape* shape, float radius);
+
 extern void sfCircleShape_destroy(sfCircleShape* shape);

@@ -5,6 +5,7 @@ namespace PHPML\Enum;
 use FFI\CData;
 use InvalidArgumentException;
 use PHPML\AbstractFFI\MyCData;
+use PHPML\Exception\CDataException;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
 class Color extends CDataEnum
@@ -86,6 +87,7 @@ class Color extends CDataEnum
      */
     public function getRed(): int
     {
+        $this->updateFromCData();
         return $this->red;
     }
 
@@ -101,6 +103,9 @@ class Color extends CDataEnum
         if ($this->value != static::DYNAMIC) {
             throw new InvalidArgumentException("La couleur n'est pas dynamique pour pouvoir modifier sa valeur rouge.");
         }
+        if ($this->isCDataLoad()) {
+            $this->cdata->r = $red;
+        }
         $this->red = $red;
     }
 
@@ -111,6 +116,7 @@ class Color extends CDataEnum
      */
     public function getGreen(): int
     {
+        $this->updateFromCData();
         return $this->green;
     }
 
@@ -126,6 +132,9 @@ class Color extends CDataEnum
         if ($this->value != static::DYNAMIC) {
             throw new InvalidArgumentException("La couleur n'est pas dynamique pour pouvoir modifier sa valeur verte.");
         }
+        if ($this->isCDataLoad()) {
+            $this->cdata->g = $green;
+        }
         $this->green = $green;
     }
 
@@ -136,6 +145,7 @@ class Color extends CDataEnum
      */
     public function getBlue(): int
     {
+        $this->updateFromCData();
         return $this->blue;
     }
 
@@ -151,6 +161,9 @@ class Color extends CDataEnum
         if ($this->value != static::DYNAMIC) {
             throw new InvalidArgumentException("La couleur n'est pas dynamique pour pouvoir modifier sa valeur bleue.");
         }
+        if ($this->isCDataLoad()) {
+            $this->cdata->b = $blue;
+        }
         $this->blue = $blue;
     }
 
@@ -160,6 +173,7 @@ class Color extends CDataEnum
      */
     public function getAlpha(): int
     {
+        $this->updateFromCData();
         return $this->alpha;
     }
 
@@ -173,6 +187,9 @@ class Color extends CDataEnum
     {
         if ($this->value != static::DYNAMIC) {
             throw new InvalidArgumentException("La couleur n'est pas dynamique pour pouvoir modifier son canal alpha.");
+        }
+        if ($this->isCDataLoad()) {
+            $this->cdata->a = $alpha;
         }
         $this->alpha = $alpha;
     }
@@ -212,6 +229,21 @@ class Color extends CDataEnum
             );
         }
         return $this->cdata;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function updateFromCData(): void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("Les données C de Color doivent être chargées pour mettre à jour les donnée de la classe.");
+        }
+
+        $this->red = $this->cdata->r;
+        $this->green = $this->cdata->g;
+        $this->blue = $this->cdata->b;
+        $this->alpha = $this->cdata->a;
     }
 
     /**

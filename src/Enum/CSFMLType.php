@@ -13,14 +13,17 @@ class CSFMLType extends Enum
     const BOOL                  = 'sfBool';
 
     // Array
-    const VECTOR_2F            = 'sfVector2f';
+    const VECTOR_2F             = 'sfVector2f';
+    const VECTOR_2I             = 'sfVector2i';
+    const VECTOR_2U             = 'sfVector2u';
 
     // Graphics
     const RENDER_WINDOW         = 'sfRenderWindow';
     const VIDEO_MODE            = 'sfVideoMode';
-    const COLOR                 = 'sfColor';
 
+    const COLOR                 = 'sfColor';
     // Event
     const EVENT                 = 'sfEvent';
+    const KEY_EVENT             = 'sfKeyEvent';
     const MOUSE_BUTTON_EVENT    = 'sfMouseButtonEvent';
 }

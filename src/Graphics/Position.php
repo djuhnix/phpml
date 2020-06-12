@@ -1,14 +1,15 @@
 <?php
 
 
-namespace PHPML\Graphics\Shape;
+namespace PHPML\Graphics;
 
 use FFI\CData;
 use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\CSFMLType;
+use PHPML\Exception\CDataException;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
-class Position
+abstract class Position
 {
     use MyCData;
 
@@ -21,7 +22,7 @@ class Position
      * @param float $xPos position x
      * @param float $yPos position y
      */
-    public function __construct(float $xPos, float $yPos)
+    public function __construct(float $xPos = 0, float $yPos = 0)
     {
         $this->xPos = $xPos;
         $this->yPos = $yPos;
@@ -35,9 +36,7 @@ class Position
      */
     public function getXPos(): float
     {
-        if ($this->isCDataLoad()) {
-            $this->xPos = $this->cdata->x;
-        }
+        $this->updateFromCData();
         return $this->xPos;
     }
 
@@ -61,9 +60,7 @@ class Position
      */
     public function getYPos(): float
     {
-        if ($this->isCDataLoad()) {
-            $this->yPos = $this->cdata->y;
-        }
+        $this->updateFromCData();
         return $this->yPos;
     }
 
@@ -86,7 +83,7 @@ class Position
     public function toCData(): CData
     {
         $this->cdata ??= Lib::getGraphicsLib()->new(
-            Lib::getGraphicsLib()->type(CSFMLType::VECTOR_2F)
+            Lib::getGraphicsLib()->type($this->getPositionType())
         );
 
         $this->cdata->x = $this->xPos;
@@ -94,4 +91,23 @@ class Position
 
         return $this->cdata;
     }
+
+    /**
+     * @inheritDoc
+     */
+    protected function updateFromCData(): void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("Les données C de Position doivent être chargées pour mettre à jour les donnée de la classe.");
+        }
+        $this->xPos = $this->cdata->x;
+        $this->yPos = $this->cdata->y;
+    }
+
+    /**
+     * Accesseur au type C de la position.
+     *
+     * @return string le type C de la position
+     */
+    abstract protected function getPositionType(): string ;
 }
