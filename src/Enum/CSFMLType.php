@@ -26,4 +26,8 @@ class CSFMLType extends Enum
     const EVENT                 = 'sfEvent';
     const KEY_EVENT             = 'sfKeyEvent';
     const MOUSE_BUTTON_EVENT    = 'sfMouseButtonEvent';
+
+    // Shape
+    const RECTANGLE_SHAPE       = 'sfRectangleShape';
+    const CIRCLE_SHAPE          = 'sfCircleShape';
 }

@@ -46,6 +46,9 @@ typedef struct {
     int placebo_sfCircleShape;
 } sfCircleShape;
 
+typedef struct {
+    int placebo_sfRectangleShape;
+} sfRectangleShape;
 
 typedef struct
 {
@@ -352,8 +355,11 @@ extern void sfRenderWindow_setPosition(sfRenderWindow* renderWindow, sfVector2i 
 extern void sfRenderWindow_clear(sfRenderWindow* renderWindow, sfColor color);
 extern void sfRenderWindow_destroy(sfRenderWindow* renderWindow);
 extern void sfRenderWindow_display(sfRenderWindow* renderWindow);
+
+// drawing functions
 extern void sfRenderWindow_drawShape(sfRenderWindow* renderWindow, const sfShape* object, const sfRenderStates* states);
 extern void sfRenderWindow_drawCircleShape(sfRenderWindow* renderWindow, const sfCircleShape* object, const sfRenderStates* states);
+extern void sfRenderWindow_drawRectangleShape(sfRenderWindow* renderWindow, const sfRectangleShape* object, const sfRenderStates* states);
 
 ///////////////////////////
 /// FUNCTIONS Circle Shape
@@ -369,6 +375,7 @@ extern sfVector2f sfCircleShape_getPosition(sfCircleShape* shape);
 extern sfColor sfCircleShape_getFillColor(const sfCircleShape* shape);
 extern sfColor sfCircleShape_getOutlineColor(const sfCircleShape* shape);
 
+extern void sfCircleShape_move(sfCircleShape* shape, sfVector2f offset);
 extern void sfCircleShape_setFillColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineThickness(sfCircleShape* shape, float thickness);
@@ -376,3 +383,24 @@ extern void sfCircleShape_setPosition(sfCircleShape* shape, sfVector2f position)
 extern void sfCircleShape_setRadius(sfCircleShape* shape, float radius);
 
 extern void sfCircleShape_destroy(sfCircleShape* shape);
+
+///////////////////////////
+/// FUNCTIONS Rectangle Shape
+///////////////////////////
+
+extern sfRectangleShape* sfRectangleShape_create(void);
+
+extern void sfRectangleShape_destroy(sfRectangleShape* shape);
+
+extern sfVector2f sfRectangleShape_getPosition(const sfRectangleShape* shape);
+extern sfVector2f sfRectangleShape_getSize(const sfRectangleShape* shape);
+extern sfColor sfRectangleShape_getFillColor(const sfRectangleShape* shape);
+extern sfColor sfRectangleShape_getOutlineColor(const sfRectangleShape* shape);
+extern float sfRectangleShape_getOutlineThickness(const sfRectangleShape* shape);
+
+extern void sfRectangleShape_move(sfRectangleShape* shape, sfVector2f offset);
+extern void sfRectangleShape_setSize(sfRectangleShape* shape, sfVector2f size);
+extern void sfRectangleShape_setPosition(sfRectangleShape* shape, sfVector2f position);
+extern void sfRectangleShape_setFillColor(sfRectangleShape* shape, sfColor color);
+extern void sfRectangleShape_setOutlineColor(sfRectangleShape* shape, sfColor color);
+extern void sfRectangleShape_setOutlineThickness(sfRectangleShape* shape, float thickness);

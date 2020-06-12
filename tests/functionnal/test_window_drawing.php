@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PHPML\Graphics\Event;
-use PHPML\Graphics\Shape\CircleShape;
+use PHPML\Graphics\Shape\RectangleShape;
 use PHPML\Graphics\VideoMode;
 use PHPML\Graphics\Window;
 
@@ -15,7 +15,10 @@ $window->run(
     null,
     function () use ($window) {
         $window->draw(
-            new CircleShape(50)
+            new RectangleShape([400, 200], [100, 200])
+        );
+        $window->draw(
+            new \PHPML\Graphics\Shape\CircleShape(50, [10, 20])
         );
     }
 );
