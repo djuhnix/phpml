@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPML\Graphics\Shape;
+namespace PHPML\Graphics\Drawable\Shape;
 
 use FFI\CData;
 use PHPML\Enum\Color;

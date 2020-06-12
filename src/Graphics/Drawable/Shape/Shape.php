@@ -1,7 +1,7 @@
 <?php
 
 
-namespace PHPML\Graphics\Shape;
+namespace PHPML\Graphics\Drawable\Shape;
 
 use FFI\CData;
 use PHPML\Component\Vector;
@@ -9,10 +9,11 @@ use PHPML\Enum\Color;
 use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\CSFMLType;
 use PHPML\Exception\CDataException;
+use PHPML\Graphics\Drawable\DrawableInterface;
 use PHPML\Graphics\Window;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
-abstract class Shape
+abstract class Shape implements DrawableInterface
 {
     use MyCData;
 

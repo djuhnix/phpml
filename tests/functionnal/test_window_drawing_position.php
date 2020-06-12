@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+use PHPML\Graphics\Drawable\Shape\CircleShape;
 use PHPML\Graphics\Event;
-use PHPML\Graphics\Shape\CircleShape;
 use PHPML\Graphics\VideoMode;
 use PHPML\Graphics\Window;
 

@@ -3,9 +3,9 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PHPML\Enum\Color;
 use PHPML\Enum\KeyCode;
+use PHPML\Graphics\Drawable\Shape\CircleShape;
 use PHPML\Graphics\Event;
 use PHPML\Graphics\Input\Keyboard;
-use PHPML\Graphics\Shape\CircleShape;
 use PHPML\Graphics\VideoMode;
 use PHPML\Graphics\Window;
 

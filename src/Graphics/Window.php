@@ -12,6 +12,7 @@ use PHPML\Enum\EventType;
 use PHPML\Enum\WindowStyle;
 use PHPML\Exception\CDataException;
 use PHPML\Exception\RenderWindowException;
+use PHPML\Graphics\Drawable\DrawableInterface;
 use PHPML\Library\GraphicsLibLoader as Lib;
 use PHPML\Graphics\Shape\Shape;
 
@@ -322,13 +323,13 @@ class Window
 
 
     /**
-     * @param Shape $shape
+     * @param DrawableInterface $drawable
      */
-    public function draw(Shape $shape) : void
+    public function draw(DrawableInterface $drawable) : void
     {
         if (!$this->isCDataLoad()) {
             throw new CDataException("La donnée C de la de la fenêtre doit être prête(chargé) pour pourvoir y dessiner.");
         }
-        $shape->draw($this);
+        $drawable->draw($this);
     }
 }
