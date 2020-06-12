@@ -34,7 +34,7 @@ class Mouse
                 break;
             default:
                 $buttonCData = null;
-                throw new \InvalidArgumentException("La valeur du bouton ne doit pas être de type SF_* ni MOUSE_BUTTON_COUNT");
+                throw new \InvalidArgumentException("La valeur du bouton ne doit pas être de type SF_* ni MOUSE_BUTTON_COUNT.");
                 break;
         }
 
