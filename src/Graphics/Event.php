@@ -56,7 +56,6 @@ class Event
 
     protected function updateFromCData(): void
     {
-        // TODO: Implement updateFromCData() method.
         if (!$this->isCDataLoad()) {
             throw new CDataException("La donnée C de l'événement n'est pas chargé pour pouvoir obtenir l'événement actuelle.");
         }
