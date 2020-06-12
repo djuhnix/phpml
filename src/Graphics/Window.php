@@ -142,12 +142,12 @@ class Window
     /**
      * Accesseur à la position de la fenêtre;
      *
-     * @return Vector
+     * @return array
      */
-    public function getPosition(): Vector
+    public function getPosition(): array
     {
         $this->updateFromCData();
-        return $this->position;
+        return $this->position->getTable();
     }
 
     /**
@@ -271,7 +271,12 @@ class Window
     {
         return Lib::getGraphicsLib()->sfRenderWindow_isOpen($this->cdata);
     }
-
+    /*
+    public function hasFocus() : bool
+    {
+        return Lib::getGraphicsLib()->sfRenderWindow_hasFocus($this->cdata);
+    }
+    */
     /**
      * Vérifie s'il y'a des événement dans la file d'attente.
      *
