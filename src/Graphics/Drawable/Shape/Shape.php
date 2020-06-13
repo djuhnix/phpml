@@ -17,4 +17,5 @@ use PHPML\Library\GraphicsLibLoader as Lib;
 abstract class Shape extends Drawable
 {
     //TODO implement shape
+
 }

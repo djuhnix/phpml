@@ -3,9 +3,7 @@
 
 namespace PHPML\Enum;
 
-use MyCLabs\Enum\Enum;
-
-class WindowStyle extends Enum
+class WindowStyle extends CDataEnum
 {
     /**
      * No border / title bar (this flag and all others are mutually exclusive)

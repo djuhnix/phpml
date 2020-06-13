@@ -33,6 +33,17 @@ typedef struct
 
 typedef struct
 {
+    int placebo_sfFont;
+} sfFont;
+
+typedef struct
+{
+    const sfFont*       Font;
+} sfText;
+
+
+typedef struct
+{
     int placebo_sfView;
 } sfView;
 
@@ -96,6 +107,18 @@ sfColor sfYellow;      ///< Yellow predefined color
 sfColor sfMagenta;     ///< Magenta predefined color
 sfColor sfCyan;        ///< Cyan predefined color
 sfColor sfTransparent; ///< Transparent (black) predefined color
+
+//////////////////////
+// Style
+//////////////////////
+typedef enum
+{
+    sfTextRegular       = 0,      ///< Regular characters, no style
+    sfTextBold          = 1 << 0, ///< Bold characters
+    sfTextItalic        = 1 << 1, ///< Italic characters
+    sfTextUnderlined    = 1 << 2, ///< Underlined characters
+    sfTextStrikeThrough = 1 << 3  ///< Strike through characters
+} sfTextStyle;
 
 typedef enum
 {
@@ -372,6 +395,7 @@ extern void sfRenderWindow_display(sfRenderWindow* renderWindow);
 
 // drawing functions
 extern void sfRenderWindow_drawShape(sfRenderWindow* renderWindow, const sfShape* object, const sfRenderStates* states);
+extern void sfRenderWindow_drawText(sfRenderWindow* renderWindow, const sfText* object, const sfRenderStates* states);
 extern void sfRenderWindow_drawCircleShape(sfRenderWindow* renderWindow, const sfCircleShape* object, const sfRenderStates* states);
 extern void sfRenderWindow_drawRectangleShape(sfRenderWindow* renderWindow, const sfRectangleShape* object, const sfRenderStates* states);
 
@@ -397,6 +421,63 @@ extern sfBool sfTexture_isSmooth(const sfTexture* texture);
 extern sfBool sfTexture_isRepeated(const sfTexture* texture);
 
 ///////////////////////////
+// FUNCTIONS Font
+///////////////////////////
+
+extern sfFont* sfFont_createFromFile(const char* filename);
+extern sfFont* sfFont_copy(const sfFont* font);
+extern void sfFont_destroy(sfFont* font);
+
+///////////////////////////
+// FUNCTIONS Text
+///////////////////////////
+extern sfText* sfText_create(void);
+extern sfText* sfText_copy(const sfText* text);
+
+extern sfVector2f sfText_getScale(const sfText* text);
+extern sfVector2f sfText_getOrigin(const sfText* text);
+extern sfVector2f sfText_getPosition(const sfText* text);
+extern sfVector2f sfText_findCharacterPos(const sfText* text, size_t index);
+
+extern float sfText_getRotation(const sfText* text);
+
+extern void sfText_destroy(sfText* text);
+
+extern void sfText_move(sfText* text, sfVector2f offset);
+extern void sfText_rotate(sfText* text, float angle);
+extern void sfText_scale(sfText* text, sfVector2f factors);
+
+extern sfUint32 sfText_getStyle(const sfText* text);
+//extern float sfText_getLineSpacing(const sfText* text);
+extern const sfFont* sfText_getFont(const sfText* text);
+extern const char* sfText_getString(const sfText* text);
+extern float sfText_getLetterSpacing(const sfText* text);
+extern unsigned int sfText_getCharacterSize(const sfText* text);
+extern const sfUint32* sfText_getUnicodeString(const sfText* text);
+
+extern sfColor sfText_getColor(const sfText* text);
+extern sfColor sfText_getFillColor(const sfText* text);
+extern sfColor sfText_getOutlineColor(const sfText* text);
+extern float sfText_getOutlineThickness(const sfText* text);
+
+extern void sfText_setFillColor(sfText* text, sfColor color);
+extern void sfText_setOutlineColor(sfText* text, sfColor color);
+extern void sfText_setOutlineThickness(sfText* text, float thickness);
+
+extern void sfText_setString(sfText* text, const char* string);
+extern void sfText_setUnicodeString(sfText* text, const sfUint32* string);
+extern void sfText_setFont(sfText* text, const sfFont* font);
+extern void sfText_setCharacterSize(sfText* text, unsigned int size);
+extern void sfText_setLineSpacing(sfText* text, float spacingFactor);
+extern void sfText_setLetterSpacing(sfText* text, float spacingFactor);
+extern void sfText_setStyle(sfText* text, sfUint32 style);
+extern void sfText_setColor(sfText* text, sfColor color);
+
+extern void sfText_setScale(sfText* text, sfVector2f scale);
+extern void sfText_setRotation(sfText* text, float angle);
+extern void sfText_setPosition(sfText* text, sfVector2f position);
+
+///////////////////////////
 /// FUNCTIONS Circle Shape
 ///////////////////////////
 
@@ -409,7 +490,7 @@ extern float sfCircleShape_getRotation(const sfCircleShape* shape);
 extern float sfCircleShape_getOutlineThickness(const sfCircleShape* shape);
 
 extern sfVector2f sfCircleShape_getPosition(sfCircleShape* shape);
-
+extern sfVector2f sfCircleShape_getScale(const sfCircleShape* shape);
 extern sfTexture* sfCircleShape_getTexture(const sfCircleShape* shape);
 
 extern sfColor sfCircleShape_getFillColor(const sfCircleShape* shape);

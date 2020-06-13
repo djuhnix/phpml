@@ -30,4 +30,5 @@ class CSFMLType extends Enum
     // Shape
     const RECTANGLE_SHAPE       = 'sfRectangleShape';
     const CIRCLE_SHAPE          = 'sfCircleShape';
+    const TEXT                  = 'sfText';
 }

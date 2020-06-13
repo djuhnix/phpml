@@ -162,7 +162,7 @@ class Window
     {
         $result = 0;
         foreach ($this->options as $option) {
-            $result = $result | Lib::getGraphicsLib()->{$option->getValue()};
+            $result = $result | WindowStyle::toCDataValue($option->getValue());
         }
         return $result;
     }

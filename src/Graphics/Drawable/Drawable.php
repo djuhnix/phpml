@@ -28,7 +28,7 @@ abstract class Drawable
     protected ?Color $outlineColor;
     protected float $outlineThickness = 0;
     protected float $rotation = 0;
-    protected Vector $scale;
+    protected ?Vector $scale;
 
     /**
      * Shape constructor.
@@ -49,6 +49,10 @@ abstract class Drawable
         $this->texture = $texture;
         $this->fillColor = $fillColor;
         $this->outlineColor = $fillColor;
+        $this->scale = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2F),
+            [1, 1]
+        );
         $this->toCData();
     }
 
@@ -345,8 +349,8 @@ abstract class Drawable
         if ($this->rotation != 0) {
             $this->setRotation($this->rotation);
         }
-        if ($this->scale != null) {
-            $this->setScale($this->scale);
+        if (isset($this->scale)) {
+            $this->setScale($this->scale->getArray());
         }
 
         return $this->cdata;
