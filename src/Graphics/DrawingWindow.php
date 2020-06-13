@@ -88,6 +88,16 @@ class DrawingWindow extends Window
     }
 
     /**
+     * Accesseur à la liste de dessin.
+     *
+     * @return DrawingList
+     */
+    public function getDrawingList(): DrawingList
+    {
+        return $this->drawingList;
+    }
+
+    /**
      * Vide la liste de dessin actuelle
      */
     public function setEmptyDrawingList(): void
@@ -120,7 +130,7 @@ class DrawingWindow extends Window
     {
         foreach ($this->drawingList->getObjectList() as $drawing) {
             if ($drawing[DrawingList::TO_DRAW]) {
-                $drawing[DrawingList::OBJECT_KEY]->draw();
+                $drawing[DrawingList::OBJECT_KEY]->draw($this);
             }
         }
         $this->display();
