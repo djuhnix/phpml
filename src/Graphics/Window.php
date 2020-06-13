@@ -14,7 +14,6 @@ use PHPML\Exception\CDataException;
 use PHPML\Exception\RenderWindowException;
 use PHPML\Graphics\Drawable\DrawableInterface;
 use PHPML\Library\GraphicsLibLoader as Lib;
-use PHPML\Graphics\Shape\Shape;
 
 class Window
 {
@@ -147,8 +146,10 @@ class Window
      */
     public function getPosition(): array
     {
-        $this->updateFromCData();
-        return $this->position->getTable();
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
+        return $this->position->getArray();
     }
 
     /**

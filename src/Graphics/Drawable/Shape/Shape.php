@@ -18,11 +18,12 @@ abstract class Shape implements DrawableInterface
 {
     use MyCData;
 
+    private ?Texture $texture;
+
     protected Vector $position;
-    protected ?Color $fillColor = null;
-    protected ?Color $outlineColor = null;
+    protected ?Color $fillColor;
+    protected ?Color $outlineColor;
     protected float $outlineThickness = 0;
-    private ?Texture $texture = null;
 
     /**
      * Shape constructor.
@@ -43,7 +44,6 @@ abstract class Shape implements DrawableInterface
         $this->texture = $texture;
         $this->fillColor = $fillColor;
         $this->outlineColor = $fillColor;
-        $this->toCData();
     }
 
     public function __destruct()
@@ -83,7 +83,9 @@ abstract class Shape implements DrawableInterface
      */
     public function getFillColor(): ?Color
     {
-        $this->updateFromCData();
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
         return $this->fillColor;
     }
 
@@ -94,7 +96,9 @@ abstract class Shape implements DrawableInterface
      */
     public function getOutlineColor(): ?Color
     {
-        $this->updateFromCData();
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
         return $this->outlineColor;
     }
 
@@ -105,7 +109,9 @@ abstract class Shape implements DrawableInterface
      */
     public function getOutlineThickness(): float
     {
-        $this->updateFromCData();
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
         return $this->outlineThickness;
     }
 
@@ -116,8 +122,10 @@ abstract class Shape implements DrawableInterface
      */
     public function getPosition(): array
     {
-        $this->updateFromCData();
-        return $this->position->getTable();
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
+        return $this->position->getArray();
     }
 
     /**
@@ -127,6 +135,9 @@ abstract class Shape implements DrawableInterface
      */
     public function getTexture(): ?Texture
     {
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
         return $this->texture;
     }
 
@@ -197,7 +208,7 @@ abstract class Shape implements DrawableInterface
         if (\FFI::isNull($this->cdata)) {
             throw new CDataException("Erreur de chargement lors de la création de la forme : " . static::class);
         }
-        $this->setPosition($this->position->getTable());
+        $this->setPosition($this->position->getArray());
         $this->setOutlineThickness($this->outlineThickness);
 
         if ($this->outlineColor != null) {
@@ -218,16 +229,14 @@ abstract class Shape implements DrawableInterface
      */
     public function setTexture(Texture $texture, bool $resetRect = true): void
     {
-        if (!$this->isCDataLoad()) {
-            throw new \InvalidArgumentException("Impossible de modifier la texture de la forme, les données C n'ont pas encore été chargées.");
+        if ($this->isCDataLoad()) {
+            Lib::getGraphicsLib()->{$this->getTypeName() . '_setTexture'}(
+                $this->cdata,
+                $texture->getCData(),
+                $resetRect
+            );
         }
-        Lib::getGraphicsLib()->{$this->getTypeName().'_setTexture'}(
-            $this->cdata,
-            $texture->getCData(),
-            $resetRect
-        );
         $this->texture = $texture;
-        //$this->updateFromCData();
     }
 
 

@@ -36,7 +36,7 @@ class MouseButtonEvent extends TriggerEvent
     public function getPosition(): array
     {
         $this->updateFromCData();
-        return $this->position->getTable();
+        return $this->position->getArray();
     }
 
     /**

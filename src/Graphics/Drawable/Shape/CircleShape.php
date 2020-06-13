@@ -5,6 +5,7 @@ namespace PHPML\Graphics\Drawable\Shape;
 use FFI\CData;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
+use PHPML\Graphics\Texture;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
 class CircleShape extends Shape
@@ -19,11 +20,12 @@ class CircleShape extends Shape
      * @param float $radius
      * @param array $position
      * @param Color|null $fillColor
+     * @param Texture $texture
      */
-    public function __construct(float $radius, array $position = [0, 0], Color $fillColor = null)
+    public function __construct(float $radius, array $position = [0, 0], Color $fillColor = null, Texture $texture = null)
     {
         $this->radius = $radius;
-        parent::__construct($position, $fillColor);
+        parent::__construct($position, $fillColor, $texture);
     }
 
     /**
@@ -33,7 +35,9 @@ class CircleShape extends Shape
      */
     public function getRadius(): float
     {
-        $this->updateFromCData();
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
         return $this->radius;
     }
 

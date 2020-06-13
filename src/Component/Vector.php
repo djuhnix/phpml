@@ -40,7 +40,6 @@ class Vector
         }
         $this->table = $table;
         $this->type = $type;
-        $this->toCData();
     }
 
     /**
@@ -59,7 +58,9 @@ class Vector
      */
     public function get(int $index) : float
     {
-        $this->updateFromCData();
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
         return $this->table[$index];
     }
 
@@ -86,9 +87,11 @@ class Vector
      *
      * @return array
      */
-    public function getTable(): array
+    public function getArray(): array
     {
-        $this->updateFromCData();
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
         return $this->table;
     }
 

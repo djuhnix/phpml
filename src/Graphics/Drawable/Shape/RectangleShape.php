@@ -48,8 +48,10 @@ class RectangleShape extends Shape
      */
     public function getSize(): array
     {
-        $this->updateFromCData();
-        return $this->size->getTable();
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
+        return $this->size->getArray();
     }
 
     /**
@@ -78,7 +80,7 @@ class RectangleShape extends Shape
     public function toCData(): CData
     {
         $this->cdata = parent::toCData();
-        $this->setSize($this->size->getTable());
+        $this->setSize($this->size->getArray());
 
         return $this->cdata;
     }

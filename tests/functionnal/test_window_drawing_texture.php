@@ -12,7 +12,7 @@ $window = new Window(
     new VideoMode(800, 600)
 );
 $texture = (new Texture(225, 225))
-    ->loadFromFile(__DIR__ . '/iutrcc.jpeg');
+    ->loadFromFile(__DIR__ . '/../../assets/images/iutrcc.jpeg');
 $window->run(
     new Event(),
     null,
@@ -20,7 +20,7 @@ $window->run(
         $rectangle = new RectangleShape([225, 225], [100, 200], null, $texture);
         $window->draw($rectangle);
         $window->draw(
-            new CircleShape(50, [10, 20])
+            new CircleShape(50, [10, 20], null, $texture)
         );
     }
 );
