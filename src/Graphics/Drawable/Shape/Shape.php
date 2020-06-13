@@ -10,6 +10,7 @@ use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\CSFMLType;
 use PHPML\Exception\CDataException;
 use PHPML\Graphics\Drawable\DrawableInterface;
+use PHPML\Graphics\Texture;
 use PHPML\Graphics\Window;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
@@ -18,9 +19,10 @@ abstract class Shape implements DrawableInterface
     use MyCData;
 
     protected Vector $position;
-    protected Color $fillColor;
-    protected Color $outlineColor;
-    protected float $outlineThickness;
+    protected ?Color $fillColor = null;
+    protected ?Color $outlineColor = null;
+    protected float $outlineThickness = 0;
+    private ?Texture $texture = null;
 
     /**
      * Shape constructor.
@@ -29,16 +31,19 @@ abstract class Shape implements DrawableInterface
      *
      * @param array|int[] $position
      * @param Color|null $fillColor
+     * @param Texture $texture
      */
-    public function __construct(array $position = [0, 0], Color $fillColor = null)
+    public function __construct(array $position = [0, 0], Color $fillColor = null, Texture $texture = null)
     {
         $this->position = new Vector(
             new CSFMLType(CSFMLType::VECTOR_2F),
             $position
         );
-        $this->fillColor = $fillColor ?? new Color(Color::RED);
-        $this->outlineThickness = 0;
-        $this->outlineColor = $this->fillColor;
+
+        $this->texture = $texture;
+        $this->fillColor = $fillColor;
+        $this->outlineColor = $fillColor;
+        $this->toCData();
     }
 
     public function __destruct()
@@ -74,9 +79,9 @@ abstract class Shape implements DrawableInterface
     /**
      * Accesseur à la couleur de remplissage
      *
-     * @return Color
+     * @return Color|null
      */
-    public function getFillColor(): Color
+    public function getFillColor(): ?Color
     {
         $this->updateFromCData();
         return $this->fillColor;
@@ -87,7 +92,7 @@ abstract class Shape implements DrawableInterface
      *
      * @return Color
      */
-    public function getOutlineColor(): Color
+    public function getOutlineColor(): ?Color
     {
         $this->updateFromCData();
         return $this->outlineColor;
@@ -116,6 +121,16 @@ abstract class Shape implements DrawableInterface
     }
 
     /**
+     * Accesseur à la texture
+     *
+     * @return Texture|null
+     */
+    public function getTexture(): ?Texture
+    {
+        return $this->texture;
+    }
+
+    /**
      * Modificateur de la position.
      *
      * @param array $position la nouvelle position
@@ -138,7 +153,7 @@ abstract class Shape implements DrawableInterface
     protected function updateFromCData(): void
     {
         if (!$this->isCDataLoad()) {
-            throw new CDataException("La donnée C de CircleShape doit être chargée pour mettre à jour t pouvoir accéder aux donnée de la classe.");
+            throw new CDataException("Les données C de CircleShape doivent être chargées pour mettre à jour les données de la classe.");
         }
 
         $this->outlineThickness = Lib::getGraphicsLib()->{$this->getTypeName().'_getOutlineThickness'}($this->cdata);
@@ -182,14 +197,39 @@ abstract class Shape implements DrawableInterface
         if (\FFI::isNull($this->cdata)) {
             throw new CDataException("Erreur de chargement lors de la création de la forme : " . static::class);
         }
-
-        $this->setFillColor($this->fillColor);
-        $this->setOutlineColor($this->outlineColor);
-        $this->setOutlineThickness($this->outlineThickness);
         $this->setPosition($this->position->getTable());
+        $this->setOutlineThickness($this->outlineThickness);
+
+        if ($this->outlineColor != null) {
+            $this->setOutlineColor($this->outlineColor);
+        }
+        if ($this->fillColor != null) {
+            $this->setFillColor($this->fillColor);
+        }
+        if ($this->texture != null) {
+            $this->setTexture($this->texture);
+        }
 
         return $this->cdata;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function setTexture(Texture $texture, bool $resetRect = true): void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new \InvalidArgumentException("Impossible de modifier la texture de la forme, les données C n'ont pas encore été chargées.");
+        }
+        Lib::getGraphicsLib()->{$this->getTypeName().'_setTexture'}(
+            $this->cdata,
+            $texture->getCData(),
+            $resetRect
+        );
+        $this->texture = $texture;
+        //$this->updateFromCData();
+    }
+
 
     /**
      * Modificateur de la couleur de remplissage.

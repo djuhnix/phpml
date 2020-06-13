@@ -6,6 +6,7 @@ use FFI\CData;
 use PHPML\Component\Vector;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
+use PHPML\Graphics\Texture;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
 class RectangleShape extends Shape
@@ -21,14 +22,15 @@ class RectangleShape extends Shape
      * @param array $size un tableau contenant la largeur et la longueur du rectangle
      * @param array $position un couple de coordonnées
      * @param Color|null $fillColor la couleur de remplissage
+     * @param Texture|null $texture
      */
-    public function __construct(array $size = [10, 20], array $position = [0, 0], Color $fillColor = null)
+    public function __construct(array $size = [10, 20], array $position = [0, 0], Color $fillColor = null, Texture $texture = null)
     {
         $this->size = new Vector(
             new CSFMLType(CSFMLType::VECTOR_2F),
             $size
         );
-        parent::__construct($position, $fillColor);
+        parent::__construct($position, $fillColor, $texture);
     }
 
     /**
@@ -84,8 +86,9 @@ class RectangleShape extends Shape
     protected function updateFromCData(): void
     {
         parent::updateFromCData();
+        $sizeCData = Lib::getGraphicsLib()->{$this->getTypeName().'_getSize'}($this->cdata);
         $this->setSize(
-            Lib::getGraphicsLib()->{$this->getTypeName().'_getSize'}($this->cdata)
+            [$sizeCData->x, $sizeCData->y]
         );
     }
 }

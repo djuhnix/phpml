@@ -34,6 +34,10 @@ $window->run(
         }
         if (Keyboard::isKeyPressed(KeyCode::KEY_RIGHT())) {
             $circle->move([200, 200]);
+            $circle->setFillColor(
+                (new Color(Color::DYNAMIC))
+                    ->fromRGB(150, 200, 200)
+            );
             $window->draw($circle);
         }
     }

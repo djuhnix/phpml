@@ -25,6 +25,14 @@ typedef struct
 
 typedef struct
 {
+    int left;
+    int top;
+    int width;
+    int height;
+} sfIntRect;
+
+typedef struct
+{
     int placebo_sfView;
 } sfView;
 
@@ -37,6 +45,10 @@ typedef struct
     //const sfShader*  shader;    ///< Shader
 } sfRenderStates;
 
+typedef struct {
+    int placebo_sfTexture;
+} sfTexture;
+
 typedef struct
 {
     int placebo_sfShape;
@@ -44,10 +56,12 @@ typedef struct
 
 typedef struct {
     int placebo_sfCircleShape;
+    const sfTexture*    Texture;
 } sfCircleShape;
 
 typedef struct {
     int placebo_sfRectangleShape;
+    const sfTexture*    Texture;
 } sfRectangleShape;
 
 typedef struct
@@ -365,6 +379,23 @@ extern void sfRenderWindow_drawRectangleShape(sfRenderWindow* renderWindow, cons
 /// FUNCTIONS Texture
 ///////////////////////////
 
+extern sfTexture* sfTexture_copy(const sfTexture* texture);
+extern sfTexture* sfTexture_create(unsigned int width, unsigned int height);
+extern sfTexture* sfTexture_createFromFile(const char* filename, const sfIntRect* area);
+//extern sfTexture* sfTexture_createFromImage(const sfImage* image, const sfIntRect* area);
+
+extern void sfTexture_destroy(sfTexture* texture);
+//extern void sfTexture_updateFromImage(sfTexture* texture, const sfImage* image, unsigned int x, unsigned int y);
+//extern void sfTexture_updateFromWindow(sfTexture* texture, const sfWindow* window, unsigned int x, unsigned int y);
+extern void sfTexture_setSmooth(sfTexture* texture, sfBool smooth);
+extern void sfTexture_setRepeated(sfTexture* texture, sfBool repeated);
+extern void sfTexture_swap(sfTexture* left, sfTexture* right);
+
+extern sfVector2u sfTexture_getSize(const sfTexture* texture);
+extern unsigned int sfTexture_getMaximumSize();
+extern sfBool sfTexture_isSmooth(const sfTexture* texture);
+extern sfBool sfTexture_isRepeated(const sfTexture* texture);
+
 ///////////////////////////
 /// FUNCTIONS Circle Shape
 ///////////////////////////
@@ -377,6 +408,8 @@ extern float sfCircleShape_getRadius(sfCircleShape* shape);
 extern float sfCircleShape_getOutlineThickness(const sfCircleShape* shape);
 
 extern sfVector2f sfCircleShape_getPosition(sfCircleShape* shape);
+
+extern sfTexture* sfCircleShape_getTexture(const sfCircleShape* shape);
 
 extern sfColor sfCircleShape_getFillColor(const sfCircleShape* shape);
 extern sfColor sfCircleShape_getOutlineColor(const sfCircleShape* shape);
@@ -400,6 +433,8 @@ extern void sfRectangleShape_destroy(sfRectangleShape* shape);
 
 extern sfVector2f sfRectangleShape_getPosition(const sfRectangleShape* shape);
 extern sfVector2f sfRectangleShape_getSize(const sfRectangleShape* shape);
+
+extern sfTexture* sfRectangleShape_getTexture(const sfRectangleShape* shape);
 
 extern sfColor sfRectangleShape_getFillColor(const sfRectangleShape* shape);
 extern sfColor sfRectangleShape_getOutlineColor(const sfRectangleShape* shape);
