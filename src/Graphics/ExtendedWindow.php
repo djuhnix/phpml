@@ -12,7 +12,7 @@ use PHPML\Library\GraphicsLibLoader as Lib;
  *
  * @package PHPML\Graphics
  */
-class DrawingWindow extends Window
+class ExtendedWindow extends Window
 {
 
     /**

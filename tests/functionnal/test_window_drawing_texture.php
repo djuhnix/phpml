@@ -6,9 +6,9 @@ use PHPML\Graphics\Drawable\Shape\RectangleShape;
 use PHPML\Graphics\Event;
 use PHPML\Graphics\Texture;
 use PHPML\Graphics\VideoMode;
-use PHPML\Graphics\DrawingWindow;
+use PHPML\Graphics\ExtendedWindow;
 
-$window = new DrawingWindow(
+$window = new ExtendedWindow(
     new VideoMode(800, 600)
 );
 $texture = (new Texture(225, 225))

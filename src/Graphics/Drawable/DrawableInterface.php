@@ -5,16 +5,16 @@ namespace PHPML\Graphics\Drawable;
 
 use PHPML\Enum\Color;
 use PHPML\Graphics\Texture;
-use PHPML\Graphics\DrawingWindow;
+use PHPML\Graphics\ExtendedWindow;
 
 interface DrawableInterface
 {
     /**
      * Dessine cette forme sur la fenêtre.
      *
-     * @param DrawingWindow $target
+     * @param ExtendedWindow $target
      */
-    public function draw(DrawingWindow $target): void;
+    public function draw(ExtendedWindow $target): void;
 
     /**
      * Accesseur à la couleur de remplissage
