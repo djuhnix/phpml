@@ -8,7 +8,7 @@ use PHPML\Graphics\VideoMode;
 use PHPML\Graphics\DrawingWindow;
 
 $window = new DrawingWindow(
-    new VideoMode(800, 600), []
+    new VideoMode(800, 600)
 );
 
 $window->run(
