@@ -5,10 +5,10 @@ use PHPML\Enum\Color;
 use PHPML\Graphics\Drawable\Shape\CircleShape;
 use PHPML\Graphics\Event;
 use PHPML\Graphics\VideoMode;
-use PHPML\Graphics\Window;
+use PHPML\Graphics\DrawingWindow;
 
-$window = new Window(
-    new VideoMode(800, 600)
+$window = new DrawingWindow(
+    new VideoMode(800, 600), []
 );
 
 $window->run(

@@ -11,7 +11,7 @@ use PHPML\Enum\CSFMLType;
 use PHPML\Exception\CDataException;
 use PHPML\Graphics\Drawable\DrawableInterface;
 use PHPML\Graphics\Texture;
-use PHPML\Graphics\Window;
+use PHPML\Graphics\DrawingWindow;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
 abstract class Shape implements DrawableInterface
@@ -291,9 +291,9 @@ abstract class Shape implements DrawableInterface
     /**
      * Dessine cette forme sur la fenêtre.
      *
-     * @param Window $target
+     * @param DrawingWindow $target
      */
-    public function draw(Window $target) : void
+    public function draw(DrawingWindow $target) : void
     {
         if (!$target->isCDataLoad()) {
             throw new CDataException("Les données C de la fenêtre n'ont pas été chargé pour pouvoir y dessiner un cercle.");

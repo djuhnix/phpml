@@ -1,42 +1,39 @@
 <?php
 
+
 namespace PHPML\Graphics;
 
 use FFI\CData;
 use InvalidArgumentException;
-use PHPML\AbstractFFI;
+use PHPML\AbstractFFI\MyCData;
 use PHPML\Component\Vector;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
-use PHPML\Enum\EventType;
 use PHPML\Enum\WindowStyle;
 use PHPML\Exception\CDataException;
 use PHPML\Exception\RenderWindowException;
 use PHPML\Graphics\Drawable\DrawableInterface;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
+/**
+ * Class Window
+ * Contient les fonctions nécessaire pour la gestion d'une fenêtre
+ * @package PHPML\Graphics
+ */
 class Window
 {
-    use AbstractFFI\MyCData;
+    use MyCData;
 
+    /** @var WindowStyle[] $options */
+    private array $options;
     private string $title;
     private Color $backgroundColor;
     private VideoMode $mode;
-    /** @var WindowStyle[] $options */
-    private array $options;
     private Vector $position;
 
-    /**
-     * Window constructor.
-     *
-     * @param VideoMode $mode
-     * @param string $title
-     * @param array|null $options
-     * @param Color $backgroundColor
-     */
     public function __construct(
         VideoMode $mode,
-        string $title = "PHPML Basic Window",
+        string $title,
         array $options = null,
         Color $backgroundColor = null
     ) {
@@ -47,41 +44,6 @@ class Window
         $this->title = $title;
         $this->options ??= [new WindowStyle(WindowStyle::DEFAULT)];
         $this->backgroundColor = $backgroundColor ?? new Color(Color::WHITE);
-    }
-
-    public function __destruct()
-    {
-        if ($this->isCDataLoad()) {
-            Lib::getGraphicsLib()->sfRenderWindow_destroy($this->cdata);
-            unset($this->cdata);
-        }
-    }
-
-    /**
-     * Lance la boucle principale de la fenêtre et l'ouvre dans le même temps.
-     *
-     * @param Event $event l'instance d'événement
-     * @param callable $eventProcessing fonction de gestion d'événement
-     * @param callable $drawing fonction de dessins
-     */
-    public function run(Event $event, callable $eventProcessing = null, callable $drawing = null)
-    {
-        $this->cdata ??= $this->toCData();
-
-        //Début de la boucle
-        while ($this->isOpen()) {
-            // Gestion des événements
-            $this->handleEvent($event, $eventProcessing);
-
-            // Nettoyage de l'écran de la fenêtre et affichage
-            $this->clear($this->backgroundColor);
-
-            // lancement des dessins s'il y en a
-            if ($drawing != null) {
-                $drawing();
-            }
-            $this->display();
-        }
     }
 
     /**
@@ -205,27 +167,6 @@ class Window
     }
 
     /**
-     * Gestion des événements
-     *
-     * @param Event $event
-     * @param callable $eventProcessing un fonction qui gère les événement dans des blocs conditionnels
-     */
-    public function handleEvent(Event $event, callable $eventProcessing = null) : void
-    {
-        while ($this->pollEvent($event->toCData())) {
-            // Ferme la fenêtre si l'événement 'close' est enregistrer
-            if ($event->getType()->getValue() == EventType::CLOSED) {
-                $this->close();
-            }
-
-            //Appelle la fonction de gestion d'événement
-            if ($eventProcessing != null) {
-                $eventProcessing();
-            }
-        }
-    }
-
-    /**
      * @inheritDoc
      */
     public function toCData() : CData
@@ -257,6 +198,21 @@ class Window
         $positionCData = Lib::getGraphicsLib()->sfRenderWindow_getPosition($this->cdata);
         $this->position->set(0, $positionCData->x);
         $this->position->set(1, $positionCData->y);
+    }
+
+    /**
+     * Dessine un objet sur une fenêtre
+     * L'objet n'est pas attaché à la fenêtre et ne pourra pas être modifier plus tard,
+     * de plus toute modification apportée à l'objet plus tard ne seront pas appliqué à l'objet dessiné
+     *
+     * @param DrawableInterface $drawable
+     */
+    public function draw(DrawableInterface $drawable) : void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("La donnée C de la de la fenêtre doit être prête(chargé) pour pourvoir y dessiner.");
+        }
+        $drawable->draw($this);
     }
 
     /*------------------
@@ -320,17 +276,5 @@ class Window
     public function display() : void
     {
         Lib::getGraphicsLib()->sfRenderWindow_display($this->cdata);
-    }
-
-
-    /**
-     * @param DrawableInterface $drawable
-     */
-    public function draw(DrawableInterface $drawable) : void
-    {
-        if (!$this->isCDataLoad()) {
-            throw new CDataException("La donnée C de la de la fenêtre doit être prête(chargé) pour pourvoir y dessiner.");
-        }
-        $drawable->draw($this);
     }
 }

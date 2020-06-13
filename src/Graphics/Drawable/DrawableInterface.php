@@ -4,16 +4,16 @@
 namespace PHPML\Graphics\Drawable;
 
 use PHPML\Graphics\Texture;
-use PHPML\Graphics\Window;
+use PHPML\Graphics\DrawingWindow;
 
 interface DrawableInterface
 {
     /**
      * Dessine cette forme sur la fenêtre.
      *
-     * @param Window $target
+     * @param DrawingWindow $target
      */
-    public function draw(Window $target): void;
+    public function draw(DrawingWindow $target): void;
 
     /**
      * Change la texture de l'élément à dessiner.
