@@ -28,6 +28,7 @@ abstract class Drawable
     protected ?Color $outlineColor;
     protected float $outlineThickness = 0;
     protected float $rotation = 0;
+    protected Vector $scale;
 
     /**
      * Shape constructor.
@@ -105,6 +106,40 @@ abstract class Drawable
     public function scale(array $factors): void
     {
         $this->scaleMoveOrRotate(self::SCALE, $factors);
+    }
+
+    /**
+     * Accesseur à l'échelle actuelle.
+     *
+     * @return array
+     */
+    public function getScale(): array
+    {
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
+        return $this->scale->getArray();
+    }
+
+    /**
+     * Modificateur de l'échelle de l'objet.
+     * Ecrase la valeur actuelle.
+     *
+     * @param array $scale nouvelle échelle
+     */
+    public function setScale(array $scale): void
+    {
+        $scaleVector = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2F),
+            $scale
+        );
+        if ($this->isCDataLoad()) {
+            Lib::getGraphicsLib()->{$this->getTypeName().'_setScale'}(
+                $this->cdata,
+                $scaleVector->toCData()
+            );
+        }
+        $this->scale = $scaleVector;
     }
 
     /**
@@ -256,6 +291,10 @@ abstract class Drawable
         $this->position->set(0, $positionCData->x);
         $this->position->set(1, $positionCData->y);
 
+        $scaleCData = Lib::getGraphicsLib()->{$this->getTypeName().'_getScale'}($this->cdata);
+        $this->scale->set(0, $scaleCData->x);
+        $this->scale->set(1, $scaleCData->y);
+
         $fillColorCData = Lib::getGraphicsLib()->{$this->getTypeName().'_getFillColor'}($this->cdata);
         $this->setFillColor(
             (new Color(Color::DYNAMIC))
@@ -305,6 +344,9 @@ abstract class Drawable
         }
         if ($this->rotation != 0) {
             $this->setRotation($this->rotation);
+        }
+        if ($this->scale != null) {
+            $this->setScale($this->scale);
         }
 
         return $this->cdata;
