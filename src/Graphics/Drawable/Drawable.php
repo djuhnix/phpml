@@ -27,6 +27,7 @@ abstract class Drawable
     protected ?Color $fillColor;
     protected ?Color $outlineColor;
     protected float $outlineThickness = 0;
+    protected float $rotation = 0;
 
     /**
      * Shape constructor.
@@ -70,6 +71,32 @@ abstract class Drawable
     }
 
     /**
+     * @return float|int
+     */
+    public function getRotation()
+    {
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
+        return $this->rotation;
+    }
+
+    /**
+     * Modifie et écrase la rotation actuelle de la forme
+     * @param float|int $rotate
+     */
+    public function setRotation($rotate): void
+    {
+        if ($this->isCDataLoad()) {
+            Lib::getGraphicsLib()->{$this->getTypeName().'_setRotation'}(
+                $this->cdata,
+                $this->rotation
+            );
+        }
+        $this->rotation = $rotate;
+    }
+
+    /**
      * Applique une échelle à l'objet actuelle.
      * Contrairement à @see Drawable::setScale cette méthode multiplie la currente échelle de l'objet.
      *
@@ -101,8 +128,11 @@ abstract class Drawable
      */
     private function scaleMoveOrRotate(string $action, $args)
     {
-        if ($action != 'scale' && $action != 'move') {
-            throw new \InvalidArgumentException("La fonction scaleOrMove ne prend que 'scale' ou 'move' en tant que premier paramètre, reçu : '$action'.");
+        if ($action != self::SCALE
+            && $action != self::MOVE
+            && $action != self::ROTATE
+        ) {
+            throw new \InvalidArgumentException("La fonction scaleOrMove ne prend que 'scale', 'move' ou 'rotate' en tant que premier paramètre, reçu : '$action'.");
         }
         if (!$this->isCDataLoad()) {
             throw new \InvalidArgumentException("Les données C de la classe " . static::class . " n'ont pas été chargées pour pouvoir appliquer l'action $action sur la forme.");
@@ -220,6 +250,7 @@ abstract class Drawable
         }
 
         $this->outlineThickness = Lib::getGraphicsLib()->{$this->getTypeName().'_getOutlineThickness'}($this->cdata);
+        $this->rotation = Lib::getGraphicsLib()->{$this->getTypeName().'_getRotation'}($this->cdata);
 
         $positionCData = Lib::getGraphicsLib()->{$this->getTypeName().'_getPosition'}($this->cdata);
         $this->position->set(0, $positionCData->x);
@@ -271,6 +302,9 @@ abstract class Drawable
         }
         if ($this->texture != null) {
             $this->setTexture($this->texture);
+        }
+        if ($this->rotation != 0) {
+            $this->setRotation($this->rotation);
         }
 
         return $this->cdata;

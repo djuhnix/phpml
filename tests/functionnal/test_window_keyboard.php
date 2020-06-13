@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PHPML\Enum\Color;
+use PHPML\Enum\EventType;
 use PHPML\Enum\KeyCode;
 use PHPML\Graphics\Drawable\Shape\CircleShape;
 use PHPML\Graphics\Event;
@@ -16,7 +17,7 @@ $event = new Event();
 $window->run(
     $event,
     function () use ($event, $window) {
-        if ($event->getType()->getValue() == \PHPML\Enum\EventType::KEY_PRESSED) {
+        if ($event->getType()->getValue() == EventType::KEY_PRESSED) {
             echo $event->getActualEvent() == null ? "null event" :  "KEY";
         }
     },

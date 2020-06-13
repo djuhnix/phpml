@@ -3,6 +3,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PHPML\Enum\Color;
 use PHPML\Graphics\Drawable\Shape\CircleShape;
+use PHPML\Graphics\Drawable\Shape\RectangleShape;
 use PHPML\Graphics\Event;
 use PHPML\Graphics\VideoMode;
 use PHPML\Graphics\ExtendedWindow;
@@ -11,9 +12,11 @@ $window = new ExtendedWindow(
     new VideoMode(800, 600)
 );
 
-$circle = new CircleShape(50);
-$circle->setFillColor(new Color(Color::RED));
+$circle = new CircleShape(50, [0, 0], new Color(Color::RED));
+$rectangle = new RectangleShape([100, 100], [150, 150], new Color(Color::RED));
+$rectangle->rotate(25);
 $window->addToDrawingList('circle', $circle);
+$window->addToDrawingList('rectangle', $rectangle);
 
 $window->run(
     new Event(),
@@ -25,6 +28,12 @@ $window->run(
             ->move([1, 1]);
         // cette fonction est appelée dans une boucle while dans la fonction run
         // le cercle aura donc une animation de déplacement en diagonale sur la fenêtre
-        // car il y est attaché
+        // car il y est attaché et est mis à jour à chaque fin de cycle
+
+        $window
+            ->getDrawingList()
+            ->getObject('rectangle')
+            ->rotate(1);
+        // de la même manière le rectangle (qui est un carré) sera en continuelle rotation
     }
 );
