@@ -12,7 +12,7 @@ use PHPML\Enum\CSFMLType;
 use PHPML\Enum\WindowStyle;
 use PHPML\Exception\CDataException;
 use PHPML\Exception\RenderWindowException;
-use PHPML\Graphics\Drawable\DrawableInterface;
+use PHPML\Graphics\Drawable\Drawable;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
 /**
@@ -44,6 +44,7 @@ class Window
         $this->title = $title;
         $this->options ??= [new WindowStyle(WindowStyle::DEFAULT)];
         $this->backgroundColor = $backgroundColor ?? new Color(Color::WHITE);
+        $this->toCData();
     }
 
     /**
@@ -205,9 +206,9 @@ class Window
      * L'objet n'est pas attaché à la fenêtre et ne pourra pas être modifier plus tard,
      * de plus toute modification apportée à l'objet plus tard ne seront pas appliqué à l'objet dessiné
      *
-     * @param DrawableInterface $drawable
+     * @param Drawable $drawable
      */
-    public function draw(DrawableInterface $drawable) : void
+    public function draw(Drawable $drawable) : void
     {
         if (!$this->isCDataLoad()) {
             throw new CDataException("La donnée C de la de la fenêtre doit être prête(chargé) pour pourvoir y dessiner.");

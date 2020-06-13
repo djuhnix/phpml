@@ -3,7 +3,7 @@
 
 namespace PHPML\Graphics;
 
-use PHPML\Graphics\Drawable\DrawableInterface;
+use PHPML\Graphics\Drawable\Drawable;
 
 class DrawingList
 {
@@ -36,11 +36,11 @@ class DrawingList
      * Les objets ajouté seront dessiner lors du rafraîchissement de la fenêtre.
      * Ce comportement peut être changé en spéciant le paramètre toDraw à false.
      *
-     * @param DrawableInterface $object
+     * @param Drawable $object
      * @param string $key clé d'accès à l'objet ajouté
      * @param bool $toDraw décide si l'objet doit être dessiné en fin de cycle de rafraîchissement
      */
-    public function addObjectToList(string $key, DrawableInterface $object, bool $toDraw = true): void
+    public function addObjectToList(string $key, Drawable $object, bool $toDraw = true): void
     {
         $this->objectList[$key] = [
             static::OBJECT_KEY => $object,
@@ -63,9 +63,9 @@ class DrawingList
      * Accesseur à un objet précis de la liste de dessins
      *
      * @param string $key
-     * @return DrawableInterface
+     * @return Drawable
      */
-    public function getObject(string $key): DrawableInterface
+    public function getObject(string $key): Drawable
     {
         return $this->objectList[$key][static::OBJECT_KEY];
     }

@@ -414,7 +414,10 @@ extern sfTexture* sfCircleShape_getTexture(const sfCircleShape* shape);
 extern sfColor sfCircleShape_getFillColor(const sfCircleShape* shape);
 extern sfColor sfCircleShape_getOutlineColor(const sfCircleShape* shape);
 
+extern void sfCircleShape_scale(sfCircleShape* shape, sfVector2f factors);
+extern void sfCircleShape_rotate(sfCircleShape* shape, float angle);
 extern void sfCircleShape_move(sfCircleShape* shape, sfVector2f offset);
+
 extern void sfCircleShape_setRadius(sfCircleShape* shape, float radius);
 extern void sfCircleShape_setTexture(sfCircleShape* shape, const sfTexture* texture, sfBool resetRect);
 extern void sfCircleShape_setPosition(sfCircleShape* shape, sfVector2f position);
@@ -441,7 +444,10 @@ extern sfColor sfRectangleShape_getOutlineColor(const sfRectangleShape* shape);
 
 extern float sfRectangleShape_getOutlineThickness(const sfRectangleShape* shape);
 
+extern void sfRectangleShape_scale(sfRectangleShape* shape, sfVector2f factors);
+extern void sfRectangleShape_rotate(sfRectangleShape* shape, float angle);
 extern void sfRectangleShape_move(sfRectangleShape* shape, sfVector2f offset);
+
 extern void sfRectangleShape_setSize(sfRectangleShape* shape, sfVector2f size);
 extern void sfRectangleShape_setTexture(sfRectangleShape* shape, const sfTexture* texture, sfBool resetRect);
 extern void sfRectangleShape_setPosition(sfRectangleShape* shape, sfVector2f position);
