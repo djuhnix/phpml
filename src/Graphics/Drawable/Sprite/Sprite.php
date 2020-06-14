@@ -3,12 +3,12 @@
 
 namespace PHPML\Graphics\Drawable\Sprite;
 
-
 use FFI\CData;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
 use PHPML\Graphics\Drawable\AbstractDrawable;
 use PHPML\Graphics\Drawable\TransformableOnly;
+use PHPML\Graphics\Texture;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
 class Sprite extends AbstractDrawable
@@ -19,13 +19,14 @@ class Sprite extends AbstractDrawable
 
     /**
      * Sprite constructor.
-     * @param $position
-     * @param $texture
-     * @param Color|null $spriteColor
+     *
+     * @param Color|null $spriteColor La couleur du sprite, mettre null si vous ne voulez une couleur sur le sprite
+     * @param array $position la position du sprite
+     * @param Texture $texture la texture du sprite
      */
     public function __construct(?Color $spriteColor = null, array $position = [0, 0], $texture = null)
     {
-        $this->spriteColor = $spriteColor ?? new Color(Color::RED);
+        $this->spriteColor = $spriteColor;
         parent::__construct($position, null, $texture);
     }
 
@@ -65,15 +66,13 @@ class Sprite extends AbstractDrawable
     {
         parent::updateFromCData();
         $spriteColorCData = Lib::getGraphicsLib()->sfSprite_getColor($this->cdata);
-        $this->setSpriteColor(
-            (new Color(Color::DYNAMIC))
-                ->fromRGBA(
-                    $spriteColorCData->r,
-                    $spriteColorCData->g,
-                    $spriteColorCData->b,
-                    $spriteColorCData->a
-                )
-        );
+        $this->spriteColor = (new Color(Color::DYNAMIC))
+            ->fromRGBA(
+                $spriteColorCData->r,
+                $spriteColorCData->g,
+                $spriteColorCData->b,
+                $spriteColorCData->a
+            );
     }
 
     /**

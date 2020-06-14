@@ -10,7 +10,6 @@ use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
 use PHPML\Exception\CDataException;
 use PHPML\Graphics\Texture;
-use PHPML\Graphics\ExtendedWindow;
 use PHPML\Graphics\Window;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
@@ -301,26 +300,22 @@ abstract class AbstractDrawable
         $this->scale->set(1, $scaleCData->y);
 
         $fillColorCData = Lib::getGraphicsLib()->{$this->getTypeName().'_getFillColor'}($this->cdata);
-        $this->setFillColor(
-            (new Color(Color::DYNAMIC))
-                ->fromRGBA(
-                    $fillColorCData->r,
-                    $fillColorCData->g,
-                    $fillColorCData->b,
-                    $fillColorCData->a
-                )
-        );
+        $this->fillColor = (new Color(Color::DYNAMIC))
+            ->fromRGBA(
+                $fillColorCData->r,
+                $fillColorCData->g,
+                $fillColorCData->b,
+                $fillColorCData->a
+            );
 
         $outlineColorCData = Lib::getGraphicsLib()->{$this->getTypeName().'_getOutlineColor'}($this->cdata);
-        $this->setOutlineColor(
-            (new Color(Color::DYNAMIC))
-                ->fromRGBA(
-                    $outlineColorCData->r,
-                    $outlineColorCData->g,
-                    $outlineColorCData->b,
-                    $outlineColorCData->a
-                )
-        );
+        $this->outlineColor = (new Color(Color::DYNAMIC))
+            ->fromRGBA(
+                $outlineColorCData->r,
+                $outlineColorCData->g,
+                $outlineColorCData->b,
+                $outlineColorCData->a
+            );
     }
 
     /**
