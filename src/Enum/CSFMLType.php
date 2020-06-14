@@ -31,8 +31,10 @@ class CSFMLType extends Enum
     const MOUSE_BUTTON_EVENT    = 'sfMouseButtonEvent';
 
     // Shape
+    const SHAPE                 = 'sfShape';
     const RECTANGLE_SHAPE       = 'sfRectangleShape';
     const CIRCLE_SHAPE          = 'sfCircleShape';
+    const CONVEX_SHAPE          = 'sfConvexShape';
 
     // Sprite
     const SPRITE                = 'sfSprite';

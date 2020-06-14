@@ -6,10 +6,11 @@ use FFI\CData;
 use PHPML\Component\Vector;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
+use PHPML\Graphics\Drawable\AbstractDrawable;
 use PHPML\Graphics\Texture;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
-class RectangleShape extends Shape
+class RectangleShape extends AbstractDrawable
 {
     /**
      * @var Vector Taille du rectangle, longueur et largeur

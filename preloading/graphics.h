@@ -69,10 +69,33 @@ typedef struct sfTexture
     int placebo_sfTexture;
 } sfTexture;
 
+typedef struct sfColor
+{
+    sfUint8 r;
+    sfUint8 g;
+    sfUint8 b;
+    sfUint8 a;
+} sfColor;
+
+//////////////////
+// Shape & Sprite
+//////////////////
+typedef struct sfVertex
+{
+    sfVector2f position;  ///< Position of the vertex
+    sfColor    color;     ///< Color of the vertex
+    sfVector2f texCoords; ///< Coordinates of the texture's pixel to map to the vertex
+} sfVertex;
+
 typedef struct sfSprite
 {
     const sfTexture*    Texture;
 } sfSprite;
+
+typedef struct sfConvexShape
+{
+    const sfTexture*    Texture;
+} sfConvexShape;
 
 typedef struct sfShape
 {
@@ -105,13 +128,6 @@ typedef struct sfVideoMode
 /////////////////////
 // Color
 ////////////////////
-typedef struct sfColor
-{
-    sfUint8 r;
-    sfUint8 g;
-    sfUint8 b;
-    sfUint8 a;
-} sfColor;
 
 sfColor sfBlack;       ///< Black predefined color
 sfColor sfWhite;       ///< White predefined color
@@ -403,7 +419,9 @@ extern sfVector2i sfRenderWindow_getPosition(const sfRenderWindow* renderWindow)
 
 extern void sfRenderWindow_setSize(sfRenderWindow* renderWindow, sfVector2u size);
 extern void sfRenderWindow_setPosition(sfRenderWindow* renderWindow, sfVector2i position);
+extern sfBool sfRenderWindow_setActive(sfRenderWindow* renderWindow, sfBool active);
 
+extern void sfRenderWindow_requestFocus(sfRenderWindow* renderWindow);
 extern void sfRenderWindow_clear(sfRenderWindow* renderWindow, sfColor color);
 extern void sfRenderWindow_destroy(sfRenderWindow* renderWindow);
 extern void sfRenderWindow_display(sfRenderWindow* renderWindow);
@@ -414,6 +432,7 @@ extern void sfRenderWindow_drawSprite(sfRenderWindow* renderWindow, const sfSpri
 extern void sfRenderWindow_drawText(sfRenderWindow* renderWindow, const sfText* object, const sfRenderStates* states);
 extern void sfRenderWindow_drawCircleShape(sfRenderWindow* renderWindow, const sfCircleShape* object, const sfRenderStates* states);
 extern void sfRenderWindow_drawRectangleShape(sfRenderWindow* renderWindow, const sfRectangleShape* object, const sfRenderStates* states);
+extern void sfRenderWindow_drawConvexShape(sfRenderWindow* renderWindow, const sfConvexShape* object, const sfRenderStates* states);
 
 extern sfVector2f sfRenderWindow_mapPixelToCoords(const sfRenderWindow* renderWindow, sfVector2i point, const sfView* view);
 
@@ -449,6 +468,52 @@ extern sfVector2u sfTexture_getSize(const sfTexture* texture);
 extern unsigned int sfTexture_getMaximumSize();
 extern sfBool sfTexture_isSmooth(const sfTexture* texture);
 extern sfBool sfTexture_isRepeated(const sfTexture* texture);
+
+///////////////////////////
+// FUNCTIONS Shape
+///////////////////////////
+typedef size_t (*sfShapeGetPointCountCallback)(void*);        ///< Type of the callback used to get the number of points in a shape
+typedef sfVector2f (*sfShapeGetPointCallback)(size_t, void*); ///< Type of the callback used to get a point of a shape
+
+extern sfShape* sfShape_create(sfShapeGetPointCountCallback getPointCount,
+                               sfShapeGetPointCallback getPoint,
+                               void* userData);
+
+extern void sfShape_destroy(sfShape* shape);
+
+extern float sfShape_getRotation(const sfShape* shape);
+
+extern float sfShape_getOutlineThickness(const sfShape* shape);
+extern size_t sfShape_getPointCount(const sfShape* shape);
+
+extern sfVector2f sfShape_getPoint(const sfShape* shape, size_t index);
+extern sfVector2f sfShape_getPosition(const sfShape* shape);
+extern sfVector2f sfShape_getScale(const sfShape* shape);
+extern sfVector2f sfShape_getOrigin(const sfShape* shape);
+
+extern sfTexture* sfShape_getTexture(const sfShape* shape);
+extern sfIntRect sfShape_getTextureRect(const sfShape* shape);
+
+extern sfColor sfShape_getFillColor(const sfShape* shape);
+extern sfColor sfShape_getOutlineColor(const sfShape* shape);
+
+extern void sfShape_move(sfShape* shape, sfVector2f offset);
+extern void sfShape_rotate(sfShape* shape, float angle);
+extern void sfShape_scale(sfShape* shape, sfVector2f factors);
+
+extern void sfShape_setTexture(sfShape* shape, const sfTexture* texture, sfBool resetRect);
+extern void sfShape_setTextureRect(sfShape* shape, sfIntRect rect);
+extern void sfShape_setFillColor(sfShape* shape, sfColor color);
+extern void sfShape_setPosition(sfShape* shape, sfVector2f position);
+extern void sfShape_setRotation(sfShape* shape, float angle);
+extern void sfShape_setScale(sfShape* shape, sfVector2f scale);
+extern void sfShape_setOrigin(sfShape* shape, sfVector2f origin);
+extern void sfShape_setOutlineColor(sfShape* shape, sfColor color);
+extern void sfShape_setOutlineThickness(sfShape* shape, float thickness);
+
+extern void sfShape_update(sfShape* shape);
+
+extern sfFloatRect sfShape_getGlobalBounds(const sfShape* shape);
 
 ///////////////////////////
 // FUNCTIONS Font
@@ -556,7 +621,10 @@ extern sfTexture* sfCircleShape_getTexture(const sfCircleShape* shape);
 extern sfColor sfCircleShape_getFillColor(const sfCircleShape* shape);
 extern sfColor sfCircleShape_getOutlineColor(const sfCircleShape* shape);
 
+extern sfIntRect sfCircleShape_getTextureRect(const sfCircleShape* shape);
 extern sfVector2f sfCircleShape_getOrigin(const sfCircleShape* shape);
+extern sfVector2f sfCircleShape_getPoint(const sfCircleShape* shape, size_t index);
+extern size_t sfCircleShape_getPointCount(const sfCircleShape* shape);
 
 extern void sfCircleShape_scale(sfCircleShape* shape, sfVector2f factors);
 extern void sfCircleShape_rotate(sfCircleShape* shape, float angle);
@@ -567,10 +635,13 @@ extern void sfCircleShape_setRadius(sfCircleShape* shape, float radius);
 extern void sfCircleShape_setScale(sfCircleShape* shape, sfVector2f factors);
 extern void sfCircleShape_setRotation(sfCircleShape* shape, float angle);
 extern void sfCircleShape_setTexture(sfCircleShape* shape, const sfTexture* texture, sfBool resetRect);
+extern void sfCircleShape_setTextureRect(sfCircleShape* shape, sfIntRect rect);
 extern void sfCircleShape_setPosition(sfCircleShape* shape, sfVector2f position);
 extern void sfCircleShape_setFillColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineThickness(sfCircleShape* shape, float thickness);
+extern void sfCircleShape_setOrigin(sfCircleShape* shape, sfVector2f origin);
+extern void sfCircleShape_setPointCount(sfCircleShape* shape, size_t count);
 
 extern sfFloatRect sfCircleShape_getGlobalBounds(const sfCircleShape* shape);
 
@@ -586,7 +657,7 @@ extern sfVector2f sfRectangleShape_getPosition(const sfRectangleShape* shape);
 extern sfVector2f sfRectangleShape_getSize(const sfRectangleShape* shape);
 
 extern sfTexture* sfRectangleShape_getTexture(const sfRectangleShape* shape);
-
+extern sfIntRect sfRectangleShape_getTextureRect(const sfRectangleShape* shape);
 extern sfColor sfRectangleShape_getFillColor(const sfRectangleShape* shape);
 extern sfColor sfRectangleShape_getOutlineColor(const sfRectangleShape* shape);
 
@@ -595,6 +666,8 @@ extern float sfRectangleShape_getRotation(const sfRectangleShape* shape);
 
 extern sfVector2f sfRectangleShape_getScale(const sfRectangleShape* shape);
 extern sfVector2f sfRectangleShape_getOrigin(const sfRectangleShape* shape);
+extern size_t sfRectangleShape_getPointCount(const sfRectangleShape* shape);
+extern sfVector2f sfRectangleShape_getPoint(const sfRectangleShape* shape, size_t index);
 
 extern void sfRectangleShape_move(sfRectangleShape* shape, sfVector2f offset);
 extern void sfRectangleShape_scale(sfRectangleShape* shape, sfVector2f factors);
@@ -605,9 +678,52 @@ extern void sfRectangleShape_setSize(sfRectangleShape* shape, sfVector2f size);
 extern void sfRectangleShape_setScale(sfRectangleShape* shape, sfVector2f factors);
 extern void sfRectangleShape_setRotation(sfRectangleShape* shape, float angle);
 extern void sfRectangleShape_setTexture(sfRectangleShape* shape, const sfTexture* texture, sfBool resetRect);
+extern void sfRectangleShape_setTextureRect(sfRectangleShape* shape, sfIntRect rect);
 extern void sfRectangleShape_setPosition(sfRectangleShape* shape, sfVector2f position);
 extern void sfRectangleShape_setFillColor(sfRectangleShape* shape, sfColor color);
 extern void sfRectangleShape_setOutlineColor(sfRectangleShape* shape, sfColor color);
 extern void sfRectangleShape_setOutlineThickness(sfRectangleShape* shape, float thickness);
+extern void sfRectangleShape_setOrigin(sfRectangleShape* shape, sfVector2f origin);
 
 extern sfFloatRect sfRectangleShape_getGlobalBounds(const sfRectangleShape* shape);
+
+///////////////////////////
+/// FUNCTIONS Convex Shape
+///////////////////////////
+extern sfConvexShape* sfConvexShape_create(void);
+extern sfConvexShape* sfConvexShape_copy(const sfConvexShape* shape);
+
+extern void sfConvexShape_destroy(sfConvexShape* shape);
+
+extern sfVector2f sfConvexShape_getPosition(const sfConvexShape* shape);
+extern sfVector2f sfConvexShape_getScale(const sfConvexShape* shape);
+extern sfVector2f sfConvexShape_getOrigin(const sfConvexShape* shape);
+extern sfVector2f sfConvexShape_getPoint(const sfConvexShape* shape, size_t index);
+extern size_t sfConvexShape_getPointCount(const sfConvexShape* shape);
+
+extern const sfTexture* sfConvexShape_getTexture(const sfConvexShape* shape);
+extern sfIntRect sfConvexShape_getTextureRect(const sfConvexShape* shape);
+
+extern float sfConvexShape_getRotation(const sfConvexShape* shape);
+extern float sfConvexShape_getOutlineThickness(const sfConvexShape* shape);
+
+extern sfColor sfConvexShape_getFillColor(const sfConvexShape* shape);
+extern sfColor sfConvexShape_getOutlineColor(const sfConvexShape* shape);
+
+extern void sfConvexShape_move(sfConvexShape* shape, sfVector2f offset);
+extern void sfConvexShape_rotate(sfConvexShape* shape, float angle);
+extern void sfConvexShape_scale(sfConvexShape* shape, sfVector2f factors);
+
+extern void sfConvexShape_setTexture(sfConvexShape* shape, const sfTexture* texture, sfBool resetRect);
+extern void sfConvexShape_setTextureRect(sfConvexShape* shape, sfIntRect rect);
+extern void sfConvexShape_setFillColor(sfConvexShape* shape, sfColor color);
+extern void sfConvexShape_setPosition(sfConvexShape* shape, sfVector2f position);
+extern void sfConvexShape_setRotation(sfConvexShape* shape, float angle);
+extern void sfConvexShape_setScale(sfConvexShape* shape, sfVector2f scale);
+extern void sfConvexShape_setOrigin(sfConvexShape* shape, sfVector2f origin);
+extern void sfConvexShape_setOutlineColor(sfConvexShape* shape, sfColor color);
+extern void sfConvexShape_setOutlineThickness(sfConvexShape* shape, float thickness);
+extern void sfConvexShape_setPointCount(sfConvexShape* shape, size_t count);
+extern void sfConvexShape_setPoint(sfConvexShape* shape, size_t index, sfVector2f point);
+
+extern sfFloatRect sfConvexShape_getGlobalBounds(const sfConvexShape* shape);

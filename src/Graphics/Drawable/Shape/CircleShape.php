@@ -5,10 +5,11 @@ namespace PHPML\Graphics\Drawable\Shape;
 use FFI\CData;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
+use PHPML\Graphics\Drawable\AbstractDrawable;
 use PHPML\Graphics\Texture;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
-class CircleShape extends Shape
+class CircleShape extends AbstractDrawable
 {
     /**
      * @var float Rayon du cercle

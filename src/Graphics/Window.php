@@ -228,14 +228,54 @@ class Window
      */
     public function isOpen() : bool
     {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir vérifier si elle est ouverte.");
+        }
         return Lib::getGraphicsLib()->sfRenderWindow_isOpen($this->cdata);
     }
-    /*
+
+    /**
+     * Vérifie si la fenêtre a le focus.
+     *
+     * @return bool
+     */
     public function hasFocus() : bool
     {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir vérifier si elle a le focus.");
+        }
         return Lib::getGraphicsLib()->sfRenderWindow_hasFocus($this->cdata);
     }
-    */
+
+    /**
+     * Active ou désactive la fenêtre actuelle comme la fenêtre de dessin par défaut
+     *
+     * @param bool $active true pour activer, false pour désactiver
+     * @return bool si l'opération a été successive
+     */
+    public function setActive(bool $active) : bool
+    {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir vérifier si elle a le focus.");
+        }
+        return Lib::getGraphicsLib()->sfRenderWindow_setActive($this->cdata, $active);
+    }
+
+    /**
+     * Requiert le focus,
+     * Cette fonction demande à ce que la fenêtre actuelle passe au premier plan
+     * pour pouvoir recevoir les entrées (souris, clavier etc).
+     *
+     * @return void
+     */
+    public function requestFocus() : void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir demander le focus.");
+        }
+        Lib::getGraphicsLib()->sfRenderWindow_requestFocus($this->cdata);
+    }
+
     /**
      * Convertit les coordonnées d'un point en pixel en des coordonnées du monde 2D
      *
@@ -248,7 +288,6 @@ class Window
             new CSFMLType(CSFMLType::VECTOR_2I),
             $point
         );
-        $view = $this->cdata->CurrentView;
         $convertedPoint = Lib::getGraphicsLib()->sfRenderWindow_mapPixelToCoords(
             $this->cdata,
             $pointVector->getCData(),
@@ -265,6 +304,9 @@ class Window
      */
     public function pollEvent(CData $eventPointer) : bool
     {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir inspecter la file d'événements.");
+        }
         return Lib::getGraphicsLib()->sfRenderWindow_pollEvent($this->cdata, \FFI::addr($eventPointer));
     }
 
@@ -287,6 +329,9 @@ class Window
      */
     public function clear(Color $color) : void
     {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir nettoyer la scène.");
+        }
         Lib::getGraphicsLib()->sfRenderWindow_clear($this->cdata, $color->getCDataColor());
     }
 
@@ -297,6 +342,9 @@ class Window
      */
     public function display() : void
     {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir afficher les changements.");
+        }
         Lib::getGraphicsLib()->sfRenderWindow_display($this->cdata);
     }
 }

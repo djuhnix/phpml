@@ -24,7 +24,7 @@ abstract class AbstractDrawable
     private const SCALE     = 'scale';
     private const ROTATE    = 'rotate';
 
-    private ?Texture $texture;
+    protected ?Texture $texture;
 
     protected Vector $position;
     protected ?Color $fillColor;
@@ -32,6 +32,7 @@ abstract class AbstractDrawable
     protected float $outlineThickness = 0;
     protected float $rotation = 0;
     protected ?Vector $scale;
+    private Vector $origin;
 
     /**
      * Shape constructor.
@@ -56,6 +57,10 @@ abstract class AbstractDrawable
             new CSFMLType(CSFMLType::VECTOR_2F),
             [1, 1]
         );
+        $this->origin = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2F),
+            [0, 0]
+        );
         $this->toCData();
     }
 
@@ -65,6 +70,42 @@ abstract class AbstractDrawable
             Lib::getGraphicsLib()->{$this->getTypeName().'_destroy'}($this->cdata);
             unset($this->cdata);
         }
+    }
+
+    /**
+     * Accesseur à un point de l'objet identifié par son indice
+     *
+     * @param int $index L'indice du point à accéder doit être compris entre 0 et le nombre de point maximum défini - 1
+     * @return array les coordonnées du point recherchés
+     */
+    public function getPoint(int $index): array
+    {
+        if (!$this->isCDataLoad()) {
+            throw new \InvalidArgumentException("Impossible d'accéder à un point de l'objet de la classe : " . static::class . " les données C de la classe ne sont pas chargées.");
+        }
+        if ($index < 0 && $index > $this->getPointCount() - 1) {
+            throw new \InvalidArgumentException("L'indice du point à accéder doit être compris entre 0 et {$this->getPointCount()} - 1 : $index reçu.");
+        }
+        $pointCData = Lib::getGraphicsLib()->{$this->getTypeName().'_getPoint'}(
+            $this->cdata,
+            $index
+        );
+        return [$pointCData->x, $pointCData->y];
+    }
+
+    /**
+     * Retourne le nombre de points total de la forme
+     *
+     * @return int
+     */
+    public function getPointCount(): int
+    {
+        if (!$this->isCDataLoad()) {
+            throw new \InvalidArgumentException("Impossible d'avoir le nombre de points total, les données C de la classe ". static::class . " ne sont pas chargées");
+        }
+        return Lib::getGraphicsLib()->{$this->getTypeName().'_getPointCount'}(
+            $this->cdata
+        );
     }
 
     /**
@@ -198,6 +239,19 @@ abstract class AbstractDrawable
         }
 
         $this->updateFromCData();
+    }
+
+    /**
+     * Retourne le point considérée comme origine de l'objet actuelle
+     *
+     * @return array
+     */
+    public function getOrigin(): array
+    {
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
+        return $this->origin->getArray();
     }
 
     /**
@@ -340,6 +394,10 @@ abstract class AbstractDrawable
         $this->outlineThickness = Lib::getGraphicsLib()->{$this->getTypeName().'_getOutlineThickness'}($this->cdata);
         $this->rotation = Lib::getGraphicsLib()->{$this->getTypeName().'_getRotation'}($this->cdata);
 
+        $originCData = Lib::getGraphicsLib()->{$this->getTypeName().'_getOrigin'}($this->cdata);
+        $this->origin->set(0, $originCData->x);
+        $this->origin->set(1, $originCData->y);
+
         $positionCData = Lib::getGraphicsLib()->{$this->getTypeName().'_getPosition'}($this->cdata);
         $this->position->set(0, $positionCData->x);
         $this->position->set(1, $positionCData->y);
@@ -402,7 +460,31 @@ abstract class AbstractDrawable
     }
 
     /**
-     * @inheritDoc
+     * Modificateur du point d'origine de la forme actuelle,
+     * par défaut l'origine est le point situé en haut à gauche du rectangle global contenant l'objet
+     *
+     * @param array $origin
+     */
+    public function setOrigin(array $origin): void
+    {
+        $originVector = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2F),
+            $origin
+        );
+        if ($this->isCDataLoad()) {
+            Lib::getGraphicsLib()->{$this->getTypeName().'_setOrigin'}(
+                $this->cdata,
+                $originVector->getCData()
+            );
+        }
+        $this->origin = $originVector;
+    }
+
+    /**
+     * Modifie la texture de l'objet actuelle.
+     *
+     * @param Texture $texture la nouvelle texture
+     * @param bool $resetRect s'il faut redéfinir la zone de sélection de la texture actuelle à celle de la nouvelle texture
      */
     public function setTexture(Texture $texture, bool $resetRect = true): void
     {

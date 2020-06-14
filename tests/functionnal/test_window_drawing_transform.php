@@ -13,8 +13,10 @@ $window = new ExtendedWindow(
 );
 
 $circle = new CircleShape(50, [0, 0], new Color(Color::RED));
+
 $rectangle = new RectangleShape([100, 100], [150, 150], new Color(Color::RED));
-$rectangle->rotate(25);
+$rectangle->setOrigin([50, 50]); // redéfini l'origine par défaut du rectangle pour améliorer la rotation
+
 $window->addToDrawingList('circle', $circle);
 $window->addToDrawingList('rectangle', $rectangle);
 
@@ -33,7 +35,7 @@ $window->run(
         $window
             ->getDrawingList()
             ->getObject('rectangle')
-            ->rotate(1);
+            ->rotate(0.5);
         // de la même manière le rectangle (qui est un carré) sera en continuelle rotation
     }
 );
