@@ -57,26 +57,6 @@ class Texture
     }
 
     /**
-     * Modificateur de la taille de la texture.
-     *
-     * @param array $size un couple longueur-largeur
-     */
-    public function setSize(array $size): void
-    {
-        $sizeVector = new Vector(
-            new CSFMLType(CSFMLType::VECTOR_2U),
-            $size
-        );
-        if ($this->isCDataLoad()) {
-            Lib::getGraphicsLib()->sfTexture_setSize(
-                $this->cdata,
-                $sizeVector->toCData()
-            );
-        }
-        $this->size = $sizeVector;
-    }
-
-    /**
      * Accesseur au lissage de la texture.
      *
      * @return bool
