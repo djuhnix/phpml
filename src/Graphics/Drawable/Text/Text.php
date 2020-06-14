@@ -9,9 +9,9 @@ use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
 use PHPML\Enum\TextStyle;
 use PHPML\Library\GraphicsLibLoader as Lib;
-use PHPML\Graphics\Drawable\Drawable;
+use PHPML\Graphics\Drawable\AbstractDrawable;
 
-class Text extends Drawable
+class Text extends AbstractDrawable
 {
     use MyCData;
 

@@ -13,7 +13,7 @@ use PHPML\Graphics\Texture;
 use PHPML\Graphics\ExtendedWindow;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
-abstract class Drawable
+abstract class AbstractDrawable implements DrawableInterface
 {
     use MyCData;
 
@@ -103,7 +103,7 @@ abstract class Drawable
 
     /**
      * Applique une échelle à l'objet actuelle.
-     * Contrairement à @see Drawable::setScale cette méthode multiplie la currente échelle de l'objet.
+     * Contrairement à @see AbstractDrawable::setScale cette méthode multiplie la currente échelle de l'objet.
      *
      * @param array $factors facteur d'échelle
      */
@@ -226,9 +226,9 @@ abstract class Drawable
     /**
      * Accesseur à l'épaisseur
      *
-     * @return float
+     * @return float|null
      */
-    public function getOutlineThickness(): float
+    public function getOutlineThickness(): ?float
     {
         if ($this->isCDataLoad()) {
             $this->updateFromCData();
@@ -433,9 +433,4 @@ abstract class Drawable
         $realTypeName = substr($this->getTypeName(), 2);
         Lib::getGraphicsLib()->{'sfRenderWindow_draw'.$realTypeName}($target->getCData(), $this->toCData(), null);
     }
-
-    /**
-     * @return string le nom du type CSFML
-     */
-    abstract protected function getTypeName(): string;
 }

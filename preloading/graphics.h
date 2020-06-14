@@ -478,6 +478,33 @@ extern void sfText_setRotation(sfText* text, float angle);
 extern void sfText_setPosition(sfText* text, sfVector2f position);
 
 ///////////////////////////
+/// FUNCTIONS Sprite
+///////////////////////////
+
+extern sfSprite* sfSprite_create(void);
+extern sfSprite* sfSprite_copy(const sfSprite* sprite);
+
+extern sfVector2f sfSprite_getPosition(const sfSprite* sprite);
+extern sfVector2f sfSprite_getScale(const sfSprite* sprite);
+
+extern const sfTexture* sfSprite_getTexture(const sfSprite* sprite);
+extern float sfSprite_getRotation(const sfSprite* sprite);
+
+extern void sfSprite_destroy(sfSprite* sprite);
+
+extern void sfSprite_move(sfSprite* sprite, sfVector2f offset);
+extern void sfSprite_rotate(sfSprite* sprite, float angle);
+extern void sfSprite_scale(sfSprite* sprite, sfVector2f factors);
+
+extern void sfSprite_setColor(sfSprite* sprite, sfColor color);
+extern void sfSprite_setTexture(sfSprite* sprite, const sfTexture* texture, sfBool resetRect);
+extern void sfSprite_setPosition(sfSprite* sprite, sfVector2f position);
+extern void sfSprite_setRotation(sfSprite* sprite, float angle);
+extern void sfSprite_setScale(sfSprite* sprite, sfVector2f scale);
+extern void sfSprite_setOrigin(sfSprite* sprite, sfVector2f origin);
+
+
+///////////////////////////
 /// FUNCTIONS Circle Shape
 ///////////////////////////
 

@@ -31,6 +31,9 @@ class CSFMLType extends Enum
     const RECTANGLE_SHAPE       = 'sfRectangleShape';
     const CIRCLE_SHAPE          = 'sfCircleShape';
 
+    // Sprite
+    const SPRITE                = 'sfSprite';
+
     // Text
     const TEXT                  = 'sfText';
     const FONT                  = 'sfFont';

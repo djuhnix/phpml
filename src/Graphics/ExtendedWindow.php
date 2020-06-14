@@ -4,7 +4,7 @@ namespace PHPML\Graphics;
 
 use PHPML\Enum\Color;
 use PHPML\Enum\EventType;
-use PHPML\Graphics\Drawable\Drawable;
+use PHPML\Graphics\Drawable\AbstractDrawable;
 use PHPML\Library\GraphicsLibLoader as Lib;
 
 /**
@@ -76,11 +76,11 @@ class ExtendedWindow extends Window
      * Les objets ajouté seront dessiner lors du rafraîchissement de la fenêtre.
      * Ce comportement peut être changé en spéciant le paramètre toDraw à false.
      *
-     * @param Drawable $object
+     * @param AbstractDrawable $object
      * @param string $key clé d'accès à l'objet ajouté
      * @param bool $toDraw décide si l'objet doit être dessiné en fin de cycle de rafraîchissement
      */
-    public function addToDrawingList(string $key, Drawable $object, bool $toDraw = true): void
+    public function addToDrawingList(string $key, AbstractDrawable $object, bool $toDraw = true): void
     {
         $this->drawingList->addObjectToList($key, $object, $toDraw);
     }
