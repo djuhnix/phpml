@@ -40,6 +40,7 @@ class Vector
         }
         $this->table = $table;
         $this->type = $type;
+        $this->toCData();
     }
 
     /**
@@ -115,7 +116,7 @@ class Vector
     protected function updateFromCData(): void
     {
         if (!$this->isCDataLoad()) {
-            throw new CDataException("Les données C de Vecteur doivent être chargées pour mettre à jour les donnée de la classe.");
+            throw new CDataException("Les données C de Vector doivent être chargées pour mettre à jour les donnée de la classe.");
         }
         $this->table[0] = $this->cdata->x;
         $this->table[1] = $this->cdata->y;

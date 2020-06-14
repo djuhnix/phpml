@@ -65,7 +65,7 @@ class DrawingList
      * @param string $key
      * @return AbstractDrawable
      */
-    public function getObject(string $key): AbstractDrawable
+    public function &getObject(string $key): AbstractDrawable
     {
         return $this->objectList[$key][static::OBJECT_KEY];
     }

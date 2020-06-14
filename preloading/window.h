@@ -3,6 +3,17 @@
 
 typedef int sfBool;
 
+typedef struct
+{
+    int x;
+    int y;
+ } sfVector2i;
+
+typedef struct
+{
+    int placebo_sfWindow
+} sfWindow;
+
 //////////////////////////
 /// VideoMode
 //////////////////////////
@@ -34,6 +45,7 @@ typedef enum
 } sfMouseButton;
 
 extern sfBool sfMouse_isButtonPressed(sfMouseButton button);
+extern sfVector2i sfMouse_getPosition(const sfWindow* relativeTo);
 
 //////////////////////
 // FUNCTION Keyboard

@@ -17,6 +17,9 @@ class CSFMLType extends Enum
     const VECTOR_2I             = 'sfVector2i';
     const VECTOR_2U             = 'sfVector2u';
 
+    const FLOAT_RECT            = 'sfFloatRect';
+    const INT_RECT              = 'sfIntRect';
+
     // Graphics
     const RENDER_WINDOW         = 'sfRenderWindow';
     const VIDEO_MODE            = 'sfVideoMode';

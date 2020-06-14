@@ -34,7 +34,7 @@ trait MyCData
      *
      * @return CData|null
      */
-    public function getCData(): ?CData
+    public function &getCData(): ?CData
     {
         if (!$this->isCDataLoad()) {
             $className = static::class;

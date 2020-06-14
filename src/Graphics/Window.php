@@ -237,6 +237,27 @@ class Window
     }
     */
     /**
+     * Convertit les coordonnées d'un point en pixel en des coordonnées du monde 2D
+     *
+     * @param array $point les  coordonnées d'un point à convertir
+     * @return array un couple des coordonnées converties
+     */
+    public function mapPixelToCoords(array $point): array
+    {
+        $pointVector = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2I),
+            $point
+        );
+        $view = $this->cdata->CurrentView;
+        $convertedPoint = Lib::getGraphicsLib()->sfRenderWindow_mapPixelToCoords(
+            $this->cdata,
+            $pointVector->getCData(),
+            null
+        );
+        return [$convertedPoint->x, $convertedPoint->y];
+    }
+
+    /**
      * Vérifie s'il y'a des événement dans la file d'attente.
      *
      * @param CData|null $eventPointer

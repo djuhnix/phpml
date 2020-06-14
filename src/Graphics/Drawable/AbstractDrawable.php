@@ -5,10 +5,13 @@ namespace PHPML\Graphics\Drawable;
 
 use FFI\CData;
 use PHPML\AbstractFFI\MyCData;
+use PHPML\Component\RectArea;
 use PHPML\Component\Vector;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
+use PHPML\Enum\MouseButton;
 use PHPML\Exception\CDataException;
+use PHPML\Graphics\Input\Mouse;
 use PHPML\Graphics\Texture;
 use PHPML\Graphics\Window;
 use PHPML\Library\GraphicsLibLoader as Lib;
@@ -282,6 +285,52 @@ abstract class AbstractDrawable
         $this->position = $positionVector;
     }
 
+    /**
+     * Retourne les limites globale de la forme,
+     * le rectangle retourné contient des coordonnées globaux qui
+     * tiennent compte des transformations appliquées à l'objet.
+     *
+     * @return RectArea la zone rectangulaire des limites de l'objet
+     */
+    public function getGlobalBounds(): RectArea
+    {
+        $boundsCData = Lib::getGraphicsLib()->{$this->getTypeName().'_getGlobalBounds'}($this->cdata);
+        return new RectArea(
+            new CSFMLType(CSFMLType::FLOAT_RECT),
+            $boundsCData->left,
+            $boundsCData->top,
+            $boundsCData->width,
+            $boundsCData->height,
+        );
+    }
+
+    /**
+     * Vérifie si la forme actuelle a été cliqué par l'un des bouton de la souris.
+     *
+     * @param Window $relativeTarget la fenêtre contenant la forme cliqué.
+     * @param MouseButton $button le button à vérifier
+     * @return bool résultat de la vérification
+     */
+    public function isMouseButtonPressed(Window $relativeTarget, MouseButton $button)
+    {
+        return Mouse::isButtonPressed($button)
+            && $this->isMouseInside($relativeTarget);
+    }
+
+    /**
+     * Vérifie si la souris est dans la zone de l'objet déssiné
+     *
+     * @param Window $relativeTarget la fenêtre contenant l'objet
+     * @return bool
+     */
+    public function isMouseInside(Window $relativeTarget)
+    {
+        $mousePos = Mouse::getPosition($relativeTarget);
+        $transPos = $relativeTarget->mapPixelToCoords($mousePos);
+
+        return $this->getGlobalBounds()->contains($transPos[0], $transPos[1]);
+    }
+
     protected function updateFromCData(): void
     {
         if (!$this->isCDataLoad()) {
@@ -429,4 +478,9 @@ abstract class AbstractDrawable
         $realTypeName = substr($this->getTypeName(), 2);
         Lib::getGraphicsLib()->{'sfRenderWindow_draw'.$realTypeName}($target->getCData(), $this->toCData(), null);
     }
+
+    /**
+     * @return string le nom du type C de la forme
+     */
+    abstract protected function getTypeName(): string;
 }

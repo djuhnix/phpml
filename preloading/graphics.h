@@ -5,25 +5,25 @@ typedef unsigned char sfUint8;
 typedef unsigned int sfUint32;
 typedef int sfBool;
 
-typedef struct
+typedef struct sfVector2f
 {
     float x;
     float y;
  } sfVector2f;
 
-typedef struct
+typedef struct sfVector2i
 {
     int x;
     int y;
  } sfVector2i;
 
-typedef struct
+typedef struct sfVector2u
 {
     unsigned int x;
     unsigned int y;
 } sfVector2u;
 
-typedef struct
+typedef struct sfIntRect
 {
     int left;
     int top;
@@ -31,23 +31,31 @@ typedef struct
     int height;
 } sfIntRect;
 
-typedef struct
+typedef struct sfFloatRect
+{
+    float left;
+    float top;
+    float width;
+    float height;
+} sfFloatRect;
+
+typedef struct sfFont
 {
     int placebo_sfFont;
 } sfFont;
 
-typedef struct
+typedef struct sfText
 {
     const sfFont*       Font;
 } sfText;
 
 
-typedef struct
+typedef struct sfView
 {
     int placebo_sfView;
 } sfView;
 
-typedef struct
+typedef struct sfRenderStates
 {
     int placebo_sfRenderStates;
     //sfBlendMode      blendMode; ///< Blending mode
@@ -56,37 +64,38 @@ typedef struct
     //const sfShader*  shader;    ///< Shader
 } sfRenderStates;
 
-typedef struct
+typedef struct sfTexture
 {
     int placebo_sfTexture;
 } sfTexture;
 
-typedef struct
+typedef struct sfSprite
 {
     const sfTexture*    Texture;
 } sfSprite;
 
-typedef struct
+typedef struct sfShape
 {
     const sfTexture*    Texture;
 } sfShape;
 
-typedef struct
+typedef struct sfCircleShape
 {
     const sfTexture*    Texture;
 } sfCircleShape;
 
-typedef struct
+typedef struct sfRectangleShape
 {
     const sfTexture*    Texture;
 } sfRectangleShape;
 
-typedef struct
+typedef struct sfRenderWindow
 {
-    int placebo_sfRenderWindow;
+    sfView           DefaultView;
+    sfView           CurrentView;
 } sfRenderWindow;
 
-typedef struct
+typedef struct sfVideoMode
 {
     unsigned int width;        ///< Video mode width, in pixels
     unsigned int height;       ///< Video mode height, in pixels
@@ -96,7 +105,7 @@ typedef struct
 /////////////////////
 // Color
 ////////////////////
-typedef struct
+typedef struct sfColor
 {
     sfUint8 r;
     sfUint8 g;
@@ -308,7 +317,7 @@ typedef enum
     sfEvtCount,                  ///< Keep last -- the total number of event types
 } sfEventType;
 
-typedef struct
+typedef struct sfKeyEvent
 {
     sfEventType type;
     sfKeyCode   code;
@@ -318,7 +327,7 @@ typedef struct
     sfBool      system;
 } sfKeyEvent;
 
-typedef struct
+typedef struct sfMouseButtonEvent
 {
     sfEventType   type;
     sfMouseButton button;
@@ -326,14 +335,14 @@ typedef struct
     int           y;
 } sfMouseButtonEvent;
 
-typedef struct
+typedef struct sfMouseMoveEvent
 {
     sfEventType type;
     int         x;
     int         y;
 } sfMouseMoveEvent;
 
-typedef struct
+typedef struct sfMouseWheelScrollEvent
 {
     sfEventType  type;
     sfMouseWheel wheel;
@@ -359,7 +368,7 @@ typedef union
     //sfSensorEvent           sensor;           ///< Sensor event parameters
 } sfEvent;
 
-typedef struct
+typedef struct sfContextSettings
 {
     unsigned int depthBits;         ///< Bits of the depth buffer
     unsigned int stencilBits;       ///< Bits of the stencil buffer
@@ -405,6 +414,20 @@ extern void sfRenderWindow_drawSprite(sfRenderWindow* renderWindow, const sfSpri
 extern void sfRenderWindow_drawText(sfRenderWindow* renderWindow, const sfText* object, const sfRenderStates* states);
 extern void sfRenderWindow_drawCircleShape(sfRenderWindow* renderWindow, const sfCircleShape* object, const sfRenderStates* states);
 extern void sfRenderWindow_drawRectangleShape(sfRenderWindow* renderWindow, const sfRectangleShape* object, const sfRenderStates* states);
+
+extern sfVector2f sfRenderWindow_mapPixelToCoords(const sfRenderWindow* renderWindow, sfVector2i point, const sfView* view);
+
+extern sfVector2i sfMouse_getPositionRenderWindow(const sfRenderWindow* relativeTo);
+
+///////////////////////////
+/// FUNCTIONS Rect
+///////////////////////////
+
+extern sfBool sfIntRect_contains(const sfIntRect* rect, int x, int y);
+extern sfBool sfIntRect_intersects(const sfIntRect* rect1, const sfIntRect* rect2, sfIntRect* intersection);
+
+extern sfBool sfFloatRect_contains(const sfFloatRect* rect, float x, float y);
+extern sfBool sfFloatRect_intersects(const sfFloatRect* rect1, const sfFloatRect* rect2, sfFloatRect* intersection);
 
 ///////////////////////////
 /// FUNCTIONS Texture
@@ -484,6 +507,8 @@ extern void sfText_setScale(sfText* text, sfVector2f scale);
 extern void sfText_setRotation(sfText* text, float angle);
 extern void sfText_setPosition(sfText* text, sfVector2f position);
 
+extern sfFloatRect sfText_getGlobalBounds(const sfText* text);
+
 ///////////////////////////
 /// FUNCTIONS Sprite
 ///////////////////////////
@@ -510,6 +535,7 @@ extern void sfSprite_setRotation(sfSprite* sprite, float angle);
 extern void sfSprite_setScale(sfSprite* sprite, sfVector2f scale);
 extern void sfSprite_setOrigin(sfSprite* sprite, sfVector2f origin);
 
+extern sfFloatRect sfSprite_getGlobalBounds(const sfSprite* sprite);
 
 ///////////////////////////
 /// FUNCTIONS Circle Shape
@@ -546,6 +572,7 @@ extern void sfCircleShape_setFillColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineColor(sfCircleShape* shape, sfColor color);
 extern void sfCircleShape_setOutlineThickness(sfCircleShape* shape, float thickness);
 
+extern sfFloatRect sfCircleShape_getGlobalBounds(const sfCircleShape* shape);
 
 ///////////////////////////
 /// FUNCTIONS Rectangle Shape
@@ -582,3 +609,5 @@ extern void sfRectangleShape_setPosition(sfRectangleShape* shape, sfVector2f pos
 extern void sfRectangleShape_setFillColor(sfRectangleShape* shape, sfColor color);
 extern void sfRectangleShape_setOutlineColor(sfRectangleShape* shape, sfColor color);
 extern void sfRectangleShape_setOutlineThickness(sfRectangleShape* shape, float thickness);
+
+extern sfFloatRect sfRectangleShape_getGlobalBounds(const sfRectangleShape* shape);

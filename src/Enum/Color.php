@@ -12,11 +12,15 @@ class Color extends CDataEnum
 {
     use MyCData;
 
-    const BLACK     = 'sfBlack';
-    const WHITE     = 'sfWhite';
-    const RED       = 'sfRed';
-    const GREEN     = 'sfGreen';
-    const BLUE      = 'sfBlue';
+    const BLACK         = 'sfBlack';
+    const WHITE         = 'sfWhite';
+    const RED           = 'sfRed';
+    const GREEN         = 'sfGreen';
+    const BLUE          = 'sfBlue';
+    const YELLOW        = 'sfYellow';
+    const MAGENTA       = 'sfMagenta';
+    const CYAN          = 'sfCyan';
+    const TRANSPARENT   = 'sfTransparent';
 
     const DYNAMIC   = 'Couleur Dynamique';
 
