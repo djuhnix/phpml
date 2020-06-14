@@ -56,22 +56,28 @@ typedef struct
     //const sfShader*  shader;    ///< Shader
 } sfRenderStates;
 
-typedef struct {
+typedef struct
+{
     int placebo_sfTexture;
 } sfTexture;
 
 typedef struct
 {
-    int placebo_sfShape;
+    const sfTexture*    Texture;
+} sfSprite;
+
+typedef struct
+{
+    const sfTexture*    Texture;
 } sfShape;
 
-typedef struct {
-    int placebo_sfCircleShape;
+typedef struct
+{
     const sfTexture*    Texture;
 } sfCircleShape;
 
-typedef struct {
-    int placebo_sfRectangleShape;
+typedef struct
+{
     const sfTexture*    Texture;
 } sfRectangleShape;
 
