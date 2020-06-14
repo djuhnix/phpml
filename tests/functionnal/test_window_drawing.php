@@ -16,13 +16,13 @@ $red = new Color(Color::RED);
 $blue = new Color(Color::BLUE);
 $text = new Text("Hello", $red);
 $text->setFillColor($blue);
-$text->setPosition([50, 50]);
+$text->setPosition([150, 50]);
 $text->setCharacterSize(50);
 $window->run(
     new Event(),
     null,
     function () use ($text, $blue, $red, $window) {
-        /*
+
         $window->draw(
             new RectangleShape(
                 [400, 200],
@@ -38,7 +38,7 @@ $window->run(
                 $red
             )
         );
-        */
+
 
         $window->draw(
             $text
