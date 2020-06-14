@@ -6,6 +6,7 @@ use FFI;
 use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\CSFMLType;
 use PHPML\Enum\EventType;
+use PHPML\Event\KeyEvent;
 use PHPML\Event\MouseButtonEvent;
 use PHPML\Event\TriggerEvent;
 use PHPML\Exception\CDataException;
@@ -15,6 +16,9 @@ class Event
 {
     use MyCData;
 
+    private ?TriggerEvent $actualEvent;
+    private EventType $type;
+
     /**
      * Accesseur au type de l'événement contenu dans la donnée C.
      *
@@ -22,11 +26,8 @@ class Event
      */
     public function getType(): EventType
     {
-        if (!$this->isCDataLoad()) {
-            throw new CDataException("La donnée C de l'événement n'est pas chargé pour pouvoir avoir le type d'événement.");
-        }
-
-        return  new EventType($this->cdata->type);
+        $this->updateFromCData();
+        return $this->type;
     }
 
     /**
@@ -35,19 +36,8 @@ class Event
      */
     public function getActualEvent(): ?TriggerEvent
     {
-        if (!$this->isCDataLoad()) {
-            throw new CDataException("La donnée C de l'événement n'est pas chargé pour pouvoir obtenir l'événement actuelle.");
-        }
-
-        switch ($this->getType()->getValue()) {
-            case EventType::MOUSE_BUTTON_PRESSED:
-                $actualEvent = new MouseButtonEvent($this);
-                break;
-            default:
-                $actualEvent = null; // événement non pris en charge
-        }
-
-        return $actualEvent;
+        $this->updateFromCData();
+        return $this->actualEvent;
     }
 
     /**
@@ -62,5 +52,26 @@ class Event
             Lib::getGraphicsLib()->type(CSFMLType::EVENT)
         );
         return $this->cdata;
+    }
+
+    protected function updateFromCData(): void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("La donnée C de l'événement n'est pas chargé pour pouvoir obtenir l'événement actuelle.");
+        }
+
+        $this->type = new EventType($this->cdata->type);
+
+        switch ($this->type->getValue()) {
+            case EventType::KEY_PRESSED:
+            case EventType::KEY_RELEASED:
+                $this->actualEvent = new KeyEvent($this);
+                break;
+            case EventType::MOUSE_BUTTON_PRESSED:
+                $this->actualEvent = new MouseButtonEvent($this);
+                break;
+            default:
+                $this->actualEvent = null; // événement non pris en charge
+        }
     }
 }

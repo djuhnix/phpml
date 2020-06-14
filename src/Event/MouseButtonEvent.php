@@ -3,12 +3,10 @@
 namespace PHPML\Event;
 
 use FFI\CData;
+use PHPML\Component\Vector;
 use PHPML\Enum\CSFMLType;
-use PHPML\Enum\EventType;
 use PHPML\Enum\MouseButton;
 use PHPML\Exception\CDataException;
-use PHPML\Graphics\Event;
-use PHPML\Library\GraphicsLibLoader as Lib;
 
 /**
  * Class MouseButtonEvent
@@ -18,72 +16,57 @@ use PHPML\Library\GraphicsLibLoader as Lib;
  */
 class MouseButtonEvent extends TriggerEvent
 {
-    /**
-     * MouseButtonEvent constructor.
-     *
-     * @param Event $event
-     */
-    public function __construct(Event $event)
-    {
-        parent::__construct($event);
-        $this->cdata = $this->toCData();
-    }
+    private Vector $position;
+    private MouseButton $mouseButton;
 
     /**
      * @return MouseButton|null
      */
     public function getMouseButton(): ?MouseButton
     {
-        if (!$this->isCDataLoad()) {
-            throw new CDataException("La donnée C de l'événement n'est pas chargé pour avoir accès à l'attribut MouseButton de MouseButtonEvent");
-        }
-        return new MouseButton($this->cdata->button);
+        $this->updateFromCData();
+        return $this->mouseButton;
     }
 
     /**
-     * @return float|null
+     * Accesseur à la position de la souris.
+     *
+     * @return array
      */
-    public function getXCoord(): ?float
+    public function getPosition(): array
     {
-        if (!$this->isCDataLoad()) {
-            throw new CDataException("La donnée C de l'événement n'est pas chargé pour avoir accès à l'attribut X de MouseButtonEvent");
-        }
-        return $this->cdata->x;
-    }
-
-    /**
-     * @return float|null
-     */
-    public function getYCoord(): ?float
-    {
-        if (!$this->isCDataLoad()) {
-            throw new CDataException("La donnée C de l'événement n'est pas chargé pour avoir accès à l'attribut Y de MouseButtonEvent");
-        }
-        return $this->cdata->y;
-    }
-
-    /**
-     * @inheritDoc
-     * @param Event $event l'événement associé
-     */
-    public function toCData(): CData
-    {
-        if (!$this->event->isCDataLoad()) {
-            throw new CDataException("La donnée C de l'événement n'est pas chargé pour avoir accès à la donnée C de MouseButton");
-        }
-        $this->cdata ??= Lib::getGraphicsLib()->new(
-            Lib::getGraphicsLib()->type(CSFMLType::MOUSE_BUTTON_EVENT)
-        );
-        $this->cdata = $this->event->getCData()->{$this->getTypeName()};
-        return $this->cdata;
+        $this->updateFromCData();
+        return $this->position->getArray();
     }
 
     /**
      * Retourne le nom de la variable du type d'événément en C.
      */
-    protected function getTypeName() : string
+    protected function getEventTypeVarName() : string
     {
         return 'mouseButton';
     }
 
+    protected function updateFromCData(): void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("La donnée C de MouseButton doit être chargé pour mettre à jour et pouvoir accéder aux donnée de la classe MouseButton.");
+        }
+        $this->mouseButton = new MouseButton($this->cdata->button);
+        $this->position->set(0, $this->cdata->x);
+        $this->position->set(1, $this->cdata->y);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function toCData(): CData
+    {
+        parent::toCData();
+        $this->position = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2I),
+            [$this->cdata->x, $this->cdata->y]
+        );
+        return $this->cdata;
+    }
 }

@@ -5,7 +5,9 @@ namespace PHPML\Graphics;
 use FFI\CData;
 use PHPML\AbstractFFI\MyCData;
 use PHPML\Enum\CSFMLType;
-use PHPML\Library\GraphicsLibLoader as Lib;
+use PHPML\Exception\CDataException;
+use PHPML\Library\GraphicsLibLoader as GraphicsLib;
+use PHPML\Library\WindowLibLoader as WindowLib;
 
 class VideoMode
 {
@@ -20,7 +22,7 @@ class VideoMode
      * @param int $width
      * @param int $height
      */
-    public function __construct(int $width, int $height)
+    public function __construct(int $width = 0, int $height = 0)
     {
         $this->width = $width;
         $this->height = $height;
@@ -33,6 +35,7 @@ class VideoMode
      */
     public function getWidth(): int
     {
+        $this->updateFromCData();
         return $this->width;
     }
 
@@ -45,6 +48,9 @@ class VideoMode
      */
     public function setWidth(int $width): void
     {
+        if ($this->isCDataLoad()) {
+            $this->cdata->width = $width;
+        }
         $this->width = $width;
     }
 
@@ -55,6 +61,7 @@ class VideoMode
      */
     public function getHeight(): int
     {
+        $this->updateFromCData();
         return $this->height;
     }
 
@@ -67,6 +74,9 @@ class VideoMode
      */
     public function setHeight(int $height): void
     {
+        if ($this->isCDataLoad()) {
+            $this->cdata->height = $height;
+        }
         $this->height = $height;
     }
 
@@ -75,13 +85,25 @@ class VideoMode
      */
     public function toCData() : CData
     {
-        $this->cdata ??= Lib::getGraphicsLib()->new(
-            Lib::getGraphicsLib()->type(CSFMLType::VIDEO_MODE)
+        $this->cdata ??= GraphicsLib::getGraphicsLib()->new(
+            GraphicsLib::getGraphicsLib()->type(CSFMLType::VIDEO_MODE)
         );
-        $this->cdata->width = $this->width;
-        $this->cdata->height = $this->height;
-        $this->cdata->bitsPerPixel = 32;
+
+        if ($this->width == 0 && $this->height == 0) {
+            $this->cdata = WindowLib::getWindowLib()->sfVideoMode_getDesktopMode();
+        } else {
+            $this->cdata->width = $this->width;
+            $this->cdata->height = $this->height;
+            $this->cdata->bitsPerPixel = 32;
+        }
 
         return $this->cdata;
+    }
+
+    protected function updateFromCData(): void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("Les données C de VideoMode doivent être chargées pour mettre à jour les donnée de la classe.");
+        }
     }
 }

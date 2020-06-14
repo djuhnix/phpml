@@ -1,84 +1,50 @@
 <?php
 
+
 namespace PHPML\Graphics;
 
 use FFI\CData;
 use InvalidArgumentException;
-use PHPML\AbstractFFI;
+use PHPML\AbstractFFI\MyCData;
+use PHPML\Component\Vector;
 use PHPML\Enum\Color;
 use PHPML\Enum\CSFMLType;
-use PHPML\Enum\EventType;
 use PHPML\Enum\WindowStyle;
 use PHPML\Exception\CDataException;
 use PHPML\Exception\RenderWindowException;
+use PHPML\Graphics\Drawable\AbstractDrawable;
 use PHPML\Library\GraphicsLibLoader as Lib;
-use PHPML\Graphics\Shape\Shape;
 
+/**
+ * Class Window
+ * Contient les fonctions nécessaire pour la gestion d'une fenêtre
+ * @package PHPML\Graphics
+ */
 class Window
 {
-    use AbstractFFI\MyCData;
+    use MyCData;
 
+    /** @var WindowStyle[] $options */
+    private array $options;
     private string $title;
     private Color $backgroundColor;
     private VideoMode $mode;
-    /** @var WindowStyle[] $options */
-    private array $options;
+    private Vector $position;
 
-    /**
-     * Window constructor.
-     *
-     * @param VideoMode $size
-     * @param string $title
-     * @param array|null $options
-     */
-    public function __construct(VideoMode $size, string $title = "PHPML Basic Window", array $options = null)
-    {
+    public function __construct(
+        VideoMode $mode,
+        string $title,
+        array $options = null,
+        Color $backgroundColor = null
+    ) {
         if (is_array($options) && !$this->isCorrectOptions($options)) {
             throw new InvalidArgumentException('Les options données ne sont pas correctes');
         }
-
-        $this->ctype = Lib::getGraphicsLib()->type(CSFMLType::RENDER_WINDOW);
-        $this->mode = $size;
+        $this->mode = $mode;
         $this->title = $title;
         $this->options ??= [new WindowStyle(WindowStyle::DEFAULT)];
-        $this->backgroundColor = new Color(Color::WHITE);
-    }
-
-    public function __destruct()
-    {
-        // TODO: Implement __destruct() method.
-        //$eventCData = $this->event->toCData();
-        //Lib::getGraphicsLib()->free($eventCData);
-        if ($this->isCDataLoad()) {
-            Lib::getGraphicsLib()->sfRenderWindow_destroy($this->cdata);
-        }
-    }
-
-    /**
-     * Lance la boucle principale de la fenêtre et l'ouvre dans le même temps.
-     *
-     * @param Event $event l'instance d'événement
-     * @param callable $eventProcessing fonction de gestion d'événement
-     * @param callable $drawing fonction de dessins
-     */
-    public function run(Event $event, callable $eventProcessing = null, callable $drawing = null)
-    {
-        $this->cdata ??= $this->toCData();
-
-        //Début de la boucle
-        while ($this->isOpen()) {
-            // Gestion des événements
-            $this->handleEvent($event, $eventProcessing);
-
-            // Nettoyage de l'écran de la fenêtre et affichage
-            $this->clear($this->backgroundColor);
-
-            // lancement des dessins s'il y en a
-            if ($drawing != null) {
-                $drawing();
-            }
-            $this->display();
-        }
+        $this->backgroundColor = $backgroundColor ?? new Color(Color::WHITE);
+        $this->toCData();
     }
 
     /**
@@ -137,6 +103,37 @@ class Window
     }
 
     /**
+     * Accesseur à la position de la fenêtre;
+     *
+     * @return array
+     */
+    public function getPosition(): array
+    {
+        if ($this->isCDataLoad()) {
+            $this->updateFromCData();
+        }
+        return $this->position->getArray();
+    }
+
+    /**
+     * Modification de la position actuelle de la fenêtre
+     *
+     * @param array $position un couple de coordonnées
+     */
+    public function setPosition(array $position): void
+    {
+        $position = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2I),
+            $position
+        );
+        Lib::getGraphicsLib()->sfRenderWindow_setPosition(
+            $this->cdata,
+            $position->toCData()
+        );
+        $this->position = $position;
+    }
+
+    /**
      * @return array|null
      */
     public function getOptions(): ?array
@@ -165,30 +162,9 @@ class Window
     {
         $result = 0;
         foreach ($this->options as $option) {
-            $result = $result | Lib::getGraphicsLib()->{$option->getValue()};
+            $result = $result | WindowStyle::toCDataValue($option->getValue());
         }
         return $result;
-    }
-
-    /**
-     * Gestion des événements
-     *
-     * @param Event $event
-     * @param callable $eventProcessing un fonction qui gère les événement dans des blocs conditionnels
-     */
-    public function handleEvent(Event $event, callable $eventProcessing = null) : void
-    {
-        while ($this->pollEvent($event->toCData())) {
-            // Ferme la fenêtre si l'événement 'close' est enregistrer
-            if ($event->getType()->getValue() == EventType::CLOSED) {
-                $this->close();
-            }
-
-            //Appelle la fonction de gestion d'événement
-            if ($eventProcessing != null) {
-                $eventProcessing();
-            }
-        }
     }
 
     /**
@@ -196,19 +172,48 @@ class Window
      */
     public function toCData() : CData
     {
-        if (!$this->isCDataLoad()) {
-            $this->cdata = Lib::getGraphicsLib()->sfRenderWindow_create(
-                $this->mode->toCData(),
-                $this->title,
-                $this->convertOptions(),
-                null // ContextSettings normalement, mais pas pris encore charge
-            );
-            if (\FFI::isNull($this->cdata)) {
-                throw new RenderWindowException();
-            }
+        $this->cdata ??= Lib::getGraphicsLib()->new(
+            Lib::getGraphicsLib()->type(CSFMLType::RENDER_WINDOW)
+        );
+        $this->cdata = Lib::getGraphicsLib()->sfRenderWindow_create(
+            $this->mode->toCData(),
+            $this->title,
+            $this->convertOptions(),
+            null // ContextSettings normalement, mais pas encore pris en charge
+        );
+        if (\FFI::isNull($this->cdata)) {
+            throw new RenderWindowException();
         }
 
         return $this->cdata;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function updateFromCData(): void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("Les données C de Window doivent être chargées pour mettre à jour les données de la classe.");
+        }
+        $positionCData = Lib::getGraphicsLib()->sfRenderWindow_getPosition($this->cdata);
+        $this->position->set(0, $positionCData->x);
+        $this->position->set(1, $positionCData->y);
+    }
+
+    /**
+     * Dessine un objet sur une fenêtre
+     * L'objet n'est pas attaché à la fenêtre et ne pourra pas être modifier plus tard,
+     * de plus toute modification apportée à l'objet plus tard ne seront pas appliqué à l'objet dessiné
+     *
+     * @param AbstractDrawable $drawable
+     */
+    public function draw(AbstractDrawable $drawable) : void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new CDataException("La donnée C de la de la fenêtre doit être prête(chargé) pour pourvoir y dessiner.");
+        }
+        $drawable->draw($this);
     }
 
     /*------------------
@@ -223,7 +228,72 @@ class Window
      */
     public function isOpen() : bool
     {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir vérifier si elle est ouverte.");
+        }
         return Lib::getGraphicsLib()->sfRenderWindow_isOpen($this->cdata);
+    }
+
+    /**
+     * Vérifie si la fenêtre a le focus.
+     *
+     * @return bool
+     */
+    public function hasFocus() : bool
+    {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir vérifier si elle a le focus.");
+        }
+        return Lib::getGraphicsLib()->sfRenderWindow_hasFocus($this->cdata);
+    }
+
+    /**
+     * Active ou désactive la fenêtre actuelle comme la fenêtre de dessin par défaut
+     *
+     * @param bool $active true pour activer, false pour désactiver
+     * @return bool si l'opération a été successive
+     */
+    public function setActive(bool $active) : bool
+    {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir vérifier si elle a le focus.");
+        }
+        return Lib::getGraphicsLib()->sfRenderWindow_setActive($this->cdata, $active);
+    }
+
+    /**
+     * Requiert le focus,
+     * Cette fonction demande à ce que la fenêtre actuelle passe au premier plan
+     * pour pouvoir recevoir les entrées (souris, clavier etc).
+     *
+     * @return void
+     */
+    public function requestFocus() : void
+    {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir demander le focus.");
+        }
+        Lib::getGraphicsLib()->sfRenderWindow_requestFocus($this->cdata);
+    }
+
+    /**
+     * Convertit les coordonnées d'un point en pixel en des coordonnées du monde 2D
+     *
+     * @param array $point les  coordonnées d'un point à convertir
+     * @return array un couple des coordonnées converties
+     */
+    public function mapPixelToCoords(array $point): array
+    {
+        $pointVector = new Vector(
+            new CSFMLType(CSFMLType::VECTOR_2I),
+            $point
+        );
+        $convertedPoint = Lib::getGraphicsLib()->sfRenderWindow_mapPixelToCoords(
+            $this->cdata,
+            $pointVector->getCData(),
+            null
+        );
+        return [$convertedPoint->x, $convertedPoint->y];
     }
 
     /**
@@ -234,6 +304,9 @@ class Window
      */
     public function pollEvent(CData $eventPointer) : bool
     {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir inspecter la file d'événements.");
+        }
         return Lib::getGraphicsLib()->sfRenderWindow_pollEvent($this->cdata, \FFI::addr($eventPointer));
     }
 
@@ -243,16 +316,22 @@ class Window
      */
     public function close() : void
     {
+        if (!$this->isOpen()) {
+            throw new RenderWindowException("Impossible de fermer la fenêtre si elle n'est pas ouverte.");
+        }
         Lib::getGraphicsLib()->sfRenderWindow_close($this->cdata);
     }
 
     /**
-     * Néttoie / Vide l'écran avec la couleur passée en paramètre
+     * Nettoie / Vide l'écran avec la couleur passée en paramètre
      *
      * @param Color $color
      */
     public function clear(Color $color) : void
     {
+        if (!$this->isCDataLoad()) {
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir nettoyer la scène.");
+        }
         Lib::getGraphicsLib()->sfRenderWindow_clear($this->cdata, $color->getCDataColor());
     }
 
@@ -263,18 +342,9 @@ class Window
      */
     public function display() : void
     {
-        Lib::getGraphicsLib()->sfRenderWindow_display($this->cdata);
-    }
-
-
-    /**
-     * @param Shape $shape
-     */
-    public function draw(Shape $shape) : void
-    {
         if (!$this->isCDataLoad()) {
-            throw new CDataException("La donnée C de la de la fenêtre doit être prête(chargé) pour pourvoir y dessiner.");
+            throw new InvalidArgumentException("Les données C de la classe Window doit être chargé pour pouvoir afficher les changements.");
         }
-        $shape->draw($this);
+        Lib::getGraphicsLib()->sfRenderWindow_display($this->cdata);
     }
 }

@@ -20,6 +20,7 @@
         "psr-4": {
             "PHPML\\": "src",
             "PHPML\\AbstractFFI\\": "src/AbstractFFI",
+            "PHPML\\Component\\": "src/Component",
             "PHPML\\Exception\\": "src/Exception",
             "PHPML\\Enum\\": "src/Enum",
             "PHPML\\Event\\": "src/Event",

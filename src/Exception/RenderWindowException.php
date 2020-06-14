@@ -9,7 +9,7 @@ class RenderWindowException extends \FFI\Exception
 {
     public function __construct($message = "", $code = 0, Throwable $previous = null)
     {
-        $message = "Erreur de lancement de la fenêtre : \n\t" . $message;
+        $message = "Erreur relative à la fenêtre : \n\t" . $message;
         parent::__construct($message, $code, $previous);
     }
 }

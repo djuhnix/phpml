@@ -5,6 +5,7 @@ namespace PHPML\AbstractFFI;
 
 use FFI;
 use FFI\CData;
+use PHPML\Exception\CDataException;
 
 trait MyCData
 {
@@ -33,10 +34,21 @@ trait MyCData
      *
      * @return CData|null
      */
-    public function getCData(): ?CData
+    public function &getCData(): ?CData
     {
+        if (!$this->isCDataLoad()) {
+            $className = static::class;
+            throw new CDataException("Les données C de {$className} doivent être chargées avant de pouvoir y accéder.");
+        }
         return $this->cdata;
     }
+
+    /**
+     * Met à jour les attributs d'instance de la classe avec les données C chargées.
+     *
+     * @throws CDataException si la donnée C n'a pas été chargée
+     */
+    abstract protected function updateFromCData() : void;
 
     /**
      * Convertie l'instance actuelle en donnée C utilisable avec la bibliothèque.
