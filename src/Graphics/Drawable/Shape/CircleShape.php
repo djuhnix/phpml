@@ -57,7 +57,7 @@ class CircleShape extends Shape
      */
     public function toCData(): CData
     {
-        $this->cdata = parent::toCData();
+        $this->cdata ??= parent::toCData();
         $this->setRadius($this->radius);
 
         return $this->cdata;

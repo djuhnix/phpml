@@ -5,12 +5,13 @@ namespace PHPML\Graphics\Drawable\Text;
 
 use FFI\CData;
 use PHPML\AbstractFFI\MyCData;
+use PHPML\Enum\CSFMLType;
 use PHPML\Exception\CDataException;
 use PHPML\Library\GraphicsLibLoader as Lib;
 class Font
 {
     use MyCData;
-    const DEFAULT_FONT = __DIR__ . '/../../../../assets/fonts/roboto/Roboto-Black.ttf';
+    const DEFAULT_FONT = __DIR__ . '/font/Roboto-Black.ttf';
 
     private string $fontPath;
 
@@ -49,6 +50,9 @@ class Font
 
     public function toCData(): CData
     {
+        $this->cdata ??= Lib::getGraphicsLib()->new(
+            Lib::getGraphicsLib()->type(CSFMLType::FONT)
+        );
         $this->loadFromFile($this->fontPath);
         return $this->cdata;
     }

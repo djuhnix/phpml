@@ -219,7 +219,7 @@ class Text extends Drawable
 
     public function toCData(): CData
     {
-        // TODO: Implement toCData() method.
+        $this->cdata ??= parent::toCData();
         $this->setFont($this->font);
         $this->setTextString($this->textString);
         $this->setTextColor($this->textColor);
@@ -227,6 +227,6 @@ class Text extends Drawable
             $this->setCharacterSize($this->characterSize);
         }
 
-        return parent::toCData();
+        return $this->cdata;
     }
 }

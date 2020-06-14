@@ -79,7 +79,7 @@ class RectangleShape extends Shape
      */
     public function toCData(): CData
     {
-        $this->cdata = parent::toCData();
+        $this->cdata ??= parent::toCData();
         $this->setSize($this->size->getArray());
 
         return $this->cdata;

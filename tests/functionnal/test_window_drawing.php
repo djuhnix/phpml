@@ -14,10 +14,15 @@ $window = new ExtendedWindow(
 );
 $red = new Color(Color::RED);
 $blue = new Color(Color::BLUE);
+$text = new Text("Hello", $red);
+$text->setFillColor($blue);
+$text->setPosition([50, 50]);
+$text->setCharacterSize(50);
 $window->run(
     new Event(),
     null,
-    function () use ($blue, $red, $window) {
+    function () use ($text, $blue, $red, $window) {
+        /*
         $window->draw(
             new RectangleShape(
                 [400, 200],
@@ -25,6 +30,7 @@ $window->run(
                 $blue
             )
         );
+
         $window->draw(
             new CircleShape(
                 50,
@@ -32,10 +38,8 @@ $window->run(
                 $red
             )
         );
-        $text = new Text("Hello", $red);
-        $text->setFillColor($blue);
-        $text->setPosition([50, 50]);
-        $text->setCharacterSize(50);
+        */
+
         $window->draw(
             $text
         );
