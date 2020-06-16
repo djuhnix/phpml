@@ -1,0 +1,3430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project title="PHPML - PHP Media Library" version="2.9.1">
+  <partials/>
+  <file path="Event/MouseButtonEvent.php" generated-path="Event.MouseButtonEvent.html" hash="d9638ef73a97269d730a9f610f7f3127" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Event/KeyEvent.php" generated-path="Event.KeyEvent.html" hash="86952c4d5d62a150a83cfb2199bdf92d" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Event/TriggerEvent.php" generated-path="Event.TriggerEvent.html" hash="53d41acfdeeca9ce40a278fc9a9d95a6" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="AbstractFFI/MyCData.php" generated-path="AbstractFFI.MyCData.html" hash="710ab2ae07cff50ee775ab1ca9e2b90b" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="AbstractFFI/AbstractFFI.php" generated-path="AbstractFFI.AbstractFFI.html" hash="cd9fb8531d388305a91fc04c6fc21dc5" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Window.php" generated-path="Graphics.Window.html" hash="4d41f5146248e2f8fb6b9d01e5d2cac9" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/ExtendedWindow.php" generated-path="Graphics.ExtendedWindow.html" hash="bd7650f3cb5a8ca28f5837684cac3ded" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Event.php" generated-path="Graphics.Event.html" hash="cdc1f23b155c0edafb28e29495e0df3a" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Input/Mouse.php" generated-path="Graphics.Input.Mouse.html" hash="bf0465049d4f5b3f98ed53f8b037ec30" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="MouseButton">\PHPML\Enum\MouseButton</namespace-alias>
+    <namespace-alias name="Window">\PHPML\Graphics\Window</namespace-alias>
+    <namespace-alias name="GraphicsLibLoader">\PHPML\Library\GraphicsLibLoader</namespace-alias>
+    <namespace-alias name="Lib">\PHPML\Library\WindowLibLoader</namespace-alias>
+    <class final="false" abstract="false" namespace="PHPML\Graphics\Input" line="11" package="Default">
+      <extends/>
+      <name>Mouse</name>
+      <full_name>\PHPML\Graphics\Input\Mouse</full_name>
+      <docblock line="11">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Graphics\Input" line="19" package="Default">
+        <name>isButtonPressed</name>
+        <full_name>\PHPML\Graphics\Input\Mouse::isButtonPressed()</full_name>
+        <docblock line="19">
+          <description>Vérifie si un bouton de la souris est cliqué</description>
+          <long-description></long-description>
+          <tag name="param" line="19" description="&lt;p&gt;le bouton à vérifier&lt;/p&gt;" type="\PHPML\Enum\MouseButton" variable="$button">
+            <type>\PHPML\Enum\MouseButton</type>
+          </tag>
+          <tag name="return" line="19" description="si le bouton est cliqué ou pas." type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$button</name>
+          <default></default>
+          <type>\PHPML\Enum\MouseButton</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Graphics\Input" line="31" package="Default">
+        <name>getPosition</name>
+        <full_name>\PHPML\Graphics\Input\Mouse::getPosition()</full_name>
+        <docblock line="31">
+          <description>Donne la position actuelle de la souris, relative à une fenêtre
+ou à l'écran d'ordinateur si le paramètre est laissé null.</description>
+          <long-description></long-description>
+          <tag name="param" line="31" description="" type="\PHPML\Graphics\Window" variable="$window">
+            <type>\PHPML\Graphics\Window</type>
+          </tag>
+          <tag name="return" line="31" description="couple contenant les coordonnées [x, y] de la souris" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$window</name>
+          <default>null</default>
+          <type>\PHPML\Graphics\Window</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="11" code="PPC:ERR-50005">No summary for class \PHPML\Graphics\Input\Mouse</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Input/Keyboard.php" generated-path="Graphics.Input.Keyboard.html" hash="8f5fe25c9c580d95e4607950925636e8" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="KeyCode">\PHPML\Enum\KeyCode</namespace-alias>
+    <namespace-alias name="Lib">\PHPML\Library\WindowLibLoader</namespace-alias>
+    <class final="false" abstract="false" namespace="PHPML\Graphics\Input" line="9" package="Default">
+      <extends/>
+      <name>Keyboard</name>
+      <full_name>\PHPML\Graphics\Input\Keyboard</full_name>
+      <docblock line="9">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Graphics\Input" line="15" package="Default">
+        <name>isKeyPressed</name>
+        <full_name>\PHPML\Graphics\Input\Keyboard::isKeyPressed()</full_name>
+        <docblock line="15">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" line="15" description="" type="\PHPML\Enum\KeyCode" variable="$code">
+            <type>\PHPML\Enum\KeyCode</type>
+          </tag>
+          <tag name="return" line="15" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$code</name>
+          <default></default>
+          <type>\PHPML\Enum\KeyCode</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \PHPML\Graphics\Input\Keyboard</error>
+      <error line="15" code="PPC:ERR-50008">No summary for method isKeyPressed()</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/DrawingList.php" generated-path="Graphics.DrawingList.html" hash="8777452343a3612c4891d4f73be963b9" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/VideoMode.php" generated-path="Graphics.VideoMode.html" hash="37982b939d4fe48d32d315fbf75b2dcc" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Drawable/Sprite/Sprite.php" generated-path="Graphics.Drawable.Sprite.Sprite.html" hash="79ce698f2ca143b6b1d155b1f93f838d" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Drawable/Text/Font.php" generated-path="Graphics.Drawable.Text.Font.html" hash="42720f650f5bcb6ef765690fc26f8015" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Drawable/Text/Text.php" generated-path="Graphics.Drawable.Text.Text.html" hash="cb3533a712d135ac5c9507297a618527" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Drawable/AbstractDrawable.php" generated-path="Graphics.Drawable.AbstractDrawable.html" hash="589334c2eaac7a2b9667f73c8dfdcada" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Drawable/Shape/ConvexShape.php" generated-path="Graphics.Drawable.Shape.ConvexShape.html" hash="656b1662bf000777aeb53b733069be96" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Drawable/Shape/CircleShape.php" generated-path="Graphics.Drawable.Shape.CircleShape.html" hash="08a90cc95dc9295479da63559b01808e" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Drawable/Shape/RectangleShape.php" generated-path="Graphics.Drawable.Shape.RectangleShape.html" hash="78f424441d48908096c7fae3a4ff4727" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Drawable/Shape/Shape.php" generated-path="Graphics.Drawable.Shape.Shape.html" hash="d2f0ea4f1fd781ce9030f95d60a181af" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="CData">\FFI\CData</namespace-alias>
+    <namespace-alias name="Vector">\PHPML\Component\Vector</namespace-alias>
+    <namespace-alias name="Color">\PHPML\Enum\Color</namespace-alias>
+    <namespace-alias name="MyCData">\PHPML\AbstractFFI\MyCData</namespace-alias>
+    <namespace-alias name="CSFMLType">\PHPML\Enum\CSFMLType</namespace-alias>
+    <namespace-alias name="CDataException">\PHPML\Exception\CDataException</namespace-alias>
+    <namespace-alias name="AbstractDrawable">\PHPML\Graphics\Drawable\AbstractDrawable</namespace-alias>
+    <namespace-alias name="Texture">\PHPML\Graphics\Texture</namespace-alias>
+    <namespace-alias name="ExtendedWindow">\PHPML\Graphics\ExtendedWindow</namespace-alias>
+    <namespace-alias name="Lib">\PHPML\Library\GraphicsLibLoader</namespace-alias>
+    <class final="false" abstract="true" namespace="PHPML\Graphics\Drawable\Shape" line="24" package="PHPML\Graphics\Drawable\Shape">
+      <extends>\PHPML\Graphics\Drawable\AbstractDrawable</extends>
+      <name>Shape</name>
+      <full_name>\PHPML\Graphics\Drawable\Shape\Shape</full_name>
+      <docblock line="24">
+        <description>Class Shape
+Classe de base pour la création de forme personnalisée</description>
+        <long-description></long-description>
+        <tag name="todo" line="24" description="cette classe est en cours d'écriture et ne peut pas encore être utilisé"/>
+        <tag name="package" line="24" description="PHPML\Graphics\Drawable\Shape"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPML\Graphics\Drawable\Shape" line="26" package="PHPML\Graphics\Drawable\Shape">
+        <name>__construct</name>
+        <full_name>\PHPML\Graphics\Drawable\Shape\Shape::__construct()</full_name>
+        <docblock line="26">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$getPointCount</name>
+          <default></default>
+          <type>callable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$getPoint</name>
+          <default></default>
+          <type>callable</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$position</name>
+          <default>array(0, 0)</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$fillColor</name>
+          <default>null</default>
+          <type>\PHPML\Enum\Color</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$texture</name>
+          <default>null</default>
+          <type>\PHPML\Graphics\Texture</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPML\Graphics\Drawable\Shape" line="38" package="PHPML\Graphics\Drawable\Shape">
+        <name>toCData</name>
+        <full_name>\PHPML\Graphics\Drawable\Shape\Shape::toCData()</full_name>
+        <docblock line="38">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPML\Graphics\Drawable\Shape" line="48" package="PHPML\Graphics\Drawable\Shape">
+        <name>update</name>
+        <full_name>\PHPML\Graphics\Drawable\Shape\Shape::update()</full_name>
+        <docblock line="48">
+          <description>Recalcule la géométrie interne de la forme
+Cette méthode doit être appelé par les classes filles
+à chaque fois qu'un point de la forme a été modifier</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="true" abstract="false" static="false" visibility="protected" namespace="PHPML\Graphics\Drawable\Shape" line="53" package="PHPML\Graphics\Drawable\Shape">
+        <name>getTypeName</name>
+        <full_name>\PHPML\Graphics\Drawable\Shape\Shape::getTypeName()</full_name>
+        <docblock line="53">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="PHPML\Graphics\Drawable\Shape" line="63" package="PHPML\Graphics\Drawable\Shape">
+        <name>getPointCount</name>
+        <full_name>\PHPML\Graphics\Drawable\Shape\Shape::getPointCount()</full_name>
+        <docblock line="63">
+          <description>Renvoie le nombre de points de la forme</description>
+          <long-description></long-description>
+          <tag name="return" line="63" description="" type="integer">
+            <type>integer</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="PHPML\Graphics\Drawable\Shape" line="69" package="PHPML\Graphics\Drawable\Shape">
+        <name>getPoint</name>
+        <full_name>\PHPML\Graphics\Drawable\Shape\Shape::getPoint()</full_name>
+        <docblock line="69">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" line="69" description="" type="integer" variable="$index">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="69" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$index</name>
+          <default></default>
+          <type>integer</type>
+        </argument>
+      </method>
+    </class>
+    <markers>
+      <todo line="40">Change the autogenerated stub</todo>
+      <todo line="24">cette classe est en cours d'écriture et ne peut pas encore être utilisé</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="26" code="PPC:ERR-50015">Argument $getPointCount is missing from the Docblock of __construct</error>
+      <error line="26" code="PPC:ERR-50015">Argument $getPoint is missing from the Docblock of __construct</error>
+      <error line="26" code="PPC:ERR-50015">Argument $position is missing from the Docblock of __construct</error>
+      <error line="26" code="PPC:ERR-50015">Argument $fillColor is missing from the Docblock of __construct</error>
+      <error line="26" code="PPC:ERR-50015">Argument $texture is missing from the Docblock of __construct</error>
+      <error line="26" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="38" code="PPC:ERR-50008">No summary for method toCData()</error>
+      <error line="53" code="PPC:ERR-50008">No summary for method getTypeName()</error>
+      <error line="69" code="PPC:ERR-50008">No summary for method getPoint()</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Drawable/TransformableOnly.php" generated-path="Graphics.Drawable.TransformableOnly.html" hash="8361ea82abfdf1379627e77398f859d8" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Size.php" generated-path="Graphics.Size.html" hash="6646df9f57928d051f9addd61b121534" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Graphics/Texture.php" generated-path="Graphics.Texture.html" hash="279abb44891d7c647e9ce46ad9004f76" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Library/LibLoader.php" generated-path="Library.LibLoader.html" hash="d67e7c0bce0695d8b7b5ea9453af1afe" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Library/WindowLibLoader.php" generated-path="Library.WindowLibLoader.html" hash="459a9e601b31b2f5d43175945bae251f" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Library/GraphicsLibLoader.php" generated-path="Library.GraphicsLibLoader.html" hash="9187c3d407c8e27b720c18b10b0b4b0d" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Component/RectArea.php" generated-path="Component.RectArea.html" hash="9487824c9aa93cda82ae8d5d1ae037dd" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Component/Vector.php" generated-path="Component.Vector.html" hash="a1464ba78ae1857dbc7c0e0e2bf335c9" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Exception/FFILoadingException.php" generated-path="Exception.FFILoadingException.html" hash="b84826ebea184662fb012327909f5a1c" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Throwable">\Throwable</namespace-alias>
+    <class final="false" abstract="false" namespace="PHPML\Exception" line="8" package="Default">
+      <extends>\FFI\Exception</extends>
+      <name>FFILoadingException</name>
+      <full_name>\PHPML\Exception\FFILoadingException</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPML\Exception" line="10" package="Default">
+        <name>__construct</name>
+        <full_name>\PHPML\Exception\FFILoadingException::__construct()</full_name>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default>""</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$code</name>
+          <default>0</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$previous</name>
+          <default>null</default>
+          <type>\Throwable</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \PHPML\Exception\FFILoadingException</error>
+      <error line="10" code="PPC:ERR-50015">Argument $message is missing from the Docblock of __construct</error>
+      <error line="10" code="PPC:ERR-50015">Argument $code is missing from the Docblock of __construct</error>
+      <error line="10" code="PPC:ERR-50015">Argument $previous is missing from the Docblock of __construct</error>
+      <error line="10" code="PPC:ERR-50008">No summary for method __construct()</error>
+    </parse_markers>
+  </file>
+  <file path="Exception/RenderWindowException.php" generated-path="Exception.RenderWindowException.html" hash="602b954be41d7a9689a8333aae61505c" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Throwable">\Throwable</namespace-alias>
+    <class final="false" abstract="false" namespace="PHPML\Exception" line="8" package="Default">
+      <extends>\FFI\Exception</extends>
+      <name>RenderWindowException</name>
+      <full_name>\PHPML\Exception\RenderWindowException</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPML\Exception" line="10" package="Default">
+        <name>__construct</name>
+        <full_name>\PHPML\Exception\RenderWindowException::__construct()</full_name>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default>""</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$code</name>
+          <default>0</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$previous</name>
+          <default>null</default>
+          <type>\Throwable</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \PHPML\Exception\RenderWindowException</error>
+      <error line="10" code="PPC:ERR-50015">Argument $message is missing from the Docblock of __construct</error>
+      <error line="10" code="PPC:ERR-50015">Argument $code is missing from the Docblock of __construct</error>
+      <error line="10" code="PPC:ERR-50015">Argument $previous is missing from the Docblock of __construct</error>
+      <error line="10" code="PPC:ERR-50008">No summary for method __construct()</error>
+    </parse_markers>
+  </file>
+  <file path="Exception/CDataException.php" generated-path="Exception.CDataException.html" hash="b036dc112520b44d2d2a0ebbae2aee1c" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Exception">\FFI\Exception</namespace-alias>
+    <namespace-alias name="Throwable">\Throwable</namespace-alias>
+    <class final="false" abstract="false" namespace="PHPML\Exception" line="9" package="Default">
+      <extends>\FFI\Exception</extends>
+      <name>CDataException</name>
+      <full_name>\PHPML\Exception\CDataException</full_name>
+      <docblock line="9">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPML\Exception" line="18" package="Default">
+        <name>__construct</name>
+        <full_name>\PHPML\Exception\CDataException::__construct()</full_name>
+        <docblock line="18">
+          <description>CDataException constructor.</description>
+          <long-description></long-description>
+          <tag name="param" line="18" description="" type="string" variable="$message">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="18" description="" type="integer" variable="$code">
+            <type>integer</type>
+          </tag>
+          <tag name="param" line="18" description="" type="\Throwable|null" variable="$previous">
+            <type>\Throwable</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default>""</default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$code</name>
+          <default>0</default>
+          <type>integer</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$previous</name>
+          <default>null</default>
+          <type>\Throwable|null</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \PHPML\Exception\CDataException</error>
+    </parse_markers>
+  </file>
+  <file path="Enum/EventType.php" generated-path="Enum.EventType.html" hash="1fe445fad566f7b5e4153c0e47281eda" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="PHPML\Enum" line="5" package="Default">
+      <extends>\PHPML\Enum\CDataEnum</extends>
+      <name>EventType</name>
+      <full_name>\PHPML\Enum\EventType</full_name>
+      <docblock line="5">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="5" description="Default"/>
+        <tag name="inherited_from" description="\PHPML\Enum\CDataEnum" refers="\PHPML\Enum\CDataEnum" link="/classes/PHPML.Enum.CDataEnum.html"/>
+      </docblock>
+      <constant namespace="PHPML\Enum" line="7" package="Default">
+        <name>SF_CLOSED</name>
+        <full_name>\PHPML\Enum\EventType::SF_CLOSED</full_name>
+        <value>'sfEvtClosed'</value>
+        <docblock line="7">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="8" package="Default">
+        <name>SF_RESIZED</name>
+        <full_name>\PHPML\Enum\EventType::SF_RESIZED</full_name>
+        <value>'sfEvtResized'</value>
+        <docblock line="8">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="9" package="Default">
+        <name>SF_LOST_FOCUS</name>
+        <full_name>\PHPML\Enum\EventType::SF_LOST_FOCUS</full_name>
+        <value>'sfEvtLostFocus'</value>
+        <docblock line="9">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="10" package="Default">
+        <name>SF_GAINED_FOCUS</name>
+        <full_name>\PHPML\Enum\EventType::SF_GAINED_FOCUS</full_name>
+        <value>'sfEvtGainedFocus'</value>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="13" package="Default">
+        <name>CLOSED</name>
+        <full_name>\PHPML\Enum\EventType::CLOSED</full_name>
+        <value>0</value>
+        <docblock line="13">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="14" package="Default">
+        <name>RESIZED</name>
+        <full_name>\PHPML\Enum\EventType::RESIZED</full_name>
+        <value>1</value>
+        <docblock line="14">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="15" package="Default">
+        <name>LOST_FOCUS</name>
+        <full_name>\PHPML\Enum\EventType::LOST_FOCUS</full_name>
+        <value>2</value>
+        <docblock line="15">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="16" package="Default">
+        <name>GAINED_FOCUS</name>
+        <full_name>\PHPML\Enum\EventType::GAINED_FOCUS</full_name>
+        <value>3</value>
+        <docblock line="16">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="17" package="Default">
+        <name>TEXT_ENTERED</name>
+        <full_name>\PHPML\Enum\EventType::TEXT_ENTERED</full_name>
+        <value>4</value>
+        <docblock line="17">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="18" package="Default">
+        <name>KEY_PRESSED</name>
+        <full_name>\PHPML\Enum\EventType::KEY_PRESSED</full_name>
+        <value>5</value>
+        <docblock line="18">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="19" package="Default">
+        <name>KEY_RELEASED</name>
+        <full_name>\PHPML\Enum\EventType::KEY_RELEASED</full_name>
+        <value>6</value>
+        <docblock line="19">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="20" package="Default">
+        <name>MOUSE_WHEEL_MOVED</name>
+        <full_name>\PHPML\Enum\EventType::MOUSE_WHEEL_MOVED</full_name>
+        <value>7</value>
+        <docblock line="20">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="21" package="Default">
+        <name>MOUSE_WHEEL_SCROLLED</name>
+        <full_name>\PHPML\Enum\EventType::MOUSE_WHEEL_SCROLLED</full_name>
+        <value>8</value>
+        <docblock line="21">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="22" package="Default">
+        <name>MOUSE_BUTTON_PRESSED</name>
+        <full_name>\PHPML\Enum\EventType::MOUSE_BUTTON_PRESSED</full_name>
+        <value>9</value>
+        <docblock line="22">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="23" package="Default">
+        <name>MOUSE_BUTTON_RELEASED</name>
+        <full_name>\PHPML\Enum\EventType::MOUSE_BUTTON_RELEASED</full_name>
+        <value>10</value>
+        <docblock line="23">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="24" package="Default">
+        <name>MOUSE_MOVED</name>
+        <full_name>\PHPML\Enum\EventType::MOUSE_MOVED</full_name>
+        <value>11</value>
+        <docblock line="24">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="25" package="Default">
+        <name>MOUSE_ENTERED</name>
+        <full_name>\PHPML\Enum\EventType::MOUSE_ENTERED</full_name>
+        <value>12</value>
+        <docblock line="25">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="26" package="Default">
+        <name>MOUSE_LEFT</name>
+        <full_name>\PHPML\Enum\EventType::MOUSE_LEFT</full_name>
+        <value>13</value>
+        <docblock line="26">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="27" package="Default">
+        <name>JOYSTICK_BUTTON_PRESSED</name>
+        <full_name>\PHPML\Enum\EventType::JOYSTICK_BUTTON_PRESSED</full_name>
+        <value>14</value>
+        <docblock line="27">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="28" package="Default">
+        <name>JOYSTICK_BUTTON_RELEASED</name>
+        <full_name>\PHPML\Enum\EventType::JOYSTICK_BUTTON_RELEASED</full_name>
+        <value>15</value>
+        <docblock line="28">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="29" package="Default">
+        <name>JOYSTICK_MOVED</name>
+        <full_name>\PHPML\Enum\EventType::JOYSTICK_MOVED</full_name>
+        <value>16</value>
+        <docblock line="29">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="30" package="Default">
+        <name>JOYSTICK_CONNECTED</name>
+        <full_name>\PHPML\Enum\EventType::JOYSTICK_CONNECTED</full_name>
+        <value>17</value>
+        <docblock line="30">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="31" package="Default">
+        <name>JOYSTICK_DISCONNECTED</name>
+        <full_name>\PHPML\Enum\EventType::JOYSTICK_DISCONNECTED</full_name>
+        <value>18</value>
+        <docblock line="31">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="32" package="Default">
+        <name>TOUCH_BEGAN</name>
+        <full_name>\PHPML\Enum\EventType::TOUCH_BEGAN</full_name>
+        <value>19</value>
+        <docblock line="32">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="33" package="Default">
+        <name>TOUCH_MOVED</name>
+        <full_name>\PHPML\Enum\EventType::TOUCH_MOVED</full_name>
+        <value>20</value>
+        <docblock line="33">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="34" package="Default">
+        <name>TOUCH_ENDED</name>
+        <full_name>\PHPML\Enum\EventType::TOUCH_ENDED</full_name>
+        <value>21</value>
+        <docblock line="34">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="35" package="Default">
+        <name>SENSOR_CHANGED</name>
+        <full_name>\PHPML\Enum\EventType::SENSOR_CHANGED</full_name>
+        <value>22</value>
+        <docblock line="35">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="37" package="Default">
+        <name>COUNT</name>
+        <full_name>\PHPML\Enum\EventType::COUNT</full_name>
+        <value>23</value>
+        <docblock line="37">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="39" package="Default">
+        <name>TRIGGERABLE</name>
+        <full_name>\PHPML\Enum\EventType::TRIGGERABLE</full_name>
+        <value>array('size' =&gt; 'sfSizeEvent', 'key' =&gt; 'sfKeyEvent', 'text' =&gt; 'sfTextEvent', 'mouseMove' =&gt; 'sfMouseMoveEvent', 'mouseButton' =&gt; 'sfMouseButtonEvent', 'mouseWheel' =&gt; 'sfMouseWheelEvent', 'mouseWheelScroll' =&gt; 'sfMouseWheelScrollEvent', 'joystickMove' =&gt; 'sfJoystickMoveEvent', 'joystickButton' =&gt; 'sfJoystickButtonEvent', 'joystickConnect' =&gt; 'sfJoystickConnectEvent', 'touchEvent' =&gt; 'sfTouchEvent', 'sensorEvent' =&gt; 'sfSensorEvent')</value>
+        <docblock line="39">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Enum" line="16" package="Default">
+        <name>getFromCDataValue</name>
+        <full_name>\PHPML\Enum\CDataEnum::getFromCDataValue()</full_name>
+        <docblock line="16">
+          <description>Retourne une instance de CDataEnum selon la valeur de l'énumaration</description>
+          <long-description></long-description>
+          <tag name="param" line="16" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="16" description="" type="\PHPML\Enum\CDataEnum">
+            <type>\PHPML\Enum\CDataEnum</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\PHPML\Enum\CDataEnum</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Enum" line="30" package="Default">
+        <name>toCDataValue</name>
+        <full_name>\PHPML\Enum\CDataEnum::toCDataValue()</full_name>
+        <docblock line="30">
+          <description>Convertit une valeur de l'énumération en valeur utilisable avec la bibliothèque.</description>
+          <long-description></long-description>
+          <tag name="param" line="30" description="&lt;p&gt;Valeur à convertir&lt;/p&gt;" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="30" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="30" description="si la valeur passée en paramètre ne fait pas partie de l'énumération" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\PHPML\Enum\CDataEnum</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="5" code="PPC:ERR-50005">No summary for class \PHPML\Enum\EventType</error>
+    </parse_markers>
+  </file>
+  <file path="Enum/KeyCode.php" generated-path="Enum.KeyCode.html" hash="b60169972aff297eaaa7e952be531c7d" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="PHPML\Enum" line="6" package="Default">
+      <extends>\PHPML\Enum\CDataEnum</extends>
+      <name>KeyCode</name>
+      <full_name>\PHPML\Enum\KeyCode</full_name>
+      <docblock line="6">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="6" description="Default"/>
+        <tag name="inherited_from" description="\PHPML\Enum\CDataEnum" refers="\PHPML\Enum\CDataEnum" link="/classes/PHPML.Enum.CDataEnum.html"/>
+      </docblock>
+      <constant namespace="PHPML\Enum" line="13" package="Default">
+        <name>SF_KEY_UNKNOWN</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_UNKNOWN</full_name>
+        <value>'sfKeyUnknown'</value>
+        <docblock line="13">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="14" package="Default">
+        <name>SF_KEY_A</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_A</full_name>
+        <value>'sfKeyA'</value>
+        <docblock line="14">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="15" package="Default">
+        <name>SF_KEY_B</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_B</full_name>
+        <value>'sfKeyB'</value>
+        <docblock line="15">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="16" package="Default">
+        <name>SF_KEY_C</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_C</full_name>
+        <value>'sfKeyC'</value>
+        <docblock line="16">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="17" package="Default">
+        <name>SF_KEY_D</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_D</full_name>
+        <value>'sfKeyD'</value>
+        <docblock line="17">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="18" package="Default">
+        <name>SF_KEY_E</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_E</full_name>
+        <value>'sfKeyE'</value>
+        <docblock line="18">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="19" package="Default">
+        <name>SF_KEY_F</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F</full_name>
+        <value>'sfKeyF'</value>
+        <docblock line="19">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="20" package="Default">
+        <name>SF_KEY_G</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_G</full_name>
+        <value>'sfKeyG'</value>
+        <docblock line="20">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="21" package="Default">
+        <name>SF_KEY_H</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_H</full_name>
+        <value>'sfKeyH'</value>
+        <docblock line="21">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="22" package="Default">
+        <name>SF_KEY_I</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_I</full_name>
+        <value>'sfKeyI'</value>
+        <docblock line="22">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="23" package="Default">
+        <name>SF_KEY_J</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_J</full_name>
+        <value>'sfKeyJ'</value>
+        <docblock line="23">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="24" package="Default">
+        <name>SF_KEY_K</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_K</full_name>
+        <value>'sfKeyK'</value>
+        <docblock line="24">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="25" package="Default">
+        <name>SF_KEY_L</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_L</full_name>
+        <value>'sfKeyL'</value>
+        <docblock line="25">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="26" package="Default">
+        <name>SF_KEY_M</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_M</full_name>
+        <value>'sfKeyM'</value>
+        <docblock line="26">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="27" package="Default">
+        <name>SF_KEY_N</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_N</full_name>
+        <value>'sfKeyN'</value>
+        <docblock line="27">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="28" package="Default">
+        <name>SF_KEY_O</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_O</full_name>
+        <value>'sfKeyO'</value>
+        <docblock line="28">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="29" package="Default">
+        <name>SF_KEY_P</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_P</full_name>
+        <value>'sfKeyP'</value>
+        <docblock line="29">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="30" package="Default">
+        <name>SF_KEY_Q</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_Q</full_name>
+        <value>'sfKeyQ'</value>
+        <docblock line="30">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="31" package="Default">
+        <name>SF_KEY_R</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_R</full_name>
+        <value>'sfKeyR'</value>
+        <docblock line="31">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="32" package="Default">
+        <name>SF_KEY_S</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_S</full_name>
+        <value>'sfKeyS'</value>
+        <docblock line="32">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="33" package="Default">
+        <name>SF_KEY_T</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_T</full_name>
+        <value>'sfKeyT'</value>
+        <docblock line="33">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="34" package="Default">
+        <name>SF_KEY_U</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_U</full_name>
+        <value>'sfKeyU'</value>
+        <docblock line="34">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="35" package="Default">
+        <name>SF_KEY_V</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_V</full_name>
+        <value>'sfKeyV'</value>
+        <docblock line="35">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="36" package="Default">
+        <name>SF_KEY_W</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_W</full_name>
+        <value>'sfKeyW'</value>
+        <docblock line="36">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="37" package="Default">
+        <name>SF_KEY_X</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_X</full_name>
+        <value>'sfKeyX'</value>
+        <docblock line="37">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="38" package="Default">
+        <name>SF_KEY_Y</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_Y</full_name>
+        <value>'sfKeyY'</value>
+        <docblock line="38">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="39" package="Default">
+        <name>SF_KEY_Z</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_Z</full_name>
+        <value>'sfKeyZ'</value>
+        <docblock line="39">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="40" package="Default">
+        <name>SF_KEY_0</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_0</full_name>
+        <value>'sfKeyNum0'</value>
+        <docblock line="40">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="41" package="Default">
+        <name>SF_KEY_1</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_1</full_name>
+        <value>'sfKeyNum1'</value>
+        <docblock line="41">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="42" package="Default">
+        <name>SF_KEY_2</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_2</full_name>
+        <value>'sfKeyNum2'</value>
+        <docblock line="42">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="43" package="Default">
+        <name>SF_KEY_3</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_3</full_name>
+        <value>'sfKeyNum3'</value>
+        <docblock line="43">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="44" package="Default">
+        <name>SF_KEY_4</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_4</full_name>
+        <value>'sfKeyNum4'</value>
+        <docblock line="44">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="45" package="Default">
+        <name>SF_KEY_5</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_5</full_name>
+        <value>'sfKeyNum5'</value>
+        <docblock line="45">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="46" package="Default">
+        <name>SF_KEY_6</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_6</full_name>
+        <value>'sfKeyNum6'</value>
+        <docblock line="46">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="47" package="Default">
+        <name>SF_KEY_7</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_7</full_name>
+        <value>'sfKeyNum7'</value>
+        <docblock line="47">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="48" package="Default">
+        <name>SF_KEY_8</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_8</full_name>
+        <value>'sfKeyNum8'</value>
+        <docblock line="48">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="49" package="Default">
+        <name>SF_KEY_9</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_9</full_name>
+        <value>'sfKeyNum9'</value>
+        <docblock line="49">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="50" package="Default">
+        <name>SF_KEY_ESCAPE</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_ESCAPE</full_name>
+        <value>'sfKeyEscape'</value>
+        <docblock line="50">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="51" package="Default">
+        <name>SF_KEY_LEFT_CONTROL</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_LEFT_CONTROL</full_name>
+        <value>'sfKeyLControl'</value>
+        <docblock line="51">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="52" package="Default">
+        <name>SF_KEY_LEFT_SHIFT</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_LEFT_SHIFT</full_name>
+        <value>'sfKeyLShift'</value>
+        <docblock line="52">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="53" package="Default">
+        <name>SF_KEY_LEFT_ALT</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_LEFT_ALT</full_name>
+        <value>'sfKeyLAlt'</value>
+        <docblock line="53">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="54" package="Default">
+        <name>SF_KEY_LEFT_SYSTEM</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_LEFT_SYSTEM</full_name>
+        <value>'sfKeyLSystem'</value>
+        <docblock line="54">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="55" package="Default">
+        <name>SF_KEY_RIGHT_CONTROL</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_RIGHT_CONTROL</full_name>
+        <value>'sfKeyRControl'</value>
+        <docblock line="55">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="56" package="Default">
+        <name>SF_KEY_RIGHT_SHIFT</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_RIGHT_SHIFT</full_name>
+        <value>'sfKeyRShift'</value>
+        <docblock line="56">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="57" package="Default">
+        <name>SF_KEY_RIGHT_ALT</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_RIGHT_ALT</full_name>
+        <value>'sfKeyRAlt'</value>
+        <docblock line="57">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="58" package="Default">
+        <name>SF_KEY_RIGHT_SYSTEM</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_RIGHT_SYSTEM</full_name>
+        <value>'sfKeyRSystem'</value>
+        <docblock line="58">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="59" package="Default">
+        <name>SF_KEY_MENU</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_MENU</full_name>
+        <value>'sfKeyMenu'</value>
+        <docblock line="59">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="60" package="Default">
+        <name>SF_KEY_LEFT_BRACKET</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_LEFT_BRACKET</full_name>
+        <value>'sfKeyLBracket'</value>
+        <docblock line="60">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="61" package="Default">
+        <name>SF_KEY_RIGHT_BRACKET</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_RIGHT_BRACKET</full_name>
+        <value>'sfKeyRBracket'</value>
+        <docblock line="61">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="62" package="Default">
+        <name>SF_KEY_SEMICOLON</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_SEMICOLON</full_name>
+        <value>'sfKeySemicolon'</value>
+        <docblock line="62">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="63" package="Default">
+        <name>SF_KEY_COMMA</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_COMMA</full_name>
+        <value>'sfKeyComma'</value>
+        <docblock line="63">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="64" package="Default">
+        <name>SF_KEY_PERIOD</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_PERIOD</full_name>
+        <value>'sfKeyPeriod'</value>
+        <docblock line="64">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="65" package="Default">
+        <name>SF_KEY_QUOTE</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_QUOTE</full_name>
+        <value>'sfKeyQuote'</value>
+        <docblock line="65">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="66" package="Default">
+        <name>SF_KEY_SLASH</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_SLASH</full_name>
+        <value>'sfKeySlash'</value>
+        <docblock line="66">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="67" package="Default">
+        <name>SF_KEY_BACK_SLASH</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_BACK_SLASH</full_name>
+        <value>'sfKeyBackslash'</value>
+        <docblock line="67">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="68" package="Default">
+        <name>SF_KEY_TILDE</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_TILDE</full_name>
+        <value>'sfKeyTilde'</value>
+        <docblock line="68">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="69" package="Default">
+        <name>SF_KEY_EQUAL</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_EQUAL</full_name>
+        <value>'sfKeyEqual'</value>
+        <docblock line="69">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="70" package="Default">
+        <name>SF_KEY_HYPHEN</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_HYPHEN</full_name>
+        <value>'sfKeyHyphen'</value>
+        <docblock line="70">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="71" package="Default">
+        <name>SF_KEY_SPACE</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_SPACE</full_name>
+        <value>'sfKeySpace'</value>
+        <docblock line="71">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="72" package="Default">
+        <name>SF_KEY_ENTER</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_ENTER</full_name>
+        <value>'sfKeyEnter'</value>
+        <docblock line="72">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="73" package="Default">
+        <name>SF_KEY_BACKSPACE</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_BACKSPACE</full_name>
+        <value>'sfKeyBackspace'</value>
+        <docblock line="73">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="74" package="Default">
+        <name>SF_KEY_TAB</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_TAB</full_name>
+        <value>'sfKeyTab'</value>
+        <docblock line="74">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="75" package="Default">
+        <name>SF_KEY_PAGEUP</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_PAGEUP</full_name>
+        <value>'sfKeyPageUp'</value>
+        <docblock line="75">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="76" package="Default">
+        <name>SF_KEY_PAGEDOWN</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_PAGEDOWN</full_name>
+        <value>'sfKeyPageDown'</value>
+        <docblock line="76">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="77" package="Default">
+        <name>SF_KEY_END</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_END</full_name>
+        <value>'sfKeyEnd'</value>
+        <docblock line="77">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="78" package="Default">
+        <name>SF_KEY_HOME</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_HOME</full_name>
+        <value>'sfKeyHome'</value>
+        <docblock line="78">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="79" package="Default">
+        <name>SF_KEY_INSERT</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_INSERT</full_name>
+        <value>'sfKeyInsert'</value>
+        <docblock line="79">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="80" package="Default">
+        <name>SF_KEY_DELETE</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_DELETE</full_name>
+        <value>'sfKeyDelete'</value>
+        <docblock line="80">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="81" package="Default">
+        <name>SF_KEY_ADD</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_ADD</full_name>
+        <value>'sfKeyAdd'</value>
+        <docblock line="81">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="82" package="Default">
+        <name>SF_KEY_SUBTRACT</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_SUBTRACT</full_name>
+        <value>'sfKeySubtract'</value>
+        <docblock line="82">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="83" package="Default">
+        <name>SF_KEY_MULTIPLY</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_MULTIPLY</full_name>
+        <value>'sfKeyMultiply'</value>
+        <docblock line="83">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="84" package="Default">
+        <name>SF_KEY_DIVIDE</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_DIVIDE</full_name>
+        <value>'sfKeyDivide'</value>
+        <docblock line="84">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="85" package="Default">
+        <name>SF_KEY_LEFT</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_LEFT</full_name>
+        <value>'sfKeyLeft'</value>
+        <docblock line="85">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="86" package="Default">
+        <name>SF_KEY_RIGHT</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_RIGHT</full_name>
+        <value>'sfKeyRight'</value>
+        <docblock line="86">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="87" package="Default">
+        <name>SF_KEY_UP</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_UP</full_name>
+        <value>'sfKeyUp'</value>
+        <docblock line="87">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="88" package="Default">
+        <name>SF_KEY_DOWN</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_DOWN</full_name>
+        <value>'sfKeyDown'</value>
+        <docblock line="88">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="89" package="Default">
+        <name>SF_KEY_NUMPAD_0</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_NUMPAD_0</full_name>
+        <value>'sfKeyNumpad0'</value>
+        <docblock line="89">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="90" package="Default">
+        <name>SF_KEY_NUMPAD_1</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_NUMPAD_1</full_name>
+        <value>'sfKeyNumpad1'</value>
+        <docblock line="90">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="91" package="Default">
+        <name>SF_KEY_NUMPAD_2</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_NUMPAD_2</full_name>
+        <value>'sfKeyNumpad2'</value>
+        <docblock line="91">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="92" package="Default">
+        <name>SF_KEY_NUMPAD_3</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_NUMPAD_3</full_name>
+        <value>'sfKeyNumpad3'</value>
+        <docblock line="92">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="93" package="Default">
+        <name>SF_KEY_NUMPAD_4</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_NUMPAD_4</full_name>
+        <value>'sfKeyNumpad4'</value>
+        <docblock line="93">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="94" package="Default">
+        <name>SF_KEY_NUMPAD_5</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_NUMPAD_5</full_name>
+        <value>'sfKeyNumpad5'</value>
+        <docblock line="94">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="95" package="Default">
+        <name>SF_KEY_NUMPAD_6</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_NUMPAD_6</full_name>
+        <value>'sfKeyNumpad6'</value>
+        <docblock line="95">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="96" package="Default">
+        <name>SF_KEY_NUMPAD_7</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_NUMPAD_7</full_name>
+        <value>'sfKeyNumpad7'</value>
+        <docblock line="96">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="97" package="Default">
+        <name>SF_KEY_NUMPAD_8</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_NUMPAD_8</full_name>
+        <value>'sfKeyNumpad8'</value>
+        <docblock line="97">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="98" package="Default">
+        <name>SF_KEY_NUMPAD_9</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_NUMPAD_9</full_name>
+        <value>'sfKeyNumpad9'</value>
+        <docblock line="98">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="99" package="Default">
+        <name>SF_KEY_F1</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F1</full_name>
+        <value>'sfKeyF1'</value>
+        <docblock line="99">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="100" package="Default">
+        <name>SF_KEY_F2</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F2</full_name>
+        <value>'sfKeyF2'</value>
+        <docblock line="100">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="101" package="Default">
+        <name>SF_KEY_F3</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F3</full_name>
+        <value>'sfKeyF3'</value>
+        <docblock line="101">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="102" package="Default">
+        <name>SF_KEY_F4</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F4</full_name>
+        <value>'sfKeyF4'</value>
+        <docblock line="102">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="103" package="Default">
+        <name>SF_KEY_F5</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F5</full_name>
+        <value>'sfKeyF5'</value>
+        <docblock line="103">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="104" package="Default">
+        <name>SF_KEY_F6</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F6</full_name>
+        <value>'sfKeyF6'</value>
+        <docblock line="104">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="105" package="Default">
+        <name>SF_KEY_F7</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F7</full_name>
+        <value>'sfKeyF7'</value>
+        <docblock line="105">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="106" package="Default">
+        <name>SF_KEY_F8</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F8</full_name>
+        <value>'sfKeyF8'</value>
+        <docblock line="106">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="107" package="Default">
+        <name>SF_KEY_F9</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F9</full_name>
+        <value>'sfKeyF9'</value>
+        <docblock line="107">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="108" package="Default">
+        <name>SF_KEY_F10</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F10</full_name>
+        <value>'sfKeyF10'</value>
+        <docblock line="108">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="109" package="Default">
+        <name>SF_KEY_F11</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F11</full_name>
+        <value>'sfKeyF11'</value>
+        <docblock line="109">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="110" package="Default">
+        <name>SF_KEY_F12</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F12</full_name>
+        <value>'sfKeyF12'</value>
+        <docblock line="110">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="111" package="Default">
+        <name>SF_KEY_F13</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F13</full_name>
+        <value>'sfKeyF13'</value>
+        <docblock line="111">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="112" package="Default">
+        <name>SF_KEY_F14</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F14</full_name>
+        <value>'sfKeyF14'</value>
+        <docblock line="112">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="113" package="Default">
+        <name>SF_KEY_F15</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_F15</full_name>
+        <value>'sfKeyF15'</value>
+        <docblock line="113">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="114" package="Default">
+        <name>SF_KEY_PAUSE</name>
+        <full_name>\PHPML\Enum\KeyCode::SF_KEY_PAUSE</full_name>
+        <value>'sfKeyPause'</value>
+        <docblock line="114">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="121" package="Default">
+        <name>UNKNOWN</name>
+        <full_name>\PHPML\Enum\KeyCode::UNKNOWN</full_name>
+        <value>-1</value>
+        <docblock line="121">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="122" package="Default">
+        <name>KEY_A</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_A</full_name>
+        <value>0</value>
+        <docblock line="122">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="123" package="Default">
+        <name>KEY_B</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_B</full_name>
+        <value>1</value>
+        <docblock line="123">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="124" package="Default">
+        <name>KEY_C</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_C</full_name>
+        <value>2</value>
+        <docblock line="124">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="125" package="Default">
+        <name>KEY_D</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_D</full_name>
+        <value>3</value>
+        <docblock line="125">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="126" package="Default">
+        <name>KEY_E</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_E</full_name>
+        <value>4</value>
+        <docblock line="126">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="127" package="Default">
+        <name>KEY_F</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F</full_name>
+        <value>5</value>
+        <docblock line="127">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="128" package="Default">
+        <name>KEY_G</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_G</full_name>
+        <value>6</value>
+        <docblock line="128">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="129" package="Default">
+        <name>KEY_H</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_H</full_name>
+        <value>7</value>
+        <docblock line="129">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="130" package="Default">
+        <name>KEY_I</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_I</full_name>
+        <value>8</value>
+        <docblock line="130">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="131" package="Default">
+        <name>KEY_J</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_J</full_name>
+        <value>9</value>
+        <docblock line="131">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="132" package="Default">
+        <name>KEY_K</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_K</full_name>
+        <value>10</value>
+        <docblock line="132">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="133" package="Default">
+        <name>KEY_L</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_L</full_name>
+        <value>11</value>
+        <docblock line="133">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="134" package="Default">
+        <name>KEY_M</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_M</full_name>
+        <value>12</value>
+        <docblock line="134">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="135" package="Default">
+        <name>KEY_N</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_N</full_name>
+        <value>13</value>
+        <docblock line="135">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="136" package="Default">
+        <name>KEY_O</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_O</full_name>
+        <value>14</value>
+        <docblock line="136">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="137" package="Default">
+        <name>KEY_P</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_P</full_name>
+        <value>15</value>
+        <docblock line="137">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="138" package="Default">
+        <name>KEY_Q</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_Q</full_name>
+        <value>16</value>
+        <docblock line="138">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="139" package="Default">
+        <name>KEY_R</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_R</full_name>
+        <value>17</value>
+        <docblock line="139">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="140" package="Default">
+        <name>KEY_S</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_S</full_name>
+        <value>18</value>
+        <docblock line="140">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="141" package="Default">
+        <name>KEY_T</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_T</full_name>
+        <value>19</value>
+        <docblock line="141">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="142" package="Default">
+        <name>KEY_U</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_U</full_name>
+        <value>20</value>
+        <docblock line="142">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="143" package="Default">
+        <name>KEY_V</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_V</full_name>
+        <value>21</value>
+        <docblock line="143">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="144" package="Default">
+        <name>KEY_W</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_W</full_name>
+        <value>22</value>
+        <docblock line="144">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="145" package="Default">
+        <name>KEY_X</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_X</full_name>
+        <value>23</value>
+        <docblock line="145">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="146" package="Default">
+        <name>KEY_Y</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_Y</full_name>
+        <value>24</value>
+        <docblock line="146">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="147" package="Default">
+        <name>KEY_Z</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_Z</full_name>
+        <value>25</value>
+        <docblock line="147">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="148" package="Default">
+        <name>KEY_ZERO</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_ZERO</full_name>
+        <value>26</value>
+        <docblock line="148">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="149" package="Default">
+        <name>KEY_ONE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_ONE</full_name>
+        <value>27</value>
+        <docblock line="149">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="150" package="Default">
+        <name>KEY_TWO</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_TWO</full_name>
+        <value>28</value>
+        <docblock line="150">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="151" package="Default">
+        <name>KEY_THREE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_THREE</full_name>
+        <value>29</value>
+        <docblock line="151">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="152" package="Default">
+        <name>KEY_FOUR</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_FOUR</full_name>
+        <value>30</value>
+        <docblock line="152">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="153" package="Default">
+        <name>KEY_FIVE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_FIVE</full_name>
+        <value>31</value>
+        <docblock line="153">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="154" package="Default">
+        <name>KEY_SIX</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_SIX</full_name>
+        <value>32</value>
+        <docblock line="154">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="155" package="Default">
+        <name>KEY_SEVEN</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_SEVEN</full_name>
+        <value>33</value>
+        <docblock line="155">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="156" package="Default">
+        <name>KEY_EIGHT</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_EIGHT</full_name>
+        <value>34</value>
+        <docblock line="156">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="157" package="Default">
+        <name>KEY_NINE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NINE</full_name>
+        <value>35</value>
+        <docblock line="157">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="158" package="Default">
+        <name>KEY_ESCAPE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_ESCAPE</full_name>
+        <value>36</value>
+        <docblock line="158">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="159" package="Default">
+        <name>KEY_LEFT_CONTROL</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_LEFT_CONTROL</full_name>
+        <value>37</value>
+        <docblock line="159">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="160" package="Default">
+        <name>KEY_LEFT_SHIFT</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_LEFT_SHIFT</full_name>
+        <value>38</value>
+        <docblock line="160">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="161" package="Default">
+        <name>KEY_LEFT_ALT</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_LEFT_ALT</full_name>
+        <value>39</value>
+        <docblock line="161">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="162" package="Default">
+        <name>KEY_LEFT_SYSTEM</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_LEFT_SYSTEM</full_name>
+        <value>40</value>
+        <docblock line="162">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="163" package="Default">
+        <name>KEY_RIGHT_CONTROL</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_RIGHT_CONTROL</full_name>
+        <value>41</value>
+        <docblock line="163">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="164" package="Default">
+        <name>KEY_RIGHT_SHIFT</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_RIGHT_SHIFT</full_name>
+        <value>42</value>
+        <docblock line="164">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="165" package="Default">
+        <name>KEY_RIGHT_ALT</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_RIGHT_ALT</full_name>
+        <value>43</value>
+        <docblock line="165">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="166" package="Default">
+        <name>KEY_RIGHT_SYSTEM</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_RIGHT_SYSTEM</full_name>
+        <value>44</value>
+        <docblock line="166">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="167" package="Default">
+        <name>KEY_MENU</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_MENU</full_name>
+        <value>45</value>
+        <docblock line="167">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="168" package="Default">
+        <name>KEY_LEFT_BRACKET</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_LEFT_BRACKET</full_name>
+        <value>46</value>
+        <docblock line="168">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="169" package="Default">
+        <name>KEY_RIGHT_BRACKET</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_RIGHT_BRACKET</full_name>
+        <value>47</value>
+        <docblock line="169">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="170" package="Default">
+        <name>KEY_SEMICOLON</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_SEMICOLON</full_name>
+        <value>48</value>
+        <docblock line="170">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="171" package="Default">
+        <name>KEY_COMMA</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_COMMA</full_name>
+        <value>49</value>
+        <docblock line="171">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="172" package="Default">
+        <name>KEY_PERIOD</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_PERIOD</full_name>
+        <value>50</value>
+        <docblock line="172">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="173" package="Default">
+        <name>KEY_QUOTE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_QUOTE</full_name>
+        <value>51</value>
+        <docblock line="173">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="174" package="Default">
+        <name>KEY_SLASH</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_SLASH</full_name>
+        <value>52</value>
+        <docblock line="174">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="175" package="Default">
+        <name>KEY_BACK_SLASH</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_BACK_SLASH</full_name>
+        <value>53</value>
+        <docblock line="175">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="176" package="Default">
+        <name>KEY_TILDE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_TILDE</full_name>
+        <value>54</value>
+        <docblock line="176">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="177" package="Default">
+        <name>KEY_EQUAL</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_EQUAL</full_name>
+        <value>55</value>
+        <docblock line="177">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="178" package="Default">
+        <name>KEY_HYPHEN</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_HYPHEN</full_name>
+        <value>56</value>
+        <docblock line="178">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="179" package="Default">
+        <name>KEY_SPACE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_SPACE</full_name>
+        <value>57</value>
+        <docblock line="179">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="180" package="Default">
+        <name>KEY_ENTER</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_ENTER</full_name>
+        <value>58</value>
+        <docblock line="180">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="181" package="Default">
+        <name>KEY_BACKSPACE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_BACKSPACE</full_name>
+        <value>59</value>
+        <docblock line="181">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="182" package="Default">
+        <name>KEY_TAB</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_TAB</full_name>
+        <value>60</value>
+        <docblock line="182">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="183" package="Default">
+        <name>KEY_PAGEUP</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_PAGEUP</full_name>
+        <value>61</value>
+        <docblock line="183">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="184" package="Default">
+        <name>KEY_PAGEDOWN</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_PAGEDOWN</full_name>
+        <value>62</value>
+        <docblock line="184">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="185" package="Default">
+        <name>KEY_END</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_END</full_name>
+        <value>63</value>
+        <docblock line="185">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="186" package="Default">
+        <name>KEY_HOME</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_HOME</full_name>
+        <value>64</value>
+        <docblock line="186">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="187" package="Default">
+        <name>KEY_INSERT</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_INSERT</full_name>
+        <value>65</value>
+        <docblock line="187">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="188" package="Default">
+        <name>KEY_DELETE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_DELETE</full_name>
+        <value>66</value>
+        <docblock line="188">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="189" package="Default">
+        <name>KEY_ADD</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_ADD</full_name>
+        <value>67</value>
+        <docblock line="189">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="190" package="Default">
+        <name>KEY_SUBTRACT</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_SUBTRACT</full_name>
+        <value>68</value>
+        <docblock line="190">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="191" package="Default">
+        <name>KEY_MULTIPLY</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_MULTIPLY</full_name>
+        <value>69</value>
+        <docblock line="191">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="192" package="Default">
+        <name>KEY_DIVIDE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_DIVIDE</full_name>
+        <value>70</value>
+        <docblock line="192">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="193" package="Default">
+        <name>KEY_LEFT</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_LEFT</full_name>
+        <value>71</value>
+        <docblock line="193">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="194" package="Default">
+        <name>KEY_RIGHT</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_RIGHT</full_name>
+        <value>72</value>
+        <docblock line="194">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="195" package="Default">
+        <name>KEY_UP</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_UP</full_name>
+        <value>73</value>
+        <docblock line="195">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="196" package="Default">
+        <name>KEY_DOWN</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_DOWN</full_name>
+        <value>74</value>
+        <docblock line="196">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="197" package="Default">
+        <name>KEY_NUMPAD_0</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NUMPAD_0</full_name>
+        <value>75</value>
+        <docblock line="197">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="198" package="Default">
+        <name>KEY_NUMPAD_1</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NUMPAD_1</full_name>
+        <value>76</value>
+        <docblock line="198">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="199" package="Default">
+        <name>KEY_NUMPAD_2</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NUMPAD_2</full_name>
+        <value>77</value>
+        <docblock line="199">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="200" package="Default">
+        <name>KEY_NUMPAD_3</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NUMPAD_3</full_name>
+        <value>78</value>
+        <docblock line="200">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="201" package="Default">
+        <name>KEY_NUMPAD_4</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NUMPAD_4</full_name>
+        <value>79</value>
+        <docblock line="201">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="202" package="Default">
+        <name>KEY_NUMPAD_5</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NUMPAD_5</full_name>
+        <value>80</value>
+        <docblock line="202">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="203" package="Default">
+        <name>KEY_NUMPAD_6</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NUMPAD_6</full_name>
+        <value>81</value>
+        <docblock line="203">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="204" package="Default">
+        <name>KEY_NUMPAD_7</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NUMPAD_7</full_name>
+        <value>82</value>
+        <docblock line="204">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="205" package="Default">
+        <name>KEY_NUMPAD_8</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NUMPAD_8</full_name>
+        <value>83</value>
+        <docblock line="205">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="206" package="Default">
+        <name>KEY_NUMPAD_9</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_NUMPAD_9</full_name>
+        <value>84</value>
+        <docblock line="206">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="207" package="Default">
+        <name>KEY_F1</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F1</full_name>
+        <value>85</value>
+        <docblock line="207">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="208" package="Default">
+        <name>KEY_F2</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F2</full_name>
+        <value>86</value>
+        <docblock line="208">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="209" package="Default">
+        <name>KEY_F3</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F3</full_name>
+        <value>87</value>
+        <docblock line="209">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="210" package="Default">
+        <name>KEY_F4</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F4</full_name>
+        <value>88</value>
+        <docblock line="210">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="211" package="Default">
+        <name>KEY_F5</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F5</full_name>
+        <value>89</value>
+        <docblock line="211">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="212" package="Default">
+        <name>KEY_F6</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F6</full_name>
+        <value>90</value>
+        <docblock line="212">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="213" package="Default">
+        <name>KEY_F7</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F7</full_name>
+        <value>91</value>
+        <docblock line="213">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="214" package="Default">
+        <name>KEY_F8</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F8</full_name>
+        <value>92</value>
+        <docblock line="214">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="215" package="Default">
+        <name>KEY_F9</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F9</full_name>
+        <value>93</value>
+        <docblock line="215">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="216" package="Default">
+        <name>KEY_F10</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F10</full_name>
+        <value>94</value>
+        <docblock line="216">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="217" package="Default">
+        <name>KEY_F11</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F11</full_name>
+        <value>95</value>
+        <docblock line="217">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="218" package="Default">
+        <name>KEY_F12</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F12</full_name>
+        <value>96</value>
+        <docblock line="218">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="219" package="Default">
+        <name>KEY_F13</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F13</full_name>
+        <value>97</value>
+        <docblock line="219">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="220" package="Default">
+        <name>KEY_F14</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F14</full_name>
+        <value>98</value>
+        <docblock line="220">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="221" package="Default">
+        <name>KEY_F15</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_F15</full_name>
+        <value>99</value>
+        <docblock line="221">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="222" package="Default">
+        <name>KEY_PAUSE</name>
+        <full_name>\PHPML\Enum\KeyCode::KEY_PAUSE</full_name>
+        <value>100</value>
+        <docblock line="222">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="229" package="Default">
+        <name>CODE_TYPE</name>
+        <full_name>\PHPML\Enum\KeyCode::CODE_TYPE</full_name>
+        <value>array(self::KEY_A =&gt; self::SF_KEY_A, self::KEY_B =&gt; self::SF_KEY_B, self::KEY_C =&gt; self::SF_KEY_C, self::KEY_D =&gt; self::SF_KEY_D, self::KEY_E =&gt; self::SF_KEY_E, self::KEY_F =&gt; self::SF_KEY_F, self::KEY_G =&gt; self::SF_KEY_G, self::KEY_H =&gt; self::SF_KEY_H, self::KEY_I =&gt; self::SF_KEY_I, self::KEY_J =&gt; self::SF_KEY_J, self::KEY_K =&gt; self::SF_KEY_K, self::KEY_L =&gt; self::SF_KEY_L, self::KEY_M =&gt; self::SF_KEY_M, self::KEY_N =&gt; self::SF_KEY_N, self::KEY_O =&gt; self::SF_KEY_O, self::KEY_P =&gt; self::SF_KEY_P, self::KEY_Q =&gt; self::SF_KEY_Q, self::KEY_R =&gt; self::SF_KEY_R, self::KEY_S =&gt; self::SF_KEY_S, self::KEY_T =&gt; self::SF_KEY_T, self::KEY_U =&gt; self::SF_KEY_U, self::KEY_V =&gt; self::SF_KEY_V, self::KEY_W =&gt; self::SF_KEY_W, self::KEY_X =&gt; self::SF_KEY_X, self::KEY_Y =&gt; self::SF_KEY_Y, self::KEY_Z =&gt; self::SF_KEY_Z, self::KEY_ZERO =&gt; self::SF_KEY_0, self::KEY_ONE =&gt; self::SF_KEY_1, self::KEY_TWO =&gt; self::SF_KEY_2, self::KEY_THREE =&gt; self::SF_KEY_3, self::KEY_FOUR =&gt; self::SF_KEY_4, self::KEY_FIVE =&gt; self::SF_KEY_5, self::KEY_SIX =&gt; self::SF_KEY_6, self::KEY_SEVEN =&gt; self::SF_KEY_7, self::KEY_EIGHT =&gt; self::SF_KEY_8, self::KEY_NINE =&gt; self::SF_KEY_9, self::KEY_ESCAPE =&gt; self::SF_KEY_ESCAPE, self::KEY_LEFT_CONTROL =&gt; self::SF_KEY_LEFT_CONTROL, self::KEY_LEFT_SHIFT =&gt; self::SF_KEY_LEFT_SHIFT, self::KEY_LEFT_ALT =&gt; self::SF_KEY_LEFT_ALT, self::KEY_LEFT_SYSTEM =&gt; self::SF_KEY_LEFT_SYSTEM, self::KEY_RIGHT_CONTROL =&gt; self::SF_KEY_RIGHT_CONTROL, self::KEY_RIGHT_SHIFT =&gt; self::SF_KEY_RIGHT_SHIFT, self::KEY_RIGHT_ALT =&gt; self::SF_KEY_RIGHT_ALT, self::KEY_RIGHT_SYSTEM =&gt; self::SF_KEY_RIGHT_SYSTEM, self::KEY_MENU =&gt; self::SF_KEY_MENU, self::KEY_LEFT_BRACKET =&gt; self::SF_KEY_LEFT_BRACKET, self::KEY_RIGHT_BRACKET =&gt; self::SF_KEY_RIGHT_BRACKET, self::KEY_SEMICOLON =&gt; self::SF_KEY_SEMICOLON, self::KEY_COMMA =&gt; self::SF_KEY_COMMA, self::KEY_PERIOD =&gt; self::SF_KEY_PERIOD, self::KEY_QUOTE =&gt; self::SF_KEY_QUOTE, self::KEY_SLASH =&gt; self::SF_KEY_SLASH, self::KEY_BACK_SLASH =&gt; self::SF_KEY_BACK_SLASH, self::KEY_TILDE =&gt; self::SF_KEY_TILDE, self::KEY_EQUAL =&gt; self::SF_KEY_EQUAL, self::KEY_HYPHEN =&gt; self::SF_KEY_HYPHEN, self::KEY_SPACE =&gt; self::SF_KEY_SPACE, self::KEY_ENTER =&gt; self::SF_KEY_ENTER, self::KEY_BACKSPACE =&gt; self::SF_KEY_BACKSPACE, self::KEY_TAB =&gt; self::SF_KEY_TAB, self::KEY_PAGEUP =&gt; self::SF_KEY_PAGEUP, self::KEY_PAGEDOWN =&gt; self::SF_KEY_PAGEDOWN, self::KEY_END =&gt; self::SF_KEY_END, self::KEY_HOME =&gt; self::SF_KEY_HOME, self::KEY_INSERT =&gt; self::SF_KEY_INSERT, self::KEY_DELETE =&gt; self::SF_KEY_DELETE, self::KEY_ADD =&gt; self::SF_KEY_ADD, self::KEY_SUBTRACT =&gt; self::SF_KEY_SUBTRACT, self::KEY_MULTIPLY =&gt; self::SF_KEY_MULTIPLY, self::KEY_DIVIDE =&gt; self::SF_KEY_DIVIDE, self::KEY_LEFT =&gt; self::SF_KEY_LEFT, self::KEY_RIGHT =&gt; self::SF_KEY_RIGHT, self::KEY_UP =&gt; self::SF_KEY_UP, self::KEY_DOWN =&gt; self::SF_KEY_DOWN, self::KEY_NUMPAD_0 =&gt; self::SF_KEY_NUMPAD_0, self::KEY_NUMPAD_1 =&gt; self::SF_KEY_NUMPAD_1, self::KEY_NUMPAD_2 =&gt; self::SF_KEY_NUMPAD_2, self::KEY_NUMPAD_3 =&gt; self::SF_KEY_NUMPAD_3, self::KEY_NUMPAD_4 =&gt; self::SF_KEY_NUMPAD_4, self::KEY_NUMPAD_5 =&gt; self::SF_KEY_NUMPAD_5, self::KEY_NUMPAD_6 =&gt; self::SF_KEY_NUMPAD_6, self::KEY_NUMPAD_7 =&gt; self::SF_KEY_NUMPAD_7, self::KEY_NUMPAD_8 =&gt; self::SF_KEY_NUMPAD_8, self::KEY_NUMPAD_9 =&gt; self::SF_KEY_NUMPAD_9, self::KEY_F1 =&gt; self::SF_KEY_F1, self::KEY_F2 =&gt; self::SF_KEY_F2, self::KEY_F3 =&gt; self::SF_KEY_F3, self::KEY_F4 =&gt; self::SF_KEY_F4, self::KEY_F5 =&gt; self::SF_KEY_F5, self::KEY_F6 =&gt; self::SF_KEY_F6, self::KEY_F7 =&gt; self::SF_KEY_F7, self::KEY_F8 =&gt; self::SF_KEY_F8, self::KEY_F9 =&gt; self::SF_KEY_F9, self::KEY_F10 =&gt; self::SF_KEY_F10, self::KEY_F11 =&gt; self::SF_KEY_F11, self::KEY_F12 =&gt; self::SF_KEY_F12, self::KEY_F13 =&gt; self::SF_KEY_F13, self::KEY_F14 =&gt; self::SF_KEY_F14, self::KEY_F15 =&gt; self::SF_KEY_F15, self::KEY_PAUSE =&gt; self::SF_KEY_PAUSE)</value>
+        <docblock line="229">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Enum" line="16" package="Default">
+        <name>getFromCDataValue</name>
+        <full_name>\PHPML\Enum\CDataEnum::getFromCDataValue()</full_name>
+        <docblock line="16">
+          <description>Retourne une instance de CDataEnum selon la valeur de l'énumaration</description>
+          <long-description></long-description>
+          <tag name="param" line="16" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="16" description="" type="\PHPML\Enum\CDataEnum">
+            <type>\PHPML\Enum\CDataEnum</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\PHPML\Enum\CDataEnum</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Enum" line="30" package="Default">
+        <name>toCDataValue</name>
+        <full_name>\PHPML\Enum\CDataEnum::toCDataValue()</full_name>
+        <docblock line="30">
+          <description>Convertit une valeur de l'énumération en valeur utilisable avec la bibliothèque.</description>
+          <long-description></long-description>
+          <tag name="param" line="30" description="&lt;p&gt;Valeur à convertir&lt;/p&gt;" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="30" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="30" description="si la valeur passée en paramètre ne fait pas partie de l'énumération" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\PHPML\Enum\CDataEnum</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="6" code="PPC:ERR-50005">No summary for class \PHPML\Enum\KeyCode</error>
+    </parse_markers>
+  </file>
+  <file path="Enum/Color.php" generated-path="Enum.Color.html" hash="6b7c12eb067aa3bac2e0a12398d2c00d" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <file path="Enum/TextStyle.php" generated-path="Enum.TextStyle.html" hash="e5f2781448bc364d5b6655a6c9273831" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="PHPML\Enum" line="6" package="Default">
+      <extends>\PHPML\Enum\CDataEnum</extends>
+      <name>TextStyle</name>
+      <full_name>\PHPML\Enum\TextStyle</full_name>
+      <docblock line="6">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="6" description="Default"/>
+        <tag name="inherited_from" description="\PHPML\Enum\CDataEnum" refers="\PHPML\Enum\CDataEnum" link="/classes/PHPML.Enum.CDataEnum.html"/>
+      </docblock>
+      <constant namespace="PHPML\Enum" line="8" package="Default">
+        <name>TEXT_REGULAR</name>
+        <full_name>\PHPML\Enum\TextStyle::TEXT_REGULAR</full_name>
+        <value>'sfTextRegular'</value>
+        <docblock line="8">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="9" package="Default">
+        <name>TEXT_BOLD</name>
+        <full_name>\PHPML\Enum\TextStyle::TEXT_BOLD</full_name>
+        <value>'sfTextBold'</value>
+        <docblock line="9">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="10" package="Default">
+        <name>TEXT_ITALIC</name>
+        <full_name>\PHPML\Enum\TextStyle::TEXT_ITALIC</full_name>
+        <value>'sfTextItalic'</value>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="11" package="Default">
+        <name>TEXT_UNDERLINED</name>
+        <full_name>\PHPML\Enum\TextStyle::TEXT_UNDERLINED</full_name>
+        <value>'sfTextUnderlined'</value>
+        <docblock line="11">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="12" package="Default">
+        <name>TEXT_STRIKE_THROUGH</name>
+        <full_name>\PHPML\Enum\TextStyle::TEXT_STRIKE_THROUGH</full_name>
+        <value>'sfTextStrikeThrough'</value>
+        <docblock line="12">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Enum" line="16" package="Default">
+        <name>getFromCDataValue</name>
+        <full_name>\PHPML\Enum\CDataEnum::getFromCDataValue()</full_name>
+        <docblock line="16">
+          <description>Retourne une instance de CDataEnum selon la valeur de l'énumaration</description>
+          <long-description></long-description>
+          <tag name="param" line="16" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="16" description="" type="\PHPML\Enum\CDataEnum">
+            <type>\PHPML\Enum\CDataEnum</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\PHPML\Enum\CDataEnum</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Enum" line="30" package="Default">
+        <name>toCDataValue</name>
+        <full_name>\PHPML\Enum\CDataEnum::toCDataValue()</full_name>
+        <docblock line="30">
+          <description>Convertit une valeur de l'énumération en valeur utilisable avec la bibliothèque.</description>
+          <long-description></long-description>
+          <tag name="param" line="30" description="&lt;p&gt;Valeur à convertir&lt;/p&gt;" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="30" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="30" description="si la valeur passée en paramètre ne fait pas partie de l'énumération" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\PHPML\Enum\CDataEnum</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="6" code="PPC:ERR-50005">No summary for class \PHPML\Enum\TextStyle</error>
+    </parse_markers>
+  </file>
+  <file path="Enum/CDataEnum.php" generated-path="Enum.CDataEnum.html" hash="c0a9b85e63bfe3a017375f7647295a87" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="InvalidArgumentException">\InvalidArgumentException</namespace-alias>
+    <namespace-alias name="Enum">\MyCLabs\Enum\Enum</namespace-alias>
+    <namespace-alias name="Lib">\PHPML\Library\GraphicsLibLoader</namespace-alias>
+    <class final="false" abstract="false" namespace="PHPML\Enum" line="9" package="Default">
+      <extends>\MyCLabs\Enum\Enum</extends>
+      <name>CDataEnum</name>
+      <full_name>\PHPML\Enum\CDataEnum</full_name>
+      <docblock line="9">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Enum" line="16" package="Default">
+        <name>getFromCDataValue</name>
+        <full_name>\PHPML\Enum\CDataEnum::getFromCDataValue()</full_name>
+        <docblock line="16">
+          <description>Retourne une instance de CDataEnum selon la valeur de l'énumaration</description>
+          <long-description></long-description>
+          <tag name="param" line="16" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="16" description="" type="\PHPML\Enum\CDataEnum">
+            <type>\PHPML\Enum\CDataEnum</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Enum" line="30" package="Default">
+        <name>toCDataValue</name>
+        <full_name>\PHPML\Enum\CDataEnum::toCDataValue()</full_name>
+        <docblock line="30">
+          <description>Convertit une valeur de l'énumération en valeur utilisable avec la bibliothèque.</description>
+          <long-description></long-description>
+          <tag name="param" line="30" description="&lt;p&gt;Valeur à convertir&lt;/p&gt;" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="30" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="30" description="si la valeur passée en paramètre ne fait pas partie de l'énumération" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \PHPML\Enum\CDataEnum</error>
+    </parse_markers>
+  </file>
+  <file path="Enum/CSFMLType.php" generated-path="Enum.CSFMLType.html" hash="7ec56eb2fc13f02ca78c9eacce7fef91" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Enum">\MyCLabs\Enum\Enum</namespace-alias>
+    <class final="false" abstract="false" namespace="PHPML\Enum" line="8" package="Default">
+      <extends>\MyCLabs\Enum\Enum</extends>
+      <name>CSFMLType</name>
+      <full_name>\PHPML\Enum\CSFMLType</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <constant namespace="PHPML\Enum" line="11" package="Default">
+        <name>UINT_8</name>
+        <full_name>\PHPML\Enum\CSFMLType::UINT_8</full_name>
+        <value>'sfUint8'</value>
+        <docblock line="11">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="12" package="Default">
+        <name>UINT_32</name>
+        <full_name>\PHPML\Enum\CSFMLType::UINT_32</full_name>
+        <value>'sfUint32'</value>
+        <docblock line="12">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="13" package="Default">
+        <name>BOOL</name>
+        <full_name>\PHPML\Enum\CSFMLType::BOOL</full_name>
+        <value>'sfBool'</value>
+        <docblock line="13">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="16" package="Default">
+        <name>VECTOR_2F</name>
+        <full_name>\PHPML\Enum\CSFMLType::VECTOR_2F</full_name>
+        <value>'sfVector2f'</value>
+        <docblock line="16">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="17" package="Default">
+        <name>VECTOR_2I</name>
+        <full_name>\PHPML\Enum\CSFMLType::VECTOR_2I</full_name>
+        <value>'sfVector2i'</value>
+        <docblock line="17">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="18" package="Default">
+        <name>VECTOR_2U</name>
+        <full_name>\PHPML\Enum\CSFMLType::VECTOR_2U</full_name>
+        <value>'sfVector2u'</value>
+        <docblock line="18">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="20" package="Default">
+        <name>FLOAT_RECT</name>
+        <full_name>\PHPML\Enum\CSFMLType::FLOAT_RECT</full_name>
+        <value>'sfFloatRect'</value>
+        <docblock line="20">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="21" package="Default">
+        <name>INT_RECT</name>
+        <full_name>\PHPML\Enum\CSFMLType::INT_RECT</full_name>
+        <value>'sfIntRect'</value>
+        <docblock line="21">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="24" package="Default">
+        <name>RENDER_WINDOW</name>
+        <full_name>\PHPML\Enum\CSFMLType::RENDER_WINDOW</full_name>
+        <value>'sfRenderWindow'</value>
+        <docblock line="24">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="25" package="Default">
+        <name>VIDEO_MODE</name>
+        <full_name>\PHPML\Enum\CSFMLType::VIDEO_MODE</full_name>
+        <value>'sfVideoMode'</value>
+        <docblock line="25">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="27" package="Default">
+        <name>COLOR</name>
+        <full_name>\PHPML\Enum\CSFMLType::COLOR</full_name>
+        <value>'sfColor'</value>
+        <docblock line="27">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="29" package="Default">
+        <name>EVENT</name>
+        <full_name>\PHPML\Enum\CSFMLType::EVENT</full_name>
+        <value>'sfEvent'</value>
+        <docblock line="29">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="30" package="Default">
+        <name>KEY_EVENT</name>
+        <full_name>\PHPML\Enum\CSFMLType::KEY_EVENT</full_name>
+        <value>'sfKeyEvent'</value>
+        <docblock line="30">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="31" package="Default">
+        <name>MOUSE_BUTTON_EVENT</name>
+        <full_name>\PHPML\Enum\CSFMLType::MOUSE_BUTTON_EVENT</full_name>
+        <value>'sfMouseButtonEvent'</value>
+        <docblock line="31">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="34" package="Default">
+        <name>SHAPE</name>
+        <full_name>\PHPML\Enum\CSFMLType::SHAPE</full_name>
+        <value>'sfShape'</value>
+        <docblock line="34">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="35" package="Default">
+        <name>RECTANGLE_SHAPE</name>
+        <full_name>\PHPML\Enum\CSFMLType::RECTANGLE_SHAPE</full_name>
+        <value>'sfRectangleShape'</value>
+        <docblock line="35">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="36" package="Default">
+        <name>CIRCLE_SHAPE</name>
+        <full_name>\PHPML\Enum\CSFMLType::CIRCLE_SHAPE</full_name>
+        <value>'sfCircleShape'</value>
+        <docblock line="36">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="37" package="Default">
+        <name>CONVEX_SHAPE</name>
+        <full_name>\PHPML\Enum\CSFMLType::CONVEX_SHAPE</full_name>
+        <value>'sfConvexShape'</value>
+        <docblock line="37">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="40" package="Default">
+        <name>SPRITE</name>
+        <full_name>\PHPML\Enum\CSFMLType::SPRITE</full_name>
+        <value>'sfSprite'</value>
+        <docblock line="40">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="43" package="Default">
+        <name>TEXT</name>
+        <full_name>\PHPML\Enum\CSFMLType::TEXT</full_name>
+        <value>'sfText'</value>
+        <docblock line="43">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="44" package="Default">
+        <name>FONT</name>
+        <full_name>\PHPML\Enum\CSFMLType::FONT</full_name>
+        <value>'sfFont'</value>
+        <docblock line="44">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \PHPML\Enum\CSFMLType</error>
+    </parse_markers>
+  </file>
+  <file path="Enum/MouseButton.php" generated-path="Enum.MouseButton.html" hash="49194a3c1befeccd559b8ab911b562dc" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="PHPML\Enum" line="5" package="Default">
+      <extends>\PHPML\Enum\CDataEnum</extends>
+      <name>MouseButton</name>
+      <full_name>\PHPML\Enum\MouseButton</full_name>
+      <docblock line="5">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="5" description="Default"/>
+        <tag name="inherited_from" description="\PHPML\Enum\CDataEnum" refers="\PHPML\Enum\CDataEnum" link="/classes/PHPML.Enum.CDataEnum.html"/>
+      </docblock>
+      <constant namespace="PHPML\Enum" line="7" package="Default">
+        <name>MOUSE_LEFT</name>
+        <full_name>\PHPML\Enum\MouseButton::MOUSE_LEFT</full_name>
+        <value>0</value>
+        <docblock line="7">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="8" package="Default">
+        <name>MOUSE_RIGHT</name>
+        <full_name>\PHPML\Enum\MouseButton::MOUSE_RIGHT</full_name>
+        <value>1</value>
+        <docblock line="8">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="9" package="Default">
+        <name>MOUSE_MIDDLE</name>
+        <full_name>\PHPML\Enum\MouseButton::MOUSE_MIDDLE</full_name>
+        <value>2</value>
+        <docblock line="9">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="10" package="Default">
+        <name>MOUSE_XBUTTON1</name>
+        <full_name>\PHPML\Enum\MouseButton::MOUSE_XBUTTON1</full_name>
+        <value>3</value>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="11" package="Default">
+        <name>MOUSE_XBUTTON2</name>
+        <full_name>\PHPML\Enum\MouseButton::MOUSE_XBUTTON2</full_name>
+        <value>4</value>
+        <docblock line="11">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="PHPML\Enum" line="13" package="Default">
+        <name>MOUSE_BUTTON_COUNT</name>
+        <full_name>\PHPML\Enum\MouseButton::MOUSE_BUTTON_COUNT</full_name>
+        <value>5</value>
+        <docblock line="13">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Enum" line="16" package="Default">
+        <name>getFromCDataValue</name>
+        <full_name>\PHPML\Enum\CDataEnum::getFromCDataValue()</full_name>
+        <docblock line="16">
+          <description>Retourne une instance de CDataEnum selon la valeur de l'énumaration</description>
+          <long-description></long-description>
+          <tag name="param" line="16" description="" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="16" description="" type="\PHPML\Enum\CDataEnum">
+            <type>\PHPML\Enum\CDataEnum</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\PHPML\Enum\CDataEnum</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPML\Enum" line="30" package="Default">
+        <name>toCDataValue</name>
+        <full_name>\PHPML\Enum\CDataEnum::toCDataValue()</full_name>
+        <docblock line="30">
+          <description>Convertit une valeur de l'énumération en valeur utilisable avec la bibliothèque.</description>
+          <long-description></long-description>
+          <tag name="param" line="30" description="&lt;p&gt;Valeur à convertir&lt;/p&gt;" type="string" variable="$value">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="30" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="30" description="si la valeur passée en paramètre ne fait pas partie de l'énumération" type="\InvalidArgumentException">
+            <type>\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <inherited_from>\PHPML\Enum\CDataEnum</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="5" code="PPC:ERR-50005">No summary for class \PHPML\Enum\MouseButton</error>
+    </parse_markers>
+  </file>
+  <file path="Enum/WindowStyle.php" generated-path="Enum.WindowStyle.html" hash="ca0cbb3c2dc521aa755b51a1488f26b1" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <package name="PHPML" full_name="PHPML">
+    <package name="Graphics" full_name="PHPML\Graphics">
+      <package name="Drawable" full_name="PHPML\Graphics\Drawable">
+        <package name="Shape" full_name="PHPML\Graphics\Drawable\Shape"/>
+      </package>
+    </package>
+  </package>
+  <package name="global" full_name="global"/>
+  <namespace name="PHPML" full_name="PHPML">
+    <namespace name="Enum" full_name="PHPML\Enum"/>
+    <namespace name="Exception" full_name="PHPML\Exception"/>
+    <namespace name="Graphics" full_name="PHPML\Graphics">
+      <namespace name="Drawable" full_name="PHPML\Graphics\Drawable">
+        <namespace name="Shape" full_name="PHPML\Graphics\Drawable\Shape"/>
+      </namespace>
+      <namespace name="Input" full_name="PHPML\Graphics\Input"/>
+    </namespace>
+  </namespace>
+  <deprecated count="0"/>
+</project>

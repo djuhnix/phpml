@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>    PHPML - PHP Media Library &raquo; \PHPML\Enum\EventType
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">PHPML - PHP Media Library</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/PHPML.html">PHPML</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <style>
+        .deprecated h2 {
+            text-decoration: line-through;
+        }
+    </style>
+    <div class="row">
+        <div class="span4">
+                    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+    <div class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                                    <li class="method public inherited">
+        <a href="#method_getFromCDataValue" title="getFromCDataValue :: Retourne une instance de CDataEnum selon la valeur de l&#039;énumaration">
+            <span class="description">Retourne une instance de CDataEnum selon la valeur de l&#039;énumaration</span><pre>getFromCDataValue</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_toCDataValue" title="toCDataValue :: Convertit une valeur de l&#039;énumération en valeur utilisable avec la bibliothèque.">
+            <span class="description">Convertit une valeur de l&#039;énumération en valeur utilisable avec la bibliothèque.</span><pre>toCDataValue</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                    </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                                                                    </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                                <li class="constant ">
+                    <a href="#constant_CLOSED" title="CLOSED :: ">
+                        <span class="description"></span><pre>CLOSED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_COUNT" title="COUNT :: ">
+                        <span class="description"></span><pre>COUNT</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_GAINED_FOCUS" title="GAINED_FOCUS :: ">
+                        <span class="description"></span><pre>GAINED_FOCUS</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_JOYSTICK_BUTTON_PRESSED" title="JOYSTICK_BUTTON_PRESSED :: ">
+                        <span class="description"></span><pre>JOYSTICK_BUTTON_PRESSED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_JOYSTICK_BUTTON_RELEASED" title="JOYSTICK_BUTTON_RELEASED :: ">
+                        <span class="description"></span><pre>JOYSTICK_BUTTON_RELEASED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_JOYSTICK_CONNECTED" title="JOYSTICK_CONNECTED :: ">
+                        <span class="description"></span><pre>JOYSTICK_CONNECTED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_JOYSTICK_DISCONNECTED" title="JOYSTICK_DISCONNECTED :: ">
+                        <span class="description"></span><pre>JOYSTICK_DISCONNECTED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_JOYSTICK_MOVED" title="JOYSTICK_MOVED :: ">
+                        <span class="description"></span><pre>JOYSTICK_MOVED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_KEY_PRESSED" title="KEY_PRESSED :: ">
+                        <span class="description"></span><pre>KEY_PRESSED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_KEY_RELEASED" title="KEY_RELEASED :: ">
+                        <span class="description"></span><pre>KEY_RELEASED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_LOST_FOCUS" title="LOST_FOCUS :: ">
+                        <span class="description"></span><pre>LOST_FOCUS</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_MOUSE_BUTTON_PRESSED" title="MOUSE_BUTTON_PRESSED :: ">
+                        <span class="description"></span><pre>MOUSE_BUTTON_PRESSED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_MOUSE_BUTTON_RELEASED" title="MOUSE_BUTTON_RELEASED :: ">
+                        <span class="description"></span><pre>MOUSE_BUTTON_RELEASED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_MOUSE_ENTERED" title="MOUSE_ENTERED :: ">
+                        <span class="description"></span><pre>MOUSE_ENTERED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_MOUSE_LEFT" title="MOUSE_LEFT :: ">
+                        <span class="description"></span><pre>MOUSE_LEFT</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_MOUSE_MOVED" title="MOUSE_MOVED :: ">
+                        <span class="description"></span><pre>MOUSE_MOVED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_MOUSE_WHEEL_MOVED" title="MOUSE_WHEEL_MOVED :: ">
+                        <span class="description"></span><pre>MOUSE_WHEEL_MOVED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_MOUSE_WHEEL_SCROLLED" title="MOUSE_WHEEL_SCROLLED :: ">
+                        <span class="description"></span><pre>MOUSE_WHEEL_SCROLLED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_RESIZED" title="RESIZED :: ">
+                        <span class="description"></span><pre>RESIZED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_SENSOR_CHANGED" title="SENSOR_CHANGED :: ">
+                        <span class="description"></span><pre>SENSOR_CHANGED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_SF_CLOSED" title="SF_CLOSED :: ">
+                        <span class="description"></span><pre>SF_CLOSED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_SF_GAINED_FOCUS" title="SF_GAINED_FOCUS :: ">
+                        <span class="description"></span><pre>SF_GAINED_FOCUS</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_SF_LOST_FOCUS" title="SF_LOST_FOCUS :: ">
+                        <span class="description"></span><pre>SF_LOST_FOCUS</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_SF_RESIZED" title="SF_RESIZED :: ">
+                        <span class="description"></span><pre>SF_RESIZED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_TEXT_ENTERED" title="TEXT_ENTERED :: ">
+                        <span class="description"></span><pre>TEXT_ENTERED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_TOUCH_BEGAN" title="TOUCH_BEGAN :: ">
+                        <span class="description"></span><pre>TOUCH_BEGAN</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_TOUCH_ENDED" title="TOUCH_ENDED :: ">
+                        <span class="description"></span><pre>TOUCH_ENDED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_TOUCH_MOVED" title="TOUCH_MOVED :: ">
+                        <span class="description"></span><pre>TOUCH_MOVED</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_TRIGGERABLE" title="TRIGGERABLE :: ">
+                        <span class="description"></span><pre>TRIGGERABLE</pre>
+                    </a>
+                </li>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>EventType</h1>
+                <small style="display: block; text-align: right">
+                                            Extends <a href="../classes/PHPML.Enum.CDataEnum.html">\PHPML\Enum\CDataEnum</a>
+                                                        </small>
+                <p class="short_description"></p>
+                <div class="details">
+                    <div class="long_description">
+                        
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        package
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>Default</p>
+                                    </td>
+                                </tr>
+                                                                                                                                                                                                                                                                                                                                            </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method_getFromCDataValue"></a>
+                        <div class="element clickable method public  method_getFromCDataValue inherited" data-toggle="collapse" data-target=".method_getFromCDataValue .collapse">
+                            <h2>Retourne une instance de CDataEnum selon la valeur de l&#039;énumaration</h2>
+                            <pre>getFromCDataValue(string $value) : \PHPML\Enum\CDataEnum</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                <span class="label">static</span>                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$value</h4>
+                                                <code>string</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/PHPML.Enum.CDataEnum.html">\PHPML\Enum\CDataEnum</a></code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_toCDataValue"></a>
+                        <div class="element clickable method public  method_toCDataValue inherited" data-toggle="collapse" data-target=".method_toCDataValue .collapse">
+                            <h2>Convertit une valeur de l&#039;énumération en valeur utilisable avec la bibliothèque.</h2>
+                            <pre>toCDataValue(string $value) : mixed</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                <span class="label">static</span>                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                            <tr>
+                                                <th>Throws</th>
+                                                <td>
+                                                    <dl>
+                                                                                                            <dt>\InvalidArgumentException</dt>
+                                                        <dd><p>si la valeur passée en paramètre ne fait pas partie de l'énumération</p></dd>
+                                                                                                                                                            </dl>
+                                                </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$value</h4>
+                                                <code>string</code><p><p>Valeur à convertir</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>mixed</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_SF_CLOSED"> </a>
+                            <div class="element clickable constant  constant_SF_CLOSED" data-toggle="collapse" data-target=".constant_SF_CLOSED .collapse">
+                                <h2>SF_CLOSED</h2>
+                                <pre>SF_CLOSED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_SF_RESIZED"> </a>
+                            <div class="element clickable constant  constant_SF_RESIZED" data-toggle="collapse" data-target=".constant_SF_RESIZED .collapse">
+                                <h2>SF_RESIZED</h2>
+                                <pre>SF_RESIZED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_SF_LOST_FOCUS"> </a>
+                            <div class="element clickable constant  constant_SF_LOST_FOCUS" data-toggle="collapse" data-target=".constant_SF_LOST_FOCUS .collapse">
+                                <h2>SF_LOST_FOCUS</h2>
+                                <pre>SF_LOST_FOCUS</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_SF_GAINED_FOCUS"> </a>
+                            <div class="element clickable constant  constant_SF_GAINED_FOCUS" data-toggle="collapse" data-target=".constant_SF_GAINED_FOCUS .collapse">
+                                <h2>SF_GAINED_FOCUS</h2>
+                                <pre>SF_GAINED_FOCUS</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_CLOSED"> </a>
+                            <div class="element clickable constant  constant_CLOSED" data-toggle="collapse" data-target=".constant_CLOSED .collapse">
+                                <h2>CLOSED</h2>
+                                <pre>CLOSED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_RESIZED"> </a>
+                            <div class="element clickable constant  constant_RESIZED" data-toggle="collapse" data-target=".constant_RESIZED .collapse">
+                                <h2>RESIZED</h2>
+                                <pre>RESIZED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_LOST_FOCUS"> </a>
+                            <div class="element clickable constant  constant_LOST_FOCUS" data-toggle="collapse" data-target=".constant_LOST_FOCUS .collapse">
+                                <h2>LOST_FOCUS</h2>
+                                <pre>LOST_FOCUS</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_GAINED_FOCUS"> </a>
+                            <div class="element clickable constant  constant_GAINED_FOCUS" data-toggle="collapse" data-target=".constant_GAINED_FOCUS .collapse">
+                                <h2>GAINED_FOCUS</h2>
+                                <pre>GAINED_FOCUS</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_TEXT_ENTERED"> </a>
+                            <div class="element clickable constant  constant_TEXT_ENTERED" data-toggle="collapse" data-target=".constant_TEXT_ENTERED .collapse">
+                                <h2>TEXT_ENTERED</h2>
+                                <pre>TEXT_ENTERED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_KEY_PRESSED"> </a>
+                            <div class="element clickable constant  constant_KEY_PRESSED" data-toggle="collapse" data-target=".constant_KEY_PRESSED .collapse">
+                                <h2>KEY_PRESSED</h2>
+                                <pre>KEY_PRESSED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_KEY_RELEASED"> </a>
+                            <div class="element clickable constant  constant_KEY_RELEASED" data-toggle="collapse" data-target=".constant_KEY_RELEASED .collapse">
+                                <h2>KEY_RELEASED</h2>
+                                <pre>KEY_RELEASED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_MOUSE_WHEEL_MOVED"> </a>
+                            <div class="element clickable constant  constant_MOUSE_WHEEL_MOVED" data-toggle="collapse" data-target=".constant_MOUSE_WHEEL_MOVED .collapse">
+                                <h2>MOUSE_WHEEL_MOVED</h2>
+                                <pre>MOUSE_WHEEL_MOVED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_MOUSE_WHEEL_SCROLLED"> </a>
+                            <div class="element clickable constant  constant_MOUSE_WHEEL_SCROLLED" data-toggle="collapse" data-target=".constant_MOUSE_WHEEL_SCROLLED .collapse">
+                                <h2>MOUSE_WHEEL_SCROLLED</h2>
+                                <pre>MOUSE_WHEEL_SCROLLED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_MOUSE_BUTTON_PRESSED"> </a>
+                            <div class="element clickable constant  constant_MOUSE_BUTTON_PRESSED" data-toggle="collapse" data-target=".constant_MOUSE_BUTTON_PRESSED .collapse">
+                                <h2>MOUSE_BUTTON_PRESSED</h2>
+                                <pre>MOUSE_BUTTON_PRESSED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_MOUSE_BUTTON_RELEASED"> </a>
+                            <div class="element clickable constant  constant_MOUSE_BUTTON_RELEASED" data-toggle="collapse" data-target=".constant_MOUSE_BUTTON_RELEASED .collapse">
+                                <h2>MOUSE_BUTTON_RELEASED</h2>
+                                <pre>MOUSE_BUTTON_RELEASED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_MOUSE_MOVED"> </a>
+                            <div class="element clickable constant  constant_MOUSE_MOVED" data-toggle="collapse" data-target=".constant_MOUSE_MOVED .collapse">
+                                <h2>MOUSE_MOVED</h2>
+                                <pre>MOUSE_MOVED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_MOUSE_ENTERED"> </a>
+                            <div class="element clickable constant  constant_MOUSE_ENTERED" data-toggle="collapse" data-target=".constant_MOUSE_ENTERED .collapse">
+                                <h2>MOUSE_ENTERED</h2>
+                                <pre>MOUSE_ENTERED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_MOUSE_LEFT"> </a>
+                            <div class="element clickable constant  constant_MOUSE_LEFT" data-toggle="collapse" data-target=".constant_MOUSE_LEFT .collapse">
+                                <h2>MOUSE_LEFT</h2>
+                                <pre>MOUSE_LEFT</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_JOYSTICK_BUTTON_PRESSED"> </a>
+                            <div class="element clickable constant  constant_JOYSTICK_BUTTON_PRESSED" data-toggle="collapse" data-target=".constant_JOYSTICK_BUTTON_PRESSED .collapse">
+                                <h2>JOYSTICK_BUTTON_PRESSED</h2>
+                                <pre>JOYSTICK_BUTTON_PRESSED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_JOYSTICK_BUTTON_RELEASED"> </a>
+                            <div class="element clickable constant  constant_JOYSTICK_BUTTON_RELEASED" data-toggle="collapse" data-target=".constant_JOYSTICK_BUTTON_RELEASED .collapse">
+                                <h2>JOYSTICK_BUTTON_RELEASED</h2>
+                                <pre>JOYSTICK_BUTTON_RELEASED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_JOYSTICK_MOVED"> </a>
+                            <div class="element clickable constant  constant_JOYSTICK_MOVED" data-toggle="collapse" data-target=".constant_JOYSTICK_MOVED .collapse">
+                                <h2>JOYSTICK_MOVED</h2>
+                                <pre>JOYSTICK_MOVED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_JOYSTICK_CONNECTED"> </a>
+                            <div class="element clickable constant  constant_JOYSTICK_CONNECTED" data-toggle="collapse" data-target=".constant_JOYSTICK_CONNECTED .collapse">
+                                <h2>JOYSTICK_CONNECTED</h2>
+                                <pre>JOYSTICK_CONNECTED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_JOYSTICK_DISCONNECTED"> </a>
+                            <div class="element clickable constant  constant_JOYSTICK_DISCONNECTED" data-toggle="collapse" data-target=".constant_JOYSTICK_DISCONNECTED .collapse">
+                                <h2>JOYSTICK_DISCONNECTED</h2>
+                                <pre>JOYSTICK_DISCONNECTED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_TOUCH_BEGAN"> </a>
+                            <div class="element clickable constant  constant_TOUCH_BEGAN" data-toggle="collapse" data-target=".constant_TOUCH_BEGAN .collapse">
+                                <h2>TOUCH_BEGAN</h2>
+                                <pre>TOUCH_BEGAN</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_TOUCH_MOVED"> </a>
+                            <div class="element clickable constant  constant_TOUCH_MOVED" data-toggle="collapse" data-target=".constant_TOUCH_MOVED .collapse">
+                                <h2>TOUCH_MOVED</h2>
+                                <pre>TOUCH_MOVED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_TOUCH_ENDED"> </a>
+                            <div class="element clickable constant  constant_TOUCH_ENDED" data-toggle="collapse" data-target=".constant_TOUCH_ENDED .collapse">
+                                <h2>TOUCH_ENDED</h2>
+                                <pre>TOUCH_ENDED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_SENSOR_CHANGED"> </a>
+                            <div class="element clickable constant  constant_SENSOR_CHANGED" data-toggle="collapse" data-target=".constant_SENSOR_CHANGED .collapse">
+                                <h2>SENSOR_CHANGED</h2>
+                                <pre>SENSOR_CHANGED</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_COUNT"> </a>
+                            <div class="element clickable constant  constant_COUNT" data-toggle="collapse" data-target=".constant_COUNT .collapse">
+                                <h2>COUNT</h2>
+                                <pre>COUNT</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_TRIGGERABLE"> </a>
+                            <div class="element clickable constant  constant_TRIGGERABLE" data-toggle="collapse" data-target=".constant_TRIGGERABLE .collapse">
+                                <h2>TRIGGERABLE</h2>
+                                <pre>TRIGGERABLE</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                            
+                                                        </div>
+            </div>
+            <a id="\PHPML\Enum\EventType"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/PHPML.Enum.html">Enum</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/PHPML.Enum.EventType.html">EventType</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Tue, 16 Jun 2020 05:09:13 +0000.<br/>
+    </footer>
+    </body>
+</html>
