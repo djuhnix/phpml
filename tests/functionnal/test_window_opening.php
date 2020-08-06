@@ -19,7 +19,7 @@ $event = new Event();
 while ($window->isOpen()) {
     // Gestion des événements
     while ($window->pollEvent($event->toCData())) {
-        // Ferme la fenêtre si l'événement 'close' est enregistrer
+        // Ferme la fenêtre si l'événement 'closed' est enregistré
         if ($event->getType()->getValue() == EventType::CLOSED) {
             $window->close();
         }
@@ -27,7 +27,7 @@ while ($window->isOpen()) {
     // Nettoyage de l'écran de la fenêtre et affichage
     $window->clear($window->getBackgroundColor());
 
-    // lancement des dessins s'il y en a
+    // rafraîchissement et affichage des dessins s'il y en a
     $window->display();
 }
 

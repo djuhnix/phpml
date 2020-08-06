@@ -1,6 +1,7 @@
 ## config
 .idea/
+/phpdoc.xml
+/.php_cs.cache
 
 ## vendor
 vendor/
-/.php_cs.cache

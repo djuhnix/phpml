@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title>PHPML - PHP Media Library</title>
+    <parser>
+        <target>docs/parser</target>
+    </parser>
+    <transformer>
+        <target>docs</target>
+    </transformer>
+    <transformations>
+        <template name="clean"/>
+        <template name="responsive-twig"/>
+    </transformations>
+    <files>
+        <directory>src</directory>
+    </files>
+</phpdoc>
